@@ -1,0 +1,26 @@
+{
+  "name": "BorisMontavon_6_21032021",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile-scss": "gulp",
+    "watch-scss": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borisMontavon/BorisMontavon_6_15052021.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/borisMontavon/BorisMontavon_6_15052021/issues"
+  },
+  "homepage": "https://github.com/borisMontavon/BorisMontavon_6_15052021#readme",
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0"
+  },
+  "description": ""
+}
