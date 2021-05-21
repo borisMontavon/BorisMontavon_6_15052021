@@ -3,7 +3,7 @@ const sass = require('gulp-sass');
 const del = require('del');
 
 const mainFolder = './src/scss/*.scss';
-const moduleFolder = './src/scss/*/*/*.scss';
+const moduleFolder = './src/scss/**/*.scss';
 const destFolder = './src/css/';
 
 gulp.task('styles', () => {

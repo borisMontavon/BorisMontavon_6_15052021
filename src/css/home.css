@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box; }
+
+::selection {
+  background-color: #901C1C;
+  color: #FFFFFF;
+  text-shadow: none; }
+
+.logo {
+  color: #901C1C;
+  font-family: "Lato", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600; }
+  .logo i {
+    font-size: 2.2rem;
+    margin: 0 0.25rem 0.5rem 0.25rem; }
+
+.contact-button {
+  background-color: #901C1C;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.8rem 3rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer; }
+  .contact-button:hover {
+    background-color: #D3573C;
+    color: #000000; }
+  @media screen and (min-width: 1200px) {
+    .contact-button {
+      padding: 1rem 3rem; } }
+
+header {
+  padding: 2rem 1.5rem; }
