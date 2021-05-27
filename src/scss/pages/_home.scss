@@ -3,4 +3,26 @@
 // Header
 header {
     padding: 2rem 1.5rem;
+
+    h1 {
+        margin-bottom: 30px;
+    }
+}
+
+nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+// Main
+#page-title {
+    font-family: $noto-sans-jp;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    color: $carmine;
+    position: absolute;
+    top: 3.5rem;
+    right: 1.5rem;
 }

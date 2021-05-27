@@ -1,0 +1,27 @@
+// Like button
+
+.like-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100px;
+
+    p {
+        color: $carmine;
+        font-size: 1.5rem;
+        font-family: $lato;
+        margin-right: 5px;
+    }
+
+    button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        i {
+            color: $carmine;
+            font-size: 1.5rem;
+        }
+    }
+}

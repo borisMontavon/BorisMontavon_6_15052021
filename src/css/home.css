@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +13,9 @@
 
 .logo {
   color: #901C1C;
-  font-family: "Lato", sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 2.5rem;
-  font-weight: 600; }
+  font-weight: 500; }
   .logo i {
     font-size: 2.2rem;
     margin: 0 0.25rem 0.5rem 0.25rem; }
@@ -26,8 +27,8 @@
   padding: 0.8rem 3rem;
   color: #FFFFFF;
   font-size: 1rem;
-  font-family: "Lato", sans-serif;
-  font-weight: 600;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
   transition: 0.3s;
   cursor: pointer; }
   .contact-button:hover {
@@ -35,7 +36,81 @@
     color: #000000; }
   @media screen and (min-width: 1200px) {
     .contact-button {
-      padding: 1rem 3rem; } }
+      padding: 1.25rem 3rem; } }
+
+.like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  width: 100px; }
+  .like-button p {
+    color: #901C1C;
+    font-size: 1.5rem;
+    font-family: "Lato", sans-serif;
+    margin-right: 5px; }
+  .like-button button {
+    background: transparent;
+    border: none;
+    cursor: pointer; }
+    .like-button button i {
+      color: #901C1C;
+      font-size: 1.5rem; }
+
+.tag {
+  background-color: transparent;
+  color: #901C1C;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 0.5px solid rgba(82, 82, 82, 0.3);
+  padding: 2px 8px;
+  margin: 6px 3px 0;
+  cursor: pointer;
+  transition: 0.3s; }
+  .tag:hover {
+    border: 0.5px solid #901C1C; }
+
+.tag-selected {
+  background-color: #901C1C;
+  color: #FFFFFF;
+  border: 0.5px solid #901C1C; }
+
+.dropdown-button {
+  background-color: #901C1C;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.8rem 3rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer; }
+  .dropdown-button:hover {
+    background-color: #D3573C;
+    color: #000000; }
+  @media screen and (min-width: 1200px) {
+    .dropdown-button {
+      padding: 1.25rem 3rem; } }
 
 header {
   padding: 2rem 1.5rem; }
+  header h1 {
+    margin-bottom: 30px; }
+
+nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; }
+
+#page-title {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #901C1C;
+  position: absolute;
+  top: 3.5rem;
+  right: 1.5rem; }
