@@ -12,3 +12,11 @@
     color: $white;
     text-shadow: none;
 }
+
+a {
+    text-decoration: none;
+
+    &:visited {
+        color: inherit;
+    }
+}
