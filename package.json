@@ -1,10 +1,13 @@
 {
   "name": "BorisMontavon_6_21032021",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "private": true,
   "scripts": {
     "compile-scss": "gulp",
-    "watch-scss": "gulp watch"
+    "watch-scss": "gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,8 @@
   "devDependencies": {
     "del": "^6.0.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.1.0"
-  },
-  "description": ""
+    "gulp-sass": "^4.1.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
 }
