@@ -1,3 +1,5 @@
+import Tags from "./tags";
+
 // Classe permettant d'afficher les informations d'un photographe sur la page d'acceuil depuis les données définies dans le paramètre "photograph"
 export default class PhotographList {
     constructor(photograph) {
@@ -32,7 +34,7 @@ export default class PhotographList {
 
         const linkElement = document.createElement("a");
 
-        linkElement.setAttribute("href", this.state.id);
+        linkElement.setAttribute("href", "photographer.html?id=" + this.state.id);
         linkElement.setAttribute("class", this.linkClass);
 
         linkElement.appendChild(this.createPortraitElement());

@@ -1,0 +1,22 @@
+// To top button
+
+#toTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 98;
+    border: none;
+    outline: none;
+    background-color: $cedar-chest;
+    color: $white;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+
+    i {
+        font-size: 1.2rem;
+    }
+}

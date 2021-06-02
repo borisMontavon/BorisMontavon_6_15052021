@@ -1,9 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: [],
+  mode: "development",
+  entry: {
+    homepage: "./src/js/homepage.js",
+    photographerPage: "./src/js/photographerPage.js"
+  },
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist/js"),
+    filename: "[name].bundle.js",
   },
 };

@@ -1,18 +1,3 @@
-// Like button
-var likeCounter = 0;
-
-const incrementValue = () => {
-    document.getElementById("like").setAttribute("disabled", "true");
-
-    likeCounter++;
-    document.getElementById('number').innerHTML = likeCounter;
-    document.getElementById("like").removeAttribute("disabled");
-};
-
-import factory from "./factory";
-import Tags from "./tags";
-import PhotographList from "./photographList";
-
 const factory = new ElementsFactory();
 
 const sortTags = (photographers) => {
