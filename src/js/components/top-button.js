@@ -3,7 +3,7 @@
 $(window).scroll(function() {
 	const height = $(window).scrollTop();
 	
-	if (height > 200) {
+	if (height > 150) {
 		$("#toTopButton").fadeIn();
 	} else {
 		$("#toTopButton").fadeOut();
@@ -17,15 +17,3 @@ $(document).ready(function() {
 		return false;
 	});
 });
-
-// window.addEventListener('scroll', () => {
-//     const height = window.scrollY;
-//     const topButton = document.getElementById("toTopButton");
-//     console.log(height);
-
-//     if (height > 200) {
-// 		topButton.classList.add("fade-in");
-// 	} else {
-// 		topButton.classList.remove("fade-in");
-// 	}
-// })

@@ -16,7 +16,19 @@
     text-align: center;
     cursor: pointer;
 
+    @media screen and (min-width: $tablet-breakpoint) {
+        bottom: 30px;
+        right: 30px;
+        border-radius: 25px;
+        width: 45px;
+        height: 45px;
+    }
+
     i {
         font-size: 1.2rem;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            font-size: 1.4rem;
+        }
     }
 }

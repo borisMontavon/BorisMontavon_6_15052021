@@ -4,8 +4,20 @@
 header {
     padding: 2rem 1.5rem;
 
+    @media screen and (min-width: $tablet-breakpoint) {
+        padding: 3rem 2.5rem;
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        padding: 3rem 4.5rem 5.5rem 4.5rem;
+    }
+
     h1 {
         margin-bottom: 20px;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            margin-bottom: 30px;
+        }
     }
 }
 
@@ -13,6 +25,12 @@ nav {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+
+    @media screen and (min-width: $computer-breakpoint) {
+        position: absolute;
+        left: calc(220px + 15rem);
+        top: 4rem;
+    }
 }
 
 // Main
@@ -25,6 +43,17 @@ nav {
     position: absolute;
     top: 3.25rem;
     right: 1.5rem;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        font-size: 1.5rem;
+        top: 4rem;
+        right: 2.5rem;
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        font-size: 1.8rem;
+        right: 4.5rem;
+    }
 }
 
 #photographers {
@@ -34,11 +63,24 @@ nav {
     font-family: $work-sans;
     margin-top: 15px;
 
+    @media screen and (min-width: $tablet-breakpoint) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     > div {
         display: flex;
         flex-flow: column wrap;
         align-items: center;
         margin-bottom: 50px;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            margin-bottom: 75px;
+        }
     }
 }
 
