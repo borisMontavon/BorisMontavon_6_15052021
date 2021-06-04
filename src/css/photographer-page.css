@@ -30,6 +30,43 @@ a {
       .logo i {
         font-size: 2.4rem; } }
 
+.contact-button {
+  background-color: #901C1C;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.8rem 3rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 700;
+  transition: 0.3s;
+  cursor: pointer; }
+  .contact-button:hover {
+    background-color: #D3573C;
+    color: #000000; }
+  @media screen and (min-width: 1200px) {
+    .contact-button {
+      padding: 1.25rem 3rem; } }
+
+.like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  width: 100px; }
+  .like-button p {
+    color: #901C1C;
+    font-size: 1.5rem;
+    font-family: "Work Sans", sans-serif;
+    margin-right: 5px; }
+  .like-button button {
+    background: transparent;
+    border: none;
+    cursor: pointer; }
+    .like-button button i {
+      color: #901C1C;
+      font-size: 1.5rem; }
+
 .tag {
   background-color: transparent;
   color: #901C1C;
@@ -49,6 +86,24 @@ a {
   background-color: #901C1C;
   color: #FFFFFF;
   border: 0.5px solid #901C1C; }
+
+.dropdown-button {
+  background-color: #901C1C;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.8rem 3rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer; }
+  .dropdown-button:hover {
+    background-color: #D3573C;
+    color: #000000; }
+  @media screen and (min-width: 1200px) {
+    .dropdown-button {
+      padding: 1.25rem 3rem; } }
 
 #toTopButton {
   display: none;
@@ -91,62 +146,6 @@ header {
     @media screen and (min-width: 768px) {
       header h1 {
         margin-bottom: 30px; } }
-
-nav {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center; }
-  @media screen and (min-width: 1200px) {
-    nav {
-      position: absolute;
-      left: calc(220px + 15rem);
-      top: 4rem; } }
-
-#page-title {
-  font-family: "Work Sans", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  color: #901C1C;
-  position: absolute;
-  top: 3.25rem;
-  right: 1.5rem; }
-  @media screen and (min-width: 768px) {
-    #page-title {
-      font-size: 1.5rem;
-      top: 4rem;
-      right: 2.5rem; } }
-  @media screen and (min-width: 992px) {
-    #page-title {
-      font-size: 1.8rem;
-      right: 4.5rem; } }
-
-#photographers {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  font-family: "Work Sans", sans-serif;
-  margin-top: 15px; }
-  @media screen and (min-width: 768px) {
-    #photographers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media screen and (min-width: 992px) {
-    #photographers {
-      grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  #photographers > div {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    margin-bottom: 50px; }
-    @media screen and (min-width: 768px) {
-      #photographers > div {
-        margin-bottom: 75px; } }
-
-.photographer-link {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center; }
 
 .photographer-portrait {
   width: 225px;

@@ -1,0 +1,59 @@
+// Photographer page style
+
+// Header
+header {
+    padding: 2rem 1.5rem;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        padding: 3rem 2.5rem;
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        padding: 3rem 4.5rem 5.5rem 4.5rem;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.photographer-portrait {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.photographer-name {
+    color: $cedar-chest;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.photographer-city-country {
+    color: $carmine;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.photographer-tagline {
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+}
+
+.photographer-price {
+    color: $davys-grey;
+    font-size: 0.7rem;
+    margin-bottom: 2.5px;
+}
+
+.tag-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}

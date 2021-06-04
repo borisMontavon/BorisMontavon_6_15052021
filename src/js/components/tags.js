@@ -7,12 +7,12 @@ export default class Tags {
 
     render() {
         // Récupération de l'élément parent dans lequel on va insérer de nouveaux éléments html paramétrés dans le json
-        const nav = document.getElementById(this.parentId);
+        const parentElement = document.getElementById(this.parentId);
 
         // Parcours des éléments issus du json
         this.tags.forEach((tag) => {
             // Ajout du nouvel élément dans le DOM
-            nav.appendChild(this.createTag(tag));
+            parentElement.appendChild(this.createTag(tag));
         });
     }
 

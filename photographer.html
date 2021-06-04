@@ -14,18 +14,21 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
         <!-- Stylesheet import -->
-        <link rel="stylesheet" href="./src/css/home.css">
+        <link rel="stylesheet" href="./src/css/photographer-page.css">
     </head>
     <body>
         <header>
-            <h1 class="logo">Fish<i class="fas fa-camera-retro"></i>ye</h1>
-            <nav id="tags" aria-label="Catégories photographes"></nav>
+            <a href="./index.html" aria-label="Fisheye Home page">
+                <h1 class="logo">Fish<i class="fas fa-camera-retro"></i>ye</h1>
+            </a>
         </header>
         <main>
-            <h1 id="page-title">Nos photographes</h1>
-            <section id="photographers"></section>
-        </main>
+            <section id="photographer-section"></section>
+        </main>       
+        <button id="toTopButton"><i class="fas fa-chevron-up"></i></button>
         <script src="https://kit.fontawesome.com/45058126b7.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="./dist/js/photographerPage.bundle.js"></script>
+        <script src="./src/js/components/top-button.js"></script>
     </body>
 </html>

@@ -46,7 +46,7 @@ export default class PhotographList {
         containerElement.appendChild(this.createPriceElement());
         containerElement.appendChild(this.createTagContainerElement());
 
-        new Tags(this.state.tags, ("tag-container-" + this.state.id)).render();
+        new Tags(this.state.tags, "tag-container-" + this.state.id).render();
     }
     
     createPortraitElement() {
