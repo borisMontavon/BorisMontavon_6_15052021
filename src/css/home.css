@@ -20,9 +20,15 @@ a {
   font-family: "Work Sans", sans-serif;
   font-size: 2.5rem;
   font-weight: 600; }
+  @media screen and (min-width: 768px) {
+    .logo {
+      font-size: 2.8rem; } }
   .logo i {
     font-size: 2.2rem;
     margin: 0 0.25rem 0.5rem 0.25rem; }
+    @media screen and (min-width: 768px) {
+      .logo i {
+        font-size: 2.4rem; } }
 
 .contact-button {
   background-color: #901C1C;
@@ -114,18 +120,42 @@ a {
   height: 40px;
   text-align: center;
   cursor: pointer; }
+  @media screen and (min-width: 768px) {
+    #toTopButton {
+      bottom: 30px;
+      right: 30px;
+      border-radius: 25px;
+      width: 45px;
+      height: 45px; } }
   #toTopButton i {
     font-size: 1.2rem; }
+    @media screen and (min-width: 768px) {
+      #toTopButton i {
+        font-size: 1.4rem; } }
 
 header {
   padding: 2rem 1.5rem; }
+  @media screen and (min-width: 768px) {
+    header {
+      padding: 3rem 2.5rem; } }
+  @media screen and (min-width: 992px) {
+    header {
+      padding: 3rem 4.5rem 5.5rem 4.5rem; } }
   header h1 {
     margin-bottom: 20px; }
+    @media screen and (min-width: 768px) {
+      header h1 {
+        margin-bottom: 30px; } }
 
 nav {
   display: flex;
   flex-flow: row wrap;
   justify-content: center; }
+  @media screen and (min-width: 1200px) {
+    nav {
+      position: absolute;
+      left: calc(220px + 15rem);
+      top: 4rem; } }
 
 #page-title {
   font-family: "Work Sans", sans-serif;
@@ -136,6 +166,15 @@ nav {
   position: absolute;
   top: 3.25rem;
   right: 1.5rem; }
+  @media screen and (min-width: 768px) {
+    #page-title {
+      font-size: 1.5rem;
+      top: 4rem;
+      right: 2.5rem; } }
+  @media screen and (min-width: 992px) {
+    #page-title {
+      font-size: 1.8rem;
+      right: 4.5rem; } }
 
 #photographers {
   display: flex;
@@ -143,11 +182,21 @@ nav {
   align-items: center;
   font-family: "Work Sans", sans-serif;
   margin-top: 15px; }
+  @media screen and (min-width: 768px) {
+    #photographers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media screen and (min-width: 992px) {
+    #photographers {
+      grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   #photographers > div {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     margin-bottom: 50px; }
+    @media screen and (min-width: 768px) {
+      #photographers > div {
+        margin-bottom: 75px; } }
 
 .photographer-link {
   display: flex;
