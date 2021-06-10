@@ -34,11 +34,11 @@ a {
   background-color: #901C1C;
   border: none;
   border-radius: 0.25rem;
-  padding: 0.8rem 3rem;
+  padding: 0.5rem 1rem;
   color: #FFFFFF;
   font-size: 1rem;
   font-family: "Work Sans", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   transition: 0.3s;
   cursor: pointer; }
   .contact-button:hover {
@@ -46,17 +46,110 @@ a {
     color: #000000; }
   @media screen and (min-width: 1200px) {
     .contact-button {
-      padding: 1.25rem 3rem; } }
+      padding: 1.25rem 1rem;
+      font-size: 1rem; } }
+
+#desktop-contact-button {
+  display: none;
+  position: absolute;
+  left: 425px;
+  top: 50px; }
+  @media screen and (min-width: 992px) {
+    #desktop-contact-button {
+      display: block; } }
+
+#mobile-contact-button {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%); }
+  @media screen and (min-width: 992px) {
+    #mobile-contact-button {
+      display: none; } }
+
+#form-background {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  align-items: center;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0; }
+
+#close-form-button {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: right; }
+  #close-form-button button {
+    background-color: transparent;
+    padding: 0;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.3s; }
+    @media screen and (min-width: 992px) {
+      #close-form-button button {
+        color: #901C1C; } }
+  #close-form-button i {
+    font-size: 1.4rem; }
+
+form {
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 0 1.5rem;
+  font-family: "Work Sans", sans-serif;
+  color: #000000;
+  display: flex;
+  flex-flow: row wrap; }
+  form label {
+    margin-bottom: 10px; }
+  form input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    transition: 0.3s; }
+    form input:focus {
+      border: 1px solid #D3573C; }
+  form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    margin-bottom: 20px;
+    transition: 0.3s; }
+    form textarea:focus {
+      border: 1px solid #D3573C; }
+  form button {
+    background-color: #901C1C;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.8rem 1rem;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 700;
+    transition: 0.3s;
+    cursor: pointer;
+    margin: auto; }
+    form button:hover {
+      background-color: #D3573C;
+      color: #000000; }
+    @media screen and (min-width: 1200px) {
+      form button {
+        padding: 1.25rem 3rem; } }
 
 .like-button {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 2rem;
   width: 100px; }
   .like-button p {
     color: #901C1C;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: "Work Sans", sans-serif;
     margin-right: 5px; }
   .like-button button {
@@ -65,7 +158,7 @@ a {
     cursor: pointer; }
     .like-button button i {
       color: #901C1C;
-      font-size: 1.5rem; }
+      font-size: 0.9rem; }
 
 .tag {
   background-color: transparent;
@@ -133,6 +226,29 @@ a {
       #toTopButton i {
         font-size: 1.4rem; } }
 
+#gallery-section {
+  margin: 4rem 1.5rem 6rem; }
+
+.image-container {
+  margin-bottom: 30px; }
+
+.image {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 5px; }
+
+.image-infos-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px; }
+  .image-infos-container h3 {
+    font-family: "Work Sans", sans-serif;
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 1rem; }
+
 header {
   padding: 2rem 1.5rem; }
   @media screen and (min-width: 768px) {
@@ -141,39 +257,62 @@ header {
   @media screen and (min-width: 992px) {
     header {
       padding: 3rem 4.5rem 5.5rem 4.5rem; } }
-  header h1 {
-    margin-bottom: 20px; }
-    @media screen and (min-width: 768px) {
-      header h1 {
-        margin-bottom: 30px; } }
+
+#photographer-section {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  font-family: "Work Sans", sans-serif;
+  margin: 1.5rem;
+  padding: 25px 0;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  position: relative; }
+  @media screen and (min-width: 768px) {
+    #photographer-section {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin: 0 2.5rem;
+      padding: 25px; } }
 
 .photographer-portrait {
-  width: 225px;
-  height: 225px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  margin-bottom: 15px; }
+  margin-top: 20px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.2); }
+  @media screen and (min-width: 768px) {
+    .photographer-portrait {
+      width: 175px;
+      height: 175px;
+      margin-top: 0; } }
+
+.photographer-info {
+  text-align: center; }
+  @media screen and (min-width: 768px) {
+    .photographer-info {
+      text-align: left; } }
 
 .photographer-name {
   color: #D3573C;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 5px; }
 
 .photographer-city-country {
   color: #901C1C;
   font-size: 0.85rem;
-  margin-bottom: 5px; }
+  margin-bottom: 10px; }
 
 .photographer-tagline {
   font-size: 0.7rem;
-  margin-bottom: 3px; }
-
-.photographer-price {
   color: #525252;
-  font-size: 0.7rem;
-  margin-bottom: 2.5px; }
+  margin-bottom: 3px; }
 
 .tag-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: center; }
+  @media screen and (min-width: 768px) {
+    .tag-container {
+      justify-content: flex-start; } }

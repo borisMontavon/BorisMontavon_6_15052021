@@ -28,13 +28,13 @@ export default class PhotographList {
         const parentElement = document.getElementById("photographers");
         const containerElement = document.createElement("div");
 
-        containerElement.setAttribute("id", "photographer-" + this.state.id);
+        containerElement.setAttribute("id", `photographer-${this.state.id}`);
         
         parentElement.appendChild(containerElement);
 
         const linkElement = document.createElement("a");
 
-        linkElement.setAttribute("href", "photographer.html?id=" + this.state.id);
+        linkElement.setAttribute("href", `photographer.html?id=${this.state.id}`);
         linkElement.setAttribute("class", this.linkClass);
 
         linkElement.appendChild(this.createPortraitElement());
@@ -46,13 +46,13 @@ export default class PhotographList {
         containerElement.appendChild(this.createPriceElement());
         containerElement.appendChild(this.createTagContainerElement());
 
-        new Tags(this.state.tags, "tag-container-" + this.state.id).render();
+        new Tags(this.state.tags, `tag-container-${this.state.id}`).render();
     }
     
     createPortraitElement() {
         const portraitElement = document.createElement("img");
 
-        portraitElement.setAttribute("src", "./assets/photographer-ids/" + this.state.portrait);
+        portraitElement.setAttribute("src", `./assets/photographer-ids/${this.state.portrait}`);
         portraitElement.setAttribute("alt", this.state.name);
         portraitElement.setAttribute("class", this.portraitClass);
 
@@ -72,7 +72,7 @@ export default class PhotographList {
         const locationElement = document.createElement("p");
 
         locationElement.setAttribute("class", this.locationClass);
-        locationElement.innerHTML = this.state.city + ", " + this.state.country;
+        locationElement.innerHTML = `${this.state.city}, ${this.state.country}`;
 
         return locationElement;
     }
@@ -90,7 +90,7 @@ export default class PhotographList {
         const priceElement = document.createElement("p");
 
         priceElement.setAttribute("class", this.priceClass);
-        priceElement.innerHTML = this.state.price + "€/jour";
+        priceElement.innerHTML = `${this.state.price}€/jour`;
         
         return priceElement;
     }
@@ -99,7 +99,7 @@ export default class PhotographList {
         const tagContainerElement = document.createElement("div");
 
         tagContainerElement.setAttribute("class", this.tagContainerClass);
-        tagContainerElement.setAttribute("id", "tag-container-" + this.state.id);
+        tagContainerElement.setAttribute("id", `tag-container-${this.state.id}`);
 
         return tagContainerElement;
     }

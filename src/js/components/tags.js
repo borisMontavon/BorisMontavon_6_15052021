@@ -22,10 +22,10 @@ export default class Tags {
 
         // Mise à jour des attributs (class, aria-*, ...)
         span.setAttribute("class", "tag");
-        span.setAttribute("aria-label", "Tag " + tag);
+        span.setAttribute("aria-label", `Tag ${tag}`);
 
         // Mise à jour du innerHtml
-        span.innerHTML = "#" + tag;
+        span.innerHTML = `# ${tag}`;
 
         return span;
     }

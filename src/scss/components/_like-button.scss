@@ -2,14 +2,13 @@
 
 .like-button {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    margin-top: 2rem;
     width: 100px;
 
     p {
         color: $carmine;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-family: $work-sans;
         margin-right: 5px;
     }
@@ -21,7 +20,7 @@
 
         i {
             color: $carmine;
-            font-size: 1.5rem;
+            font-size: 0.9rem;
         }
     }
 }

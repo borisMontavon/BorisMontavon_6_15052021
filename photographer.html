@@ -24,11 +24,29 @@
         </header>
         <main>
             <section id="photographer-section"></section>
-        </main>       
-        <button id="toTopButton"><i class="fas fa-chevron-up"></i></button>
+            <section id="gallery-section"></section>
+            <div id="form-background">
+                <form action="">
+                    <div id="close-form-button">
+                        <button onclick="return closeForm()" type="button">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <label for="fname">Prénom</label>
+                    <input type="text" id="fname" name="fname">
+                    <label for="fname">Nom</label>
+                    <input type="text" id="fname" name="fname">
+                    <label for="fname">Adresse e-mail</label>
+                    <input type="text" id="fname" name="fname">
+                    <label for="fname">Message</label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <button type="button">Envoyer</button>
+                </form>
+            </div>
+        </main>
         <script src="https://kit.fontawesome.com/45058126b7.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="./src/js/components/buttons.js"></script>
         <script src="./dist/js/photographerPage.bundle.js"></script>
-        <script src="./src/js/components/top-button.js"></script>
     </body>
 </html>

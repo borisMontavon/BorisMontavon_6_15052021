@@ -1,5 +1,6 @@
 import ElementsFactory from "./components/factory";
 import PhotographerSection from "./components/photographerSection";
+import Media from "./components/media";
 
 // Get ID of the current photographer to get associate data
 const urlParams = new URLSearchParams(window.location.search);
@@ -22,13 +23,16 @@ const initializePhotographerPage = async () => {
         return photographer.id == currrentId;
     });
 
-    console.log({photographerData});
-
     const photographerImages = data.media.filter((image) => {
         return image.photographerId == currrentId;
     });
+    console.log(photographerImages);
 
     factory.addElement(new PhotographerSection(photographerData));
+    
+    photographerImages.forEach((image) => {
+        factory.addElement(new Media(image));
+    });
 
     factory.renderElements();
 };

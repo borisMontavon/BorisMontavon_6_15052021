@@ -1,4 +1,4 @@
-//Top Button
+//Top button
 
 $(window).scroll(function() {
 	const height = $(window).scrollTop();
@@ -17,3 +17,11 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+// Close form button
+
+const closeForm = () => {
+	const form = document.getElementById("form-background");
+
+	form.style.display = "none";
+}

@@ -152,7 +152,8 @@ nav {
   width: 225px;
   height: 225px;
   border-radius: 50%;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.2); }
 
 .photographer-name {
   color: #D3573C;

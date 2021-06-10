@@ -1,4 +1,5 @@
 import Tags from "./tags";
+import ContactButton from "./contact-button";
 
 export default class PhotographerSection {
     constructor(photograph) {
@@ -33,10 +34,11 @@ export default class PhotographerSection {
         photographerInfo.appendChild(this.createTagContainerElement());
 
         parentElement.appendChild(photographerInfo);
-        // parentElement.appendChild(contact-button);
         parentElement.appendChild(this.createPortraitElement());
 
-        new Tags(this.state.tags, "tag-container-" + this.state.id).render();
+        new Tags(this.state.tags, `tag-container-${this.state.id}`).render();
+
+        new ContactButton().render();
     }
 
     createTitleElement() {
@@ -52,7 +54,7 @@ export default class PhotographerSection {
         const locationElement = document.createElement("p");
 
         locationElement.setAttribute("class", this.locationClass);
-        locationElement.innerHTML = this.state.city + ", " + this.state.country;
+        locationElement.innerHTML = `${this.state.city}, ${this.state.country}`;
 
         return locationElement;
     }
@@ -70,7 +72,7 @@ export default class PhotographerSection {
         const tagContainerElement = document.createElement("div");
 
         tagContainerElement.setAttribute("class", this.tagContainerClass);
-        tagContainerElement.setAttribute("id", "tag-container-" + this.state.id);
+        tagContainerElement.setAttribute("id", `tag-container-${this.state.id}`);
 
         return tagContainerElement;
     }
@@ -78,7 +80,7 @@ export default class PhotographerSection {
     createPortraitElement() {
         const portraitElement = document.createElement("img");
 
-        portraitElement.setAttribute("src", "./assets/photographer-ids/" + this.state.portrait);
+        portraitElement.setAttribute("src", `./assets/photographer-ids/${this.state.portrait}`);
         portraitElement.setAttribute("alt", this.state.name);
         portraitElement.setAttribute("class", this.portraitClass);
 

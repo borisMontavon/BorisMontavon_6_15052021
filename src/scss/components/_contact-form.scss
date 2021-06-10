@@ -1,0 +1,99 @@
+// Contact form
+
+#form-background {
+    background-color: rgba($black, 0.4);
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#close-form-button {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: right;
+
+    button {
+        background-color: transparent;
+        padding: 0;
+        color: $black;
+        cursor: pointer;
+        transition: 0.3s;
+
+        @media screen and (min-width: $computer-sm-breakpoint) {
+            color: $carmine;
+        }
+    }
+
+    i {
+        font-size: 1.4rem;
+    }
+}
+
+form {
+    background-color: $cultured;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 1.5rem;
+    font-family: $work-sans;
+    color: $black;
+    display: flex;
+    flex-flow: row wrap;
+
+    label {
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        margin-bottom: 20px;
+        transition: 0.3s;
+
+        &:focus {
+            border: 1px solid $cedar-chest;
+        }
+    }
+
+    textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        margin-bottom: 20px;
+        transition: 0.3s;
+
+        &:focus {
+            border: 1px solid $cedar-chest;
+        }
+    }
+
+    button {
+        background-color: $carmine;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.8rem 1rem;
+        color: $white;
+        font-size: 0.9rem;
+        font-family: $work-sans;
+        font-weight: 700;
+        transition: 0.3s;
+        cursor: pointer;
+        margin: auto;
+
+        &:hover {
+            background-color: $cedar-chest;
+            color: $black;
+        }
+
+        @media screen and (min-width: $computer-breakpoint) {
+            padding: 1.25rem 3rem;
+        }
+    }
+}
