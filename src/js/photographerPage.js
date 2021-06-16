@@ -25,7 +25,6 @@ const initializePhotographerPage = async () => {
     const photographerImages = data.media.filter((image) => {
         return image.photographerId == currrentId;
     });
-    console.log(photographerImages);
 
     factory.addElement(new PhotographerSection(photographerData));
     

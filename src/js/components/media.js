@@ -22,7 +22,6 @@ export default class Media {
         this.videoPoster = "placeholder.png";
         this.videoClass = "video";
         this.videoSrc = `../../assets/photographer/${this.state.photographerId}/${this.state.video}`;
-        this.warningClass = "warning-video";
     }
 
     render() {
@@ -39,7 +38,6 @@ export default class Media {
         infosContainer.appendChild(this.createTitleElement());
 
         if (this.isVideo()) {
-            imageContainer.appendChild(this.createSmallVideoWarning());
             imageContainer.appendChild(this.createVideoElement());
         } else {
             imageContainer.appendChild(this.createImageElement());
@@ -66,19 +64,11 @@ export default class Media {
         return this.state.video !== undefined;
     }
 
-    createSmallVideoWarning() {
-        const warningElement = document.createElement("span");
-
-        warningElement.setAttribute("class", this.warningClass);
-        warningElement.innerHTML = "Vidéo";
-
-        return warningElement;
-    }
-
     createVideoElement() {
         const videoElement = document.createElement("video");
 
         videoElement.setAttribute("poster", this.videoPoster);
+        videoElement.setAttribute("controls", "");
         videoElement.setAttribute("class", this.videoClass);
         videoElement.setAttribute("aria-label", this.state.title);
 
