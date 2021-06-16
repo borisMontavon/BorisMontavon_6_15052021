@@ -15,6 +15,9 @@ a {
   a:visited {
     color: inherit; }
 
+.overflow {
+  overflow: hidden; }
+
 .logo {
   color: #901C1C;
   font-family: "Work Sans", sans-serif;
@@ -29,43 +32,6 @@ a {
     @media screen and (min-width: 768px) {
       .logo i {
         font-size: 2.4rem; } }
-
-.contact-button {
-  background-color: #901C1C;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.8rem 3rem;
-  color: #FFFFFF;
-  font-size: 1rem;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 700;
-  transition: 0.3s;
-  cursor: pointer; }
-  .contact-button:hover {
-    background-color: #D3573C;
-    color: #000000; }
-  @media screen and (min-width: 1200px) {
-    .contact-button {
-      padding: 1.25rem 3rem; } }
-
-.like-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  width: 100px; }
-  .like-button p {
-    color: #901C1C;
-    font-size: 1.5rem;
-    font-family: "Work Sans", sans-serif;
-    margin-right: 5px; }
-  .like-button button {
-    background: transparent;
-    border: none;
-    cursor: pointer; }
-    .like-button button i {
-      color: #901C1C;
-      font-size: 1.5rem; }
 
 .tag {
   background-color: transparent;
@@ -87,24 +53,6 @@ a {
   color: #FFFFFF;
   border: 0.5px solid #901C1C; }
 
-.dropdown-button {
-  background-color: #901C1C;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.8rem 3rem;
-  color: #FFFFFF;
-  font-size: 1rem;
-  font-family: "Work Sans", sans-serif;
-  font-weight: 600;
-  transition: 0.3s;
-  cursor: pointer; }
-  .dropdown-button:hover {
-    background-color: #D3573C;
-    color: #000000; }
-  @media screen and (min-width: 1200px) {
-    .dropdown-button {
-      padding: 1.25rem 3rem; } }
-
 #toTopButton {
   display: none;
   position: fixed;
@@ -113,7 +61,7 @@ a {
   z-index: 98;
   border: none;
   outline: none;
-  background-color: #D3573C;
+  background-color: #DB8876;
   color: #FFFFFF;
   border-radius: 20px;
   width: 40px;
@@ -207,10 +155,11 @@ nav {
   width: 225px;
   height: 225px;
   border-radius: 50%;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.2); }
 
 .photographer-name {
-  color: #D3573C;
+  color: #DB8876;
   font-weight: 500;
   font-size: 2rem;
   margin-bottom: 5px; }

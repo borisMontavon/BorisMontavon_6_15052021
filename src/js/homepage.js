@@ -1,3 +1,7 @@
+import ElementsFactory from "./components/factory";
+import PhotographList from "./components/photographList";
+import Tags from "./components/tags";
+
 const factory = new ElementsFactory();
 
 const sortTags = (photographers) => {
@@ -17,7 +21,7 @@ const getData = async (url) => {
     const response = await fetch(url);
 
     return response.json();
-}
+};
 
 // Initialisation de la page d'accueil avec les données du Json
 const initializeHomepage = async () => {
@@ -33,6 +37,25 @@ const initializeHomepage = async () => {
     factory.renderElements();
 };
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
     initializeHomepage();
+});
+
+//Top button
+$(window).scroll(function() {
+	const height = $(window).scrollTop();
+	
+	if (height > 150) {
+		$("#toTopButton").fadeIn();
+	} else {
+		$("#toTopButton").fadeOut();
+	}
+});
+	
+$(document).ready(function() {
+	$("#toTopButton").click(function(event) {
+		event.preventDefault();
+		$("html, body").animate({ scrollTop: 0}, "slow");
+		return false;
+	});
 });
