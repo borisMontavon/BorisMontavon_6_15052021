@@ -39,6 +39,9 @@ export default class PhotographerSection {
         new Tags(this.state.tags, `tag-container-${this.state.id}`).render();
 
         new ContactButton().render();
+        const formTitle = document.getElementById("form-title");
+
+        formTitle.innerHTML = `Contactez-moi ${this.state.name}`;
     }
 
     createTitleElement() {

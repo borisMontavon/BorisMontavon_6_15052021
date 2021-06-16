@@ -1,6 +1,9 @@
+import FormValidation from "./form-validation";
+
 export default class ContactButton {
     constructor() {
         this.contactButtonClass = "contact-button";
+        this.accessibilityButton = "Contactez-moi"
     }
 
     render() {
@@ -11,6 +14,7 @@ export default class ContactButton {
 
         desktopButton.setAttribute("class", this.contactButtonClass);
         desktopButton.setAttribute("id", "desktop-contact-button");
+        desktopButton.setAttribute("aria-label", this.accessibilityButton);
         desktopButton.innerHTML = "Contactez-moi";
 
         desktopParentElement.appendChild(desktopButton);
@@ -19,6 +23,7 @@ export default class ContactButton {
 
         mobileButton.setAttribute("class", this.contactButtonClass);
         mobileButton.setAttribute("id", "mobile-contact-button");
+        mobileButton.setAttribute("aria-label", this.accessibilityButton);
         mobileButton.innerHTML = "Contactez-moi";
 
         mobileParentElement.appendChild(mobileButton);
@@ -31,8 +36,12 @@ export default class ContactButton {
         Array.prototype.forEach.call(contactButtons, (element) => {
             element.addEventListener("click", () => {
                 const form = document.getElementById("form-background");
+                const body = document.body;
 
                 form.style.display = "flex";
+                body.classList.toggle("overflow");
+
+                new FormValidation().isFormFieldsValid();
             });
         });
     }

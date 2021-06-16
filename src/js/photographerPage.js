@@ -5,7 +5,6 @@ import Media from "./components/media";
 // Get ID of the current photographer to get associate data
 const urlParams = new URLSearchParams(window.location.search);
 const currrentId = urlParams.get('id');
-
 const factory = new ElementsFactory();
 
 // Photographers' data fetch
@@ -39,4 +38,15 @@ const initializePhotographerPage = async () => {
 
 window.addEventListener("load", () => {
     initializePhotographerPage();
-})
+});
+
+// Close form button
+$(document).ready(function() {
+	$("#close-form").click(function() {
+        const form = document.getElementById("form-background");
+        const body = document.body;
+
+        form.style.display = "none";
+        body.classList.toggle("overflow");
+    });
+});

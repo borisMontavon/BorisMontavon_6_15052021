@@ -12,40 +12,22 @@
     right: 0;
 }
 
-#close-form-button {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: right;
-
-    button {
-        background-color: transparent;
-        padding: 0;
-        color: $black;
-        cursor: pointer;
-        transition: 0.3s;
-
-        @media screen and (min-width: $computer-sm-breakpoint) {
-            color: $carmine;
-        }
-    }
-
-    i {
-        font-size: 1.4rem;
-    }
-}
-
 form {
-    background-color: $cultured;
-    border-radius: 5px;
+    background-color: $cedar-chest;
     padding: 20px;
-    margin: 0 1.5rem;
+    height: 100vh;
     font-family: $work-sans;
     color: $black;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
+    overflow: auto;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        border-radius: 5px;
+    }
 
     label {
-        margin-bottom: 10px;
+        margin: 20px 0 10px;
     }
 
     input {
@@ -53,7 +35,6 @@ form {
         padding: 15px;
         border-radius: 5px;
         border: 1px solid transparent;
-        margin-bottom: 20px;
         transition: 0.3s;
 
         &:focus {
@@ -66,7 +47,6 @@ form {
         padding: 15px;
         border-radius: 5px;
         border: 1px solid transparent;
-        margin-bottom: 20px;
         transition: 0.3s;
 
         &:focus {
@@ -74,7 +54,7 @@ form {
         }
     }
 
-    button {
+    .btn-submit {
         background-color: $carmine;
         border: none;
         border-radius: 0.25rem;
@@ -85,7 +65,8 @@ form {
         font-weight: 700;
         transition: 0.3s;
         cursor: pointer;
-        margin: auto;
+        margin: 20px auto 0;
+        width: 100px;
 
         &:hover {
             background-color: $cedar-chest;
@@ -95,5 +76,42 @@ form {
         @media screen and (min-width: $computer-breakpoint) {
             padding: 1.25rem 3rem;
         }
+    }
+
+    span {
+        color: $carmine;
+        font-size: 0.75rem;
+        margin-top: 3px;
+        display: none;
+    }
+}
+
+#form-header {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    #form-title {
+        font-weight: 400;
+    }
+
+    button {
+        background-color: transparent;
+        padding: 0;
+        color: $white;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 5px;
+        border: none;
+
+        @media screen and (min-width: $computer-sm-breakpoint) {
+            color: $carmine;
+        }
+    }
+
+    i {
+        font-size: 2rem;
     }
 }

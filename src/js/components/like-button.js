@@ -7,7 +7,10 @@ export default class LikeButton {
         this.parentId = parentId;
 
         this.divClass = "like-button";
-        this.iconClass = "fas fa-heart";
+        this.likeAccessibility = "likes";
+        this.iconClassEmpty = "far fa-heart";
+        this.iconClassFull = "fas fa-heart";
+        this.iconId = `heart-icon-${this.mediaId}`;
         this.likeButtonId = `like-${this.mediaId}`;
         this.likeCounterId = `like-counter-${this.mediaId}`;
         this.liked = false;
@@ -19,6 +22,7 @@ export default class LikeButton {
         const div = document.createElement("div");
 
         div.setAttribute("class", this.divClass);
+        div.setAttribute("aria-label", this.likeAccessibility);
 
         const button = document.createElement("button");
 
@@ -46,13 +50,15 @@ export default class LikeButton {
     createIconElement() {
         const icon = document.createElement("i");
 
-        icon.setAttribute("class", this.iconClass);
+        icon.setAttribute("class", this.iconClassEmpty);
+        icon.setAttribute("id", this.iconId);
 
         return icon;
     }
 
     toggleLikeButton() {
         const button = document.getElementById(this.likeButtonId);
+        const heart = document.getElementById(this.iconId);
         const likeCounter = document.getElementById(this.likeCounterId);
 
         button.addEventListener("click", () => {
@@ -60,8 +66,12 @@ export default class LikeButton {
             
             if (this.liked === false) {
                 this.likes++;
+                heart.removeAttribute("class", this.iconClassEmpty);
+                heart.setAttribute("class", this.iconClassFull);
             } else {
                 this.likes--;
+                heart.removeAttribute("class", this.iconClassFull);
+                heart.setAttribute("class", this.iconClassEmpty);
             }
             
             this.liked = !this.liked;
