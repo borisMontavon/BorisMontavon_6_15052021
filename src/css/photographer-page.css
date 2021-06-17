@@ -47,7 +47,7 @@ a {
   .contact-button:hover {
     background-color: #DB8876;
     color: #000000; }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 992px) {
     .contact-button {
       padding: 1.25rem 1rem;
       font-size: 1rem; } }
@@ -244,6 +244,17 @@ form {
 
 #gallery-section {
   margin: 4rem 1.5rem 6rem; }
+  @media screen and (min-width: 768px) {
+    #gallery-section {
+      margin: 4rem 2.5rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-column-gap: 40px; } }
+  @media screen and (min-width: 992px) {
+    #gallery-section {
+      margin: 4rem 4.5rem 6rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-column-gap: 40px; } }
 
 .media-container {
   margin-bottom: 30px;
@@ -254,10 +265,17 @@ form {
   height: 225px;
   object-fit: cover;
   border-radius: 5px; }
+  @media screen and (min-width: 992px) {
+    .image {
+      height: 375px; } }
 
 .video {
   width: 100%;
-  border-radius: 5px; }
+  border-radius: 5px;
+  height: 225px; }
+  @media screen and (min-width: 992px) {
+    .video {
+      height: 375px; } }
 
 .image-infos-container {
   display: flex;
@@ -272,17 +290,6 @@ form {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; }
-
-.warning-video {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #DB8876;
-  color: #FFFFFF;
-  font-family: "Work Sans", sans-serif;
-  font-size: 0.8rem;
-  padding: 5px 10px;
-  border-radius: 5px; }
 
 header {
   padding: 2rem 1.5rem; }
@@ -309,6 +316,9 @@ header {
       justify-content: space-between;
       margin: 0 2.5rem;
       padding: 25px; } }
+  @media screen and (min-width: 992px) {
+    #photographer-section {
+      margin: 0 4.5rem; } }
 
 .photographer-portrait {
   width: 150px;
