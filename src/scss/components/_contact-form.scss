@@ -2,14 +2,48 @@
 
 #form-background {
     background-color: rgba($black, 0.4);
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: none;
-    align-items: center;
     z-index: 1000;
     position: fixed;
     top: 0;
     right: 0;
+    overflow: auto;
+
+    #form-header {
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        flex-flow: row wrap;
+    
+        h1 {
+            font-weight: 400;
+            width: 100%;
+        }
+    }
+}
+
+#close-form {
+    background-color: transparent;
+    padding: 0;
+    color: $white;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    position: absolute;
+    top: 22px;
+    right: 22px;
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        &:hover {
+            color: $carmine;
+        }
+    }
+
+    i {
+        font-size: 2rem;
+    }
 }
 
 form {
@@ -24,6 +58,16 @@ form {
 
     @media screen and (min-width: $tablet-breakpoint) {
         border-radius: 5px;
+        position: relative;
+        width: 500px;
+        height: 790px;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        width: 550px;
     }
 
     label {
@@ -36,6 +80,7 @@ form {
         border-radius: 5px;
         border: 1px solid transparent;
         transition: 0.3s;
+        font-size: 0.95rem;
 
         &:focus {
             border: 1px solid $cedar-chest;
@@ -48,6 +93,7 @@ form {
         border-radius: 5px;
         border: 1px solid transparent;
         transition: 0.3s;
+        font-size: 0.95rem;
 
         &:focus {
             border: 1px solid $cedar-chest;
@@ -69,12 +115,13 @@ form {
         width: 100px;
 
         &:hover {
-            background-color: $cedar-chest;
+            background-color: rgba($carmine, 0.6);
             color: $black;
         }
 
         @media screen and (min-width: $computer-breakpoint) {
             padding: 1.25rem 3rem;
+            width: 155px;
         }
     }
 
@@ -83,35 +130,5 @@ form {
         font-size: 0.75rem;
         margin-top: 3px;
         display: none;
-    }
-}
-
-#form-header {
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    #form-title {
-        font-weight: 400;
-    }
-
-    button {
-        background-color: transparent;
-        padding: 0;
-        color: $white;
-        cursor: pointer;
-        transition: 0.3s;
-        margin-top: 5px;
-        border: none;
-
-        @media screen and (min-width: $computer-sm-breakpoint) {
-            color: $carmine;
-        }
-    }
-
-    i {
-        font-size: 2rem;
     }
 }

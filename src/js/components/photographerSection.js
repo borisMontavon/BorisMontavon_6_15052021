@@ -41,7 +41,7 @@ export default class PhotographerSection {
         new ContactButton().render();
         const formTitle = document.getElementById("form-title");
 
-        formTitle.innerHTML = `Contactez-moi ${this.state.name}`;
+        formTitle.innerHTML = this.state.name;
     }
 
     createTitleElement() {
