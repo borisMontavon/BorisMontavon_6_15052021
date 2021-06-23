@@ -1,6 +1,5 @@
 import Tags from "./tags";
 
-// Classe permettant d'afficher les informations d'un photographe sur la page d'acceuil depuis les données définies dans le paramètre "photograph"
 export default class PhotographList {
     constructor(photograph) {
         this.state = {
@@ -14,7 +13,6 @@ export default class PhotographList {
             portrait: photograph.portrait
         };
     
-        // Toutes les classes attribuées aux éléments définis ci-dessous, permets de modifier une classe au beosin à un seul endroit
         this.linkClass = "photographer-link";
         this.portraitClass = "photographer-portrait";
         this.titleClass = "photographer-name";

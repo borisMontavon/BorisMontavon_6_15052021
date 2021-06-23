@@ -14,7 +14,6 @@ header {
 }
 
 // Main
-
 #photographer-section {
     display: flex;
     flex-flow: column wrap;
@@ -86,5 +85,36 @@ header {
 
     @media screen and (min-width: $tablet-breakpoint) {
         justify-content: flex-start;
+    }
+}
+
+// Likes and price element
+.infos-container {
+    position: fixed;
+    bottom: 0;
+    right: 125px;
+    padding: 1rem 2rem;
+    background-color: $cedar-chest;
+    color: $black;
+    border-radius: 5px 5px 0 0;
+    font-family: $work-sans;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: none;
+    width: 275px;
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.likes-container {
+    display: flex;
+    align-items: center;
+
+    i {
+        font-size: 0.95rem;
+        margin-left: 3px;
     }
 }

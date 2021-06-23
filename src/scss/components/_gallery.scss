@@ -11,7 +11,7 @@
     }
 
     @media screen and (min-width: $computer-sm-breakpoint) {
-        margin: 4rem 4.5rem 6rem;
+        margin: 4rem 4.5rem 4rem;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         grid-column-gap: 40px;
     }
@@ -37,7 +37,7 @@
     width: 100%;
     border-radius: 5px;
     height: 225px;
-    background-color: rgba($cedar-chest, 0.3);
+    background-color: $cultured;
 
     @media screen and (min-width: $computer-sm-breakpoint) {
         height: 375px;

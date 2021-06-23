@@ -46,8 +46,6 @@ export default class Media {
         imageContainer.appendChild(infosContainer);
 
         parentElement.appendChild(imageContainer);
-        
-        new LikeButton(this.state.id, this.state.likes, this.infosContainerId).render();
     }
 
     createImageElement() {
