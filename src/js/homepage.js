@@ -1,5 +1,5 @@
 import ElementsFactory from "./components/factory";
-import PhotographList from "./components/photographList";
+import PhotographList from "./components/photograph-list";
 import Tags from "./components/tags";
 
 const factory = new ElementsFactory();
@@ -16,14 +16,14 @@ const sortTags = (photographers) => {
     return [...new Set(tagsArray)];
 };
 
-// Fetch les données Json des photographes
+// Photographers' data fetch from json
 const getData = async (url) => {
     const response = await fetch(url);
 
     return response.json();
 };
 
-// Initialisation de la page d'accueil avec les données du Json
+// Home page initialization with json's data
 const initializeHomepage = async () => {
     const data = await getData("../../assets/data.json");
     const tags = new Tags(sortTags(data.photographers), "tags");
@@ -41,7 +41,7 @@ window.addEventListener("load", () => {
     initializeHomepage();
 });
 
-//Top button
+// Top button
 $(window).scroll(function() {
 	const height = $(window).scrollTop();
 	

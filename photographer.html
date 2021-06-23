@@ -22,16 +22,37 @@
                 <h1 class="logo">Fish<i class="fas fa-camera-retro"></i>ye</h1>
             </a>
         </header>
-        <main>
+        <main id="main-section">
             <section id="photographer-section"></section>
+            <section id="filter-section">
+                <div class="filter-container">
+                    <label for="filter" id="filter-label">Trier par</label>
+                    <div class="dropdown-button" id="filter" role="button" aria-haspopup="listbox">
+                        <input id="popularity" type="radio" name="radio_select" role="listbox" checked/>
+                        <label for="popularity">Popularité</label>
+
+                        <input id="date" type="radio" name="radio_select" role="listbox" />
+                        <label for="date">Date</label>
+
+                        <input id="title" type="radio" name="radio_select" role="listbox" />
+                        <label for="title">Titre</label>
+
+                        <input id="price" type="radio" name="radio_select" role="listbox" />
+                        <label for="price">Prix</label>
+
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </section>
             <section id="gallery-section"></section>
             <div id="form-background">
                 <form id="contact-form">
+                    <button id="close-form" type="button">
+                        <i class="fas fa-times"></i>
+                    </button>
                     <div id="form-header">
+                        <h1>Contactez-moi</h1>
                         <h1 id="form-title"></h1>
-                        <button id="close-form" type="button">
-                            <i class="fas fa-times"></i>
-                        </button>
                     </div>
                     <label for="fname">Prénom</label>
                     <input type="text" id="fname" name="fname" pattern="^[a-zA-Z]+$" minlength="2" required />

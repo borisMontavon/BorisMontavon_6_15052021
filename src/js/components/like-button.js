@@ -1,10 +1,8 @@
-// Like button
-
 export default class LikeButton {
-    constructor(mediaId, likes, parentId) {
-        this.mediaId = mediaId;
-        this.likes = likes;
-        this.parentId = parentId;
+    constructor(media) {
+        this.mediaId = media.id;
+        this.likes = media.likes;
+        this.parentId = `image-infos-${media.id}`;
 
         this.divClass = "like-button";
         this.likeAccessibility = "likes";
@@ -33,8 +31,6 @@ export default class LikeButton {
         div.appendChild(button);
 
         parentElement.appendChild(div);
-
-        this.toggleLikeButton();
     }
 
     createNumberOfLikesElement() {
@@ -56,29 +52,29 @@ export default class LikeButton {
         return icon;
     }
 
-    toggleLikeButton() {
-        const button = document.getElementById(this.likeButtonId);
+    increaseLikeCounter() {
         const heart = document.getElementById(this.iconId);
         const likeCounter = document.getElementById(this.likeCounterId);
 
-        button.addEventListener("click", () => {
-            button.setAttribute("disabled", "true");
-            
-            if (this.liked === false) {
-                this.likes++;
-                heart.removeAttribute("class", this.iconClassEmpty);
-                heart.setAttribute("class", this.iconClassFull);
-            } else {
-                this.likes--;
-                heart.removeAttribute("class", this.iconClassFull);
-                heart.setAttribute("class", this.iconClassEmpty);
-            }
-            
-            this.liked = !this.liked;
+        heart.removeAttribute("class", this.iconClassEmpty);
+        heart.setAttribute("class", this.iconClassFull);
 
-            likeCounter.innerHTML = this.likes;
+        this.likes++;
 
-            button.removeAttribute("disabled");
-        });
+        likeCounter.innerHTML = this.likes;
+        this.liked = true;
+    }
+
+    decreaseLikeCounter() {
+        const heart = document.getElementById(this.iconId);
+        const likeCounter = document.getElementById(this.likeCounterId);
+
+        heart.removeAttribute("class", this.iconClassFull);
+        heart.setAttribute("class", this.iconClassEmpty);
+
+        this.likes--;
+
+        likeCounter.innerHTML = this.likes;
+        this.liked = false;
     }
 }

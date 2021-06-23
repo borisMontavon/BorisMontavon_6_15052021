@@ -18,6 +18,12 @@ a {
 .overflow {
   overflow: hidden; }
 
+header a {
+  width: 170px; }
+  @media screen and (min-width: 768px) {
+    header a {
+      width: 190px; } }
+
 .logo {
   color: #901C1C;
   font-family: "Work Sans", sans-serif;
@@ -102,7 +108,8 @@ nav {
   @media screen and (min-width: 1200px) {
     nav {
       position: absolute;
-      left: calc(220px + 15rem);
+      left: 50%;
+      transform: translateX(-50%);
       top: 4rem; } }
 
 #page-title {

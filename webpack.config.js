@@ -4,7 +4,7 @@ module.exports = {
   mode: "development",
   entry: {
     homepage: "./src/js/homepage.js",
-    photographerPage: "./src/js/photographerPage.js"
+    photographerPage: "./src/js/photographer-page.js"
   },
   output: {
     path: path.resolve(__dirname, "dist/js"),

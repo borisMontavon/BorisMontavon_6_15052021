@@ -1,4 +1,4 @@
-// Classe permettant d'afficher une liste des tags définis par le paramètre "tags" dans le conteneur avec l'id défini par le paramètre "parentId"
+// Class that will allow to render a tags list. Tags are defined with the "tags" param and the container by the "parentId" param (we have to pass it an Id)
 export default class Tags {
     constructor(tags, parentId) {
         this.tags = tags;
@@ -6,25 +6,25 @@ export default class Tags {
     }
 
     render() {
-        // Récupération de l'élément parent dans lequel on va insérer de nouveaux éléments html paramétrés dans le json
+        // Get parent element in which we will insert new HTML elements with values extracted from json's data
         const parentElement = document.getElementById(this.parentId);
 
-        // Parcours des éléments issus du json
+        // Get elements from json
         this.tags.forEach((tag) => {
-            // Ajout du nouvel élément dans le DOM
+            // Add it to the DOM
             parentElement.appendChild(this.createTag(tag));
         });
     }
 
     createTag(tag) {
-        // Création du nouvel élément html
+        // Creation of a new HTML element
         const span = document.createElement("span");
 
-        // Mise à jour des attributs (class, aria-*, ...)
+        // Attributes update (class, aria-*, ...)
         span.setAttribute("class", "tag");
         span.setAttribute("aria-label", `Tag ${tag}`);
 
-        // Mise à jour du innerHtml
+        // innerHtml value update
         span.innerHTML = `# ${tag}`;
 
         return span;

@@ -1,4 +1,11 @@
 // Logo style
+header a {
+    width: 170px;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        width: 190px;
+    }
+}
 
 .logo {
     color: $carmine;

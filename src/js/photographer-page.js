@@ -1,13 +1,17 @@
 import ElementsFactory from "./components/factory";
-import PhotographerSection from "./components/photographerSection";
+import PhotographerSection from "./components/photographer-section";
 import Media from "./components/media";
+import Likes from "./components/likes";
+import PhotographerInfo from "./components/photographer-info";
+import LikeButton from "./components/like-button";
+import DropdownFilter from "./components/dropdown-filter";
 
 // Get ID of the current photographer to get associate data
 const urlParams = new URLSearchParams(window.location.search);
 const currrentId = urlParams.get('id');
 const factory = new ElementsFactory();
 
-// Photographers' data fetch
+// Photographers' data fetch from json
 const getData = async (url) => {
     const response = await fetch(url);
 
@@ -26,11 +30,26 @@ const initializePhotographerPage = async () => {
         return image.photographerId == currrentId;
     });
 
+    photographerImages.sort((a, b) => b.likes - a.likes);
+
+    const totalLikes = photographerImages
+        .map((media) => media.likes)
+        .reduce((a, b) => a + b, 0);
+
     factory.addElement(new PhotographerSection(photographerData));
-    
+
+    let likeButtons = [];
+
     photographerImages.forEach((image) => {
         factory.addElement(new Media(image));
+        likeButtons.push(new LikeButton(image));
     });
+
+    const likes = new Likes(new PhotographerInfo(totalLikes, photographerData), likeButtons);
+
+    factory.addElement(likes);
+
+    factory.addElement(new DropdownFilter());
 
     factory.renderElements();
 };

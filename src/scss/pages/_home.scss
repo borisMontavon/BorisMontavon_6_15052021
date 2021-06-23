@@ -28,7 +28,8 @@ nav {
 
     @media screen and (min-width: $computer-breakpoint) {
         position: absolute;
-        left: calc(220px + 15rem);
+        left: 50%;
+        transform: translateX(-50%);
         top: 4rem;
     }
 }
