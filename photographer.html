@@ -69,6 +69,17 @@
                     <input class="btn-submit" type="button" id="btnSubmit" value="Envoyer"/>
                 </form>
             </div>
+            <div id="lightbox-background">
+                <div class="lightbox-modal" aria-label="Image closeup view">
+                    <img id="lightbox-img" class="expanded-image" src="" alt="">
+                    <p id="lightbox-title" class="expanded-image-title"></p>
+                    <i id="left-chevron" class="fas fa-chevron-left" aria-hidden="true"></i>
+                    <i id="right-chevron" class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <button id="button-lightbox-close" class="close-lightbox" aria-label="Close dialog">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
         </main>
         <script src="https://kit.fontawesome.com/45058126b7.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

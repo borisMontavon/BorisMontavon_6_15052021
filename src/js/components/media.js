@@ -1,5 +1,3 @@
-import LikeButton from "./like-button";
-
 export default class Media {
     constructor(media) {
         this.state = {
@@ -54,6 +52,7 @@ export default class Media {
         imageElement.setAttribute("src", this.imageSrc);
         imageElement.setAttribute("class", this.imageClass);
         imageElement.setAttribute("alt", this.state.title);
+        imageElement.setAttribute("id", this.state.id);
 
         return imageElement;
     }

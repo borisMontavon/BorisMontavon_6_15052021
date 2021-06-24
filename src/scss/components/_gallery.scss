@@ -27,6 +27,7 @@
     height: 225px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: zoom-in;
 
     @media screen and (min-width: $computer-sm-breakpoint) {
         height: 375px;
