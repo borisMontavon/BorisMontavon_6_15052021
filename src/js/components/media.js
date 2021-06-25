@@ -15,13 +15,13 @@ export default class Media {
         }
 
         this.mediaContainerClass = "media-container";
-        this.imageSrc = `../../assets/photographer/${this.state.photographerId}/${this.state.image}`;
+        this.imageSrc = `assets/photographer/${this.state.photographerId}/${this.state.image}`;
         this.imageClass = "image";
         this.infosContainerClass = "image-infos-container";
         this.infosContainerId = `image-infos-${this.state.id}`;
         this.videoPoster = "placeholder.png";
         this.videoClass = "video";
-        this.videoSrc = `../../assets/photographer/${this.state.photographerId}/${this.state.video}`;
+        this.videoSrc = `assets/photographer/${this.state.photographerId}/${this.state.video}`;
     }
 
     render() {

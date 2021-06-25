@@ -50,7 +50,7 @@ export default class PhotographList {
     createPortraitElement() {
         const portraitElement = document.createElement("img");
 
-        portraitElement.setAttribute("src", `./assets/photographer-ids/${this.state.portrait}`);
+        portraitElement.setAttribute("src", `assets/photographer-ids/${this.state.portrait}`);
         portraitElement.setAttribute("alt", this.state.name);
         portraitElement.setAttribute("class", this.portraitClass);
 
