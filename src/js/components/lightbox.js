@@ -36,7 +36,7 @@ export default class Lightbox {
                     this.lightboxBackground.style.display = "block";
                     this.lightboxVideo.style.display = "none";
                     this.lightboxImage.style.display = "inline-block";
-                    this.lightboxImage.setAttribute("src", `../../assets/photographer/${image.photographerId}/${image.image}`);
+                    this.lightboxImage.setAttribute("src", `assets/photographer/${image.photographerId}/${image.image}`);
                     this.lightboxImage.setAttribute("alt", image.title);
                     this.lightboxTitle.innerHTML = image.title;
 
@@ -90,7 +90,7 @@ export default class Lightbox {
         if (!isVideoElement) {
             this.lightboxVideo.style.display = "none";
             this.lightboxImage.style.display = "inline-block";
-            this.lightboxImage.setAttribute("src", `../../assets/photographer/${media.photographerId}/${media.image}`);
+            this.lightboxImage.setAttribute("src", `assets/photographer/${media.photographerId}/${media.image}`);
             this.lightboxImage.setAttribute("alt", media.title);
         } else {
             this.lightboxImage.style.display = "none";
@@ -99,7 +99,7 @@ export default class Lightbox {
 
             const source = document.createElement("source");
 
-            source.setAttribute("src", `../../assets/photographer/${media.photographerId}/${media.video}`);
+            source.setAttribute("src", `assets/photographer/${media.photographerId}/${media.video}`);
             source.setAttribute("type", "video/mp4");
 
             this.lightboxVideo.appendChild(source);
