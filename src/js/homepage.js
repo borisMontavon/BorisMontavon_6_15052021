@@ -25,7 +25,7 @@ const getData = async (url) => {
 
 // Home page initialization with json's data
 const initializeHomepage = async () => {
-    const data = await getData("https://borismontavon.github.io/BorisMontavon_6_15052021/assets/data.json");
+    const data = await getData("assets/data.json");
     const tags = new Tags(sortTags(data.photographers), "tags");
 
     factory.addElement(tags);
