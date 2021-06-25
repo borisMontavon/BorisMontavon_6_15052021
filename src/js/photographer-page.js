@@ -20,7 +20,7 @@ const getData = async (url) => {
 
 // Photographer page initialization with Json's data
 const initializePhotographerPage = async () => {
-    const data = await getData("./assets/data.json");
+    const data = await getData("https://borismontavon.github.io/BorisMontavon_6_15052021/assets/data.json");
 
     const photographerData = data.photographers.find((photographer) => {
         return photographer.id == currrentId;
