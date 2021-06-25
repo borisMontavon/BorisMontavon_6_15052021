@@ -14,34 +14,55 @@
 .lightbox-modal {
     background-color: $white;
     width: 335px;
-    height: 400px;
+    height: 335px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
 
     @media screen and (min-width: $tablet-breakpoint) {
         width: 700px;
-        height: 750px;
+        height: 500px;
     }
 
     @media screen and (min-width: $computer-sm-breakpoint) {
-        width: 80%;
+        width: 1200px;
         height: 85%;
     }
 
     img {
         width: 100%;
         max-width: 335px;
-        // height: 350px;
         max-height: 100%;
         object-fit: contain;
-        border-radius: 5px 5px 0 0;
 
         @media screen and (min-width: $tablet-breakpoint) {
+            object-fit: contain;
             max-width: 700px;
-            // height: 700px;
+        }
+
+        @media screen and (min-width: $computer-sm-breakpoint) {
+            max-width: 1200px;
+        }
+    }
+
+    #lightbox-video {
+        display: none;
+    }
+
+    .video-expanded {
+        width: 100%;
+        border-radius: 5px;
+        height: 100%;
+        background-color: $cultured;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            border-radius: 5px;
+            max-width: 700px;
         }
 
         @media screen and (min-width: $computer-sm-breakpoint) {
@@ -52,22 +73,26 @@
     .expanded-image-title {
         font-family: $work-sans;
         font-size: 0.9rem;
+        font-weight: 600;
         color: $carmine;
         width: 350px;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        margin: 10px 0 0 10px;
+        margin-top: 10px;
+        position: absolute;
+        bottom: -30px;
+        left: 0;
 
         @media screen and (min-width: $tablet-breakpoint) {
             font-size: 0.95rem;
             width: 650px;
-            margin: 12.5px 0 0 12.5px;
+            margin-top: 5px;
         }
 
         @media screen and (min-width: $computer-sm-breakpoint) {
             font-size: 1rem;
-            margin: 15px 0 0 15px;
+            margin-top: 12px;
         }
     }
 
