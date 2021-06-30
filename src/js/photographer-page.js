@@ -6,6 +6,7 @@ import PhotographerInfo from "./components/photographer-info";
 import LikeButton from "./components/like-button";
 import DropdownFilter from "./components/dropdown-filter";
 import Lightbox from "./components/lightbox";
+import MediaFilter from "./components/functions/media-filter";
 
 // Get ID of the current photographer to get associate data
 const urlParams = new URLSearchParams(window.location.search);
@@ -49,6 +50,10 @@ const initializePhotographerPage = async () => {
     const likes = new Likes(new PhotographerInfo(totalLikes, photographerData), likeButtons);
 
     factory.addElement(likes);
+
+    const filter = new DropdownFilter(new MediaFilter(photographerImages));
+
+    factory.addElement(filter);
 
     factory.addElement(new DropdownFilter());
 

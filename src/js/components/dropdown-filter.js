@@ -1,4 +1,16 @@
 export default class DropdownFilter {
+    constructor(mediaFilter) {
+        this.mediaFilter = mediaFilter;
+    }
+
+    render() {
+        this.toggleDropdownFilter();
+        this.onPopularityClick();
+        this.onDateClick();
+        this.onTitleClick();
+        this.onPriceClick();
+    }
+    
     render() {
         this.toggleDropdownFilter();
     }
@@ -43,5 +55,53 @@ export default class DropdownFilter {
             dropdown.classList.toggle("active");
             icon.classList.toggle("active");
         })
+    }
+
+    onPopularityClick() {
+        const dropdown = document.getElementById("filter");
+        const isDropdownActive = dropdown.classList.contains("active");
+        const popularity = document.getElementById("popularity-label");
+
+        popularity.addEventListener("click", () => {
+            if (isDropdownActive) {
+                this.mediaFilter.comparePopularity();
+            }
+        });
+    }
+
+    onDateClick() {
+        const dropdown = document.getElementById("filter");
+        const isDropdownActive = dropdown.classList.contains("active");
+        const date = document.getElementById("date-label");
+
+        date.addEventListener("click", () => {
+            if (isDropdownActive) {
+                this.mediaFilter.compareDate();
+            }
+        });
+    }
+
+    onTitleClick() {
+        const dropdown = document.getElementById("filter");
+        const isDropdownActive = dropdown.classList.contains("active");
+        const title = document.getElementById("title-label");
+
+        title.addEventListener("click", () => {
+            if (isDropdownActive) {
+                this.mediaFilter.compareTitle();
+            }
+        });
+    }
+
+    onPriceClick() {
+        const dropdown = document.getElementById("filter");
+        const isDropdownActive = dropdown.classList.contains("active");
+        const price = document.getElementById("price-label");
+
+        price.addEventListener("click", () => {
+            if (isDropdownActive) {
+                this.mediaFilter.comparePrice();
+            }
+        });
     }
 }
