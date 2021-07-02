@@ -1,30 +1,17 @@
 export default class MediaFilter {
-    constructor(medias) {
-        this.medias = medias;
+    comparePopularity(medias) {
+        medias.sort((a, b) => b.state.likes - a.state.likes);
     }
 
-    render() {
-        this.comparePopularity();
-        this.compareDate();
-        this.compareTitle();
-        this.comparePrice();
+    compareDate(medias) {
+        medias.sort((a, b) => b.state.date - a.state.date);
     }
 
-    comparePopularity() {
-        this.medias.sort((a, b) => b.likes - a.likes);
+    compareTitle(medias) {
+        medias.sort((a, b) => a.state.title.localeCompare(b.state.title));
     }
 
-    compareDate() {
-        this.medias.forEach((media) => {
-            media.date = media.date.replace(/-/g,'/');
-        });
-    }
-
-    compareTitle() {
-        this.medias.sort((a, b) => a.title.localeCompare(b.title));
-    }
-
-    comparePrice() {
-        this.medias.sort((a, b) => b.price - a.price);
+    comparePrice(medias) {
+        medias.sort((a, b) => b.state.price - a.state.price);
     }
 }

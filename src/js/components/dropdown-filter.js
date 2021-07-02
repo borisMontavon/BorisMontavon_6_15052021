@@ -1,18 +1,7 @@
 export default class DropdownFilter {
-    constructor(mediaFilter) {
+    constructor(mediaContainer, mediaFilter) {
+        this.mediaContainer = mediaContainer;
         this.mediaFilter = mediaFilter;
-    }
-
-    render() {
-        this.toggleDropdownFilter();
-        this.onPopularityClick();
-        this.onDateClick();
-        this.onTitleClick();
-        this.onPriceClick();
-    }
-    
-    render() {
-        this.toggleDropdownFilter();
     }
 
     toggleDropdownFilter() {
@@ -29,6 +18,26 @@ export default class DropdownFilter {
                     labels.forEach((label) => {
                         label.style.display = "none";
                     });
+                    
+                    const labelId = label.getAttribute("id");
+
+                    switch (labelId) {
+                        case "popularity-label":
+                            this.mediaFilter.comparePopularity(this.mediaContainer.medias);
+                            break;
+                        case "date-label":
+                            this.mediaFilter.compareDate(this.mediaContainer.medias);
+                            break;
+                        case "title-label":
+                            this.mediaFilter.compareTitle(this.mediaContainer.medias);
+                            break;
+                        case "price-label":
+                            this.mediaFilter.comparePrice(this.mediaContainer.medias);
+                            break;
+                        default: break;
+                    }
+
+                    this.mediaContainer.render();
                 } else {
                     labels.forEach((label) => {
                         label.style.display = "inline-block";
@@ -55,53 +64,5 @@ export default class DropdownFilter {
             dropdown.classList.toggle("active");
             icon.classList.toggle("active");
         })
-    }
-
-    onPopularityClick() {
-        const dropdown = document.getElementById("filter");
-        const isDropdownActive = dropdown.classList.contains("active");
-        const popularity = document.getElementById("popularity-label");
-
-        popularity.addEventListener("click", () => {
-            if (isDropdownActive) {
-                this.mediaFilter.comparePopularity();
-            }
-        });
-    }
-
-    onDateClick() {
-        const dropdown = document.getElementById("filter");
-        const isDropdownActive = dropdown.classList.contains("active");
-        const date = document.getElementById("date-label");
-
-        date.addEventListener("click", () => {
-            if (isDropdownActive) {
-                this.mediaFilter.compareDate();
-            }
-        });
-    }
-
-    onTitleClick() {
-        const dropdown = document.getElementById("filter");
-        const isDropdownActive = dropdown.classList.contains("active");
-        const title = document.getElementById("title-label");
-
-        title.addEventListener("click", () => {
-            if (isDropdownActive) {
-                this.mediaFilter.compareTitle();
-            }
-        });
-    }
-
-    onPriceClick() {
-        const dropdown = document.getElementById("filter");
-        const isDropdownActive = dropdown.classList.contains("active");
-        const price = document.getElementById("price-label");
-
-        price.addEventListener("click", () => {
-            if (isDropdownActive) {
-                this.mediaFilter.comparePrice();
-            }
-        });
     }
 }
