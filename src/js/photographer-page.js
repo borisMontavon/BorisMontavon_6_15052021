@@ -4,8 +4,8 @@ import Media from "./components/media";
 import Likes from "./components/likes";
 import PhotographerInfo from "./components/photographer-info";
 import LikeButton from "./components/like-button";
-import DropdownFilter from "./components/dropdown-filter";
 import Lightbox from "./components/lightbox";
+import MediaContainer from "./components/media-container";
 
 // Get ID of the current photographer to get associate data
 const urlParams = new URLSearchParams(window.location.search);
@@ -27,11 +27,14 @@ const initializePhotographerPage = async () => {
         return photographer.id == currrentId;
     });
 
-    const photographerImages = data.media.filter((image) => {
+    let photographerImages = data.media.filter((image) => {
         return image.photographerId == currrentId;
     });
 
     photographerImages.sort((a, b) => b.likes - a.likes);
+    photographerImages.forEach((media) => {
+        media.date = new Date(media.date);
+    });
 
     const totalLikes = photographerImages
         .map((media) => media.likes)
@@ -39,18 +42,19 @@ const initializePhotographerPage = async () => {
 
     factory.addElement(new PhotographerSection(photographerData));
 
+    let medias = [];
     let likeButtons = [];
 
     photographerImages.forEach((image) => {
-        factory.addElement(new Media(image));
+        medias.push(new Media(image));
         likeButtons.push(new LikeButton(image));
     });
 
     const likes = new Likes(new PhotographerInfo(totalLikes, photographerData), likeButtons);
 
-    factory.addElement(likes);
+    const mediaContainer = new MediaContainer(medias, likes);
 
-    factory.addElement(new DropdownFilter());
+    factory.addElement(mediaContainer);
 
     factory.addElement(new Lightbox(photographerImages));
 

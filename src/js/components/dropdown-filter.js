@@ -1,6 +1,7 @@
 export default class DropdownFilter {
-    render() {
-        this.toggleDropdownFilter();
+    constructor(mediaContainer, mediaFilter) {
+        this.mediaContainer = mediaContainer;
+        this.mediaFilter = mediaFilter;
     }
 
     toggleDropdownFilter() {
@@ -17,6 +18,26 @@ export default class DropdownFilter {
                     labels.forEach((label) => {
                         label.style.display = "none";
                     });
+                    
+                    const labelId = label.getAttribute("id");
+
+                    switch (labelId) {
+                        case "popularity-label":
+                            this.mediaFilter.comparePopularity(this.mediaContainer.medias);
+                            break;
+                        case "date-label":
+                            this.mediaFilter.compareDate(this.mediaContainer.medias);
+                            break;
+                        case "title-label":
+                            this.mediaFilter.compareTitle(this.mediaContainer.medias);
+                            break;
+                        case "price-label":
+                            this.mediaFilter.comparePrice(this.mediaContainer.medias);
+                            break;
+                        default: break;
+                    }
+
+                    this.mediaContainer.render();
                 } else {
                     labels.forEach((label) => {
                         label.style.display = "inline-block";

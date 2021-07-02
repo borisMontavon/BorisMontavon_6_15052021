@@ -46,7 +46,12 @@ export default class LikeButton {
     createIconElement() {
         const icon = document.createElement("i");
 
-        icon.setAttribute("class", this.iconClassEmpty);
+        if (this.liked) {
+            icon.setAttribute("class", this.iconClassFull);
+        } else {
+            icon.setAttribute("class", this.iconClassEmpty);
+        }
+        
         icon.setAttribute("id", this.iconId);
 
         return icon;

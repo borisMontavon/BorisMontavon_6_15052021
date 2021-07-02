@@ -2,11 +2,12 @@ export default class Likes {
     constructor(photographerInfo, likeButtons) {
         this.photographerInfo = photographerInfo;
         this.likeButtons = likeButtons;
+
+        this.photographerInfo.render();
+
     }
 
     render() {
-        this.photographerInfo.render();
-
         this.likeButtons.forEach((likeButton) => {
             likeButton.render();
             this.toggleLikeButton(likeButton);
