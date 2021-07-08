@@ -12,7 +12,7 @@
 }
 
 .lightbox-modal {
-    background-color: $white;
+    background-color: $cultured;
     width: 335px;
     height: 335px;
     position: absolute;
@@ -58,7 +58,6 @@
         width: 100%;
         border-radius: 5px;
         height: 100%;
-        background-color: $cultured;
 
         @media screen and (min-width: $tablet-breakpoint) {
             border-radius: 5px;
