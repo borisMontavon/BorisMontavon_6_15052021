@@ -16,7 +16,7 @@ export default class DropdownFilter {
 
                 if (isDropdownActive) {
                     labels.forEach((label) => {
-                        label.style.display = "none";
+                        label.classList.remove("d-inline-block");
                     });
                     
                     const labelId = label.getAttribute("id");
@@ -40,7 +40,7 @@ export default class DropdownFilter {
                     this.mediaContainer.render();
                 } else {
                     labels.forEach((label) => {
-                        label.style.display = "inline-block";
+                        label.classList.add("d-inline-block");
                     });
                 }
 
@@ -53,11 +53,11 @@ export default class DropdownFilter {
 
             if (dropdown.classList.contains("active")) {
                 labels.forEach((label) => {
-                    label.style.display = "none";
+                    label.classList.remove("d-inline-block");
                 });
             } else {
                 labels.forEach((label) => {
-                    label.style.display = "inline-block";
+                    label.classList.add("d-inline-block");
                 });
             }
 

@@ -1,7 +1,7 @@
 import Tags from "./tags";
 
 export default class PhotographList {
-    constructor(photograph) {
+    constructor(photograph, photographContainer) {
         this.state = {
             name: photograph.name,
             id: photograph.id,
@@ -10,7 +10,8 @@ export default class PhotographList {
             tags: photograph.tags,
             tagline: photograph.tagline,
             price: photograph.price,
-            portrait: photograph.portrait
+            portrait: photograph.portrait,
+            display: true
         };
     
         this.linkClass = "photographer-link";
@@ -20,6 +21,8 @@ export default class PhotographList {
         this.taglineClass = "photographer-tagline";
         this.priceClass = "photographer-price";
         this.tagContainerClass = "tag-container";
+
+        this.photographContainer = photographContainer;
     }
 
     render() {
@@ -44,7 +47,7 @@ export default class PhotographList {
         containerElement.appendChild(this.createPriceElement());
         containerElement.appendChild(this.createTagContainerElement());
 
-        new Tags(this.state.tags, `tag-container-${this.state.id}`).render();
+        new Tags(this.state.tags, `tag-container-${this.state.id}`, this.photographContainer).render();
     }
     
     createPortraitElement() {
@@ -100,13 +103,5 @@ export default class PhotographList {
         tagContainerElement.setAttribute("id", `tag-container-${this.state.id}`);
 
         return tagContainerElement;
-    }
-
-    refresh() {
-        const parent = document.getElementById("photographers");
-
-        parent.innerHTML = "";
-
-        this.render();
     }
 }

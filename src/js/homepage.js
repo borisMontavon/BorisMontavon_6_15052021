@@ -1,6 +1,5 @@
 import ElementsFactory from "./components/factory";
-import PhotographList from "./components/photograph-list";
-import Tags from "./components/tags";
+import PhotographContainer from "./components/photograph-container";
 
 const factory = new ElementsFactory();
 
@@ -26,13 +25,9 @@ const getData = async (url) => {
 // Home page initialization with json's data
 const initializeHomepage = async () => {
     const data = await getData("assets/data.json");
-    const tags = new Tags(sortTags(data.photographers), "tags");
+    const photographContainer = new PhotographContainer(data.photographers, sortTags(data.photographers));
 
-    factory.addElement(tags);
-
-    data.photographers.forEach((photographer) => {
-        factory.addElement(new PhotographList(photographer));
-    });
+    factory.addElement(photographContainer);
 
     factory.renderElements();
 };

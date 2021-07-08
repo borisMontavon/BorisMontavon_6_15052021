@@ -17,6 +17,10 @@ export default class LikeButton {
     render() {
         const parentElement = document.getElementById(this.parentId);
 
+        if (parentElement === null) {
+            return;
+        }
+
         const div = document.createElement("div");
 
         div.setAttribute("class", this.divClass);

@@ -17,6 +17,10 @@ export default class Likes {
     toggleLikeButton(likeButton) {
         const button = document.getElementById(likeButton.likeButtonId);
 
+        if (button === null) {
+            return;
+        }
+
         button.addEventListener("click", () => {
             button.setAttribute("disabled", "true");
             
