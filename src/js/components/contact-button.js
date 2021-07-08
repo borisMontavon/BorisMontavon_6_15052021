@@ -38,7 +38,7 @@ export default class ContactButton {
                 const form = document.getElementById("form-background");
                 const body = document.body;
 
-                form.style.display = "block";
+                form.classList.toggle("d-block");
                 body.classList.toggle("overflow");
 
                 new FormValidation().isFormFieldsValid();

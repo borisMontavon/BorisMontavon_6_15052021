@@ -2,7 +2,7 @@ import Tags from "./tags";
 import ContactButton from "./contact-button";
 
 export default class PhotographerSection {
-    constructor(photograph) {
+    constructor(photograph, mediaContainer) {
         this.state = {
             name: photograph.name,
             id: photograph.id,
@@ -20,6 +20,8 @@ export default class PhotographerSection {
         this.taglineClass = "photographer-tagline";
         this.tagContainerClass = "tag-container";
         this.portraitClass = "photographer-portrait";
+
+        this.mediaContainer = mediaContainer;
     }
 
     render() {
@@ -36,7 +38,7 @@ export default class PhotographerSection {
         parentElement.appendChild(photographerInfo);
         parentElement.appendChild(this.createPortraitElement());
 
-        new Tags(this.state.tags, `tag-container-${this.state.id}`).render();
+        new Tags(this.state.tags, `tag-container-${this.state.id}`, this.mediaContainer).render();
 
         new ContactButton().render();
         const formTitle = document.getElementById("form-title");

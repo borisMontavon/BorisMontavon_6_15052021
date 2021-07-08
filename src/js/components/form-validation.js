@@ -6,12 +6,12 @@ export default class FormValidation {
         const hasNumber = /\d/.test(firstNameValue);
 
         if (hasNumber || firstNameValue.length < 2) {
-            firstNameSpan.style.display = "block";
+            firstNameSpan.classList.add("d-block");
 
             return false;
         }
         
-        firstNameSpan.style.display = "none";
+        firstNameSpan.classList.remove("d-block");
 
         return true;
     };
@@ -22,13 +22,13 @@ export default class FormValidation {
         const hasNumber = /\d/.test(lastNameValue);
 
         if (hasNumber || lastNameValue.length < 2) {
-            lastNameSpan.style.display = "block";
+            lastNameSpan.classList.add("d-block");
 
             return false;
 
         }
         
-        lastNameSpan.style.display = "none";
+        lastNameSpan.classList.remove("d-block");
 
         return true;
     };
@@ -41,13 +41,13 @@ export default class FormValidation {
         const emailAdressTest = regEx.test(emailValue);
 
         if (!emailAdressTest) {
-            emailSpan.style.display = "block";
+            emailSpan.classList.add("d-block");
 
             return false;
 
         }
         
-        emailSpan.style.display = "none";
+        emailSpan.classList.remove("d-block");
 
         return true;
     };
@@ -57,13 +57,13 @@ export default class FormValidation {
         const messageValue = document.getElementById("message").value;
         const messageSpan = document.getElementById("messageSpan");
 
-        if (messageValue < 80 || messageValue > 500) {
-            messageSpan.style.display = "block";
+        if (messageValue.length < 80 || messageValue.length > 500) {
+            messageSpan.classList.add("d-block");
 
             return false;
         }
 
-        messageSpan.style.display = "none";
+        messageSpan.classList.remove("d-block");
 
         return true;
     }
@@ -86,7 +86,7 @@ export default class FormValidation {
 
         if (isFormValid) {
             document.getElementById("contact-form").reset();
-            document.getElementById("form-background").style.display = "none";
+            document.getElementById("form-background").classList.remove("d-block");
             document.body.classList.toggle("overflow");
         }
     }

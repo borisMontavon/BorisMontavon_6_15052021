@@ -1,10 +1,8 @@
 import ElementsFactory from "./components/factory";
-import PhotographerSection from "./components/photographer-section";
 import Media from "./components/media";
 import Likes from "./components/likes";
 import PhotographerInfo from "./components/photographer-info";
 import LikeButton from "./components/like-button";
-import Lightbox from "./components/lightbox";
 import MediaContainer from "./components/media-container";
 
 // Get ID of the current photographer to get associate data
@@ -40,8 +38,6 @@ const initializePhotographerPage = async () => {
         .map((media) => media.likes)
         .reduce((a, b) => a + b, 0);
 
-    factory.addElement(new PhotographerSection(photographerData));
-
     let medias = [];
     let likeButtons = [];
 
@@ -52,11 +48,9 @@ const initializePhotographerPage = async () => {
 
     const likes = new Likes(new PhotographerInfo(totalLikes, photographerData), likeButtons);
 
-    const mediaContainer = new MediaContainer(medias, likes);
+    const mediaContainer = new MediaContainer(medias, likes, photographerData);
 
     factory.addElement(mediaContainer);
-
-    factory.addElement(new Lightbox(photographerImages));
 
     factory.renderElements();
 };
@@ -71,7 +65,7 @@ $(document).ready(function() {
         const form = document.getElementById("form-background");
         const body = document.body;
 
-        form.style.display = "none";
+        form.classList.toggle("d-block");
         body.classList.toggle("overflow");
     });
 });

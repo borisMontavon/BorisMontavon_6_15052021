@@ -9,7 +9,8 @@ export default class Media {
             tags: media.tags,
             likes: media.likes,
             date: media.date,
-            price: media.price
+            price: media.price,
+            display: true
         }
 
         this.mediaContainerClass = "media-container";
@@ -17,7 +18,6 @@ export default class Media {
         this.imageClass = "image";
         this.infosContainerClass = "image-infos-container";
         this.infosContainerId = `image-infos-${this.state.id}`;
-        this.videoPoster = "placeholder.png";
         this.videoClass = "video";
         this.videoSrc = `assets/photographer/${this.state.photographerId}/${this.state.video}`;
     }
@@ -64,7 +64,6 @@ export default class Media {
     createVideoElement() {
         const videoElement = document.createElement("video");
 
-        videoElement.setAttribute("poster", this.videoPoster);
         videoElement.setAttribute("controls", "");
         videoElement.setAttribute("class", this.videoClass);
         videoElement.setAttribute("aria-label", this.state.title);

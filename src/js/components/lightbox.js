@@ -1,6 +1,6 @@
 export default class Lightbox {
-    constructor(photographerImages) {
-        this.photographerImages = photographerImages;
+    constructor(mediaContainer) {
+        this.mediaContainer = mediaContainer;
         this.lightboxBackground = document.getElementById("lightbox-background");
         this.lightboxImage = document.getElementById("lightbox-img");
         this.lightboxVideo = document.getElementById("lightbox-video");
@@ -12,39 +12,43 @@ export default class Lightbox {
         this.closeLightboxButton = document.getElementById("button-lightbox-close");
 
         this.currentId = 0;
-    }
 
-    render() {
-        this.addClickEvent();
+        this.mediasDisplayed = [];
+
         this.previousImageClickEvent();
         this.nextImageClickEvent();
         this.closeLightbox();
     }
 
+    render() {
+        this.addClickEvent();
+    }
+
     getIndex() {
-        return this.photographerImages.findIndex((element) => element.id === this.currentId);
+        return this.mediaContainer.medias.findIndex((element) => element.state.id === this.currentId);
     }
 
     addClickEvent() {
-        this.photographerImages.forEach((image) => {
-            const isVideoElement = image.hasOwnProperty("video");
+        this.mediaContainer.medias.forEach((media) => {
+            if (media.state.display) {
+                const isVideoElement = media.isVideo();
 
-            if (!isVideoElement) {
-                const imageDOM = document.getElementById(image.id);
+                if (!isVideoElement) {
+                    const mediaDOM = document.getElementById(media.state.id);
 
-                imageDOM.addEventListener("click", () => {
-                    this.lightboxBackground.style.display = "block";
-                    this.lightboxVideo.style.display = "none";
-                    this.lightboxImage.style.display = "inline-block";
-                    this.lightboxImage.setAttribute("src", `assets/photographer/${image.photographerId}/${image.image}`);
-                    this.lightboxImage.setAttribute("alt", image.title);
-                    this.lightboxTitle.innerHTML = image.title;
+                    mediaDOM.addEventListener("click", () => {
+                        this.lightboxBackground.classList.toggle("d-block");
+                        this.lightboxImage.classList.add("d-inline-block");
+                        this.lightboxImage.setAttribute("src", media.imageSrc);
+                        this.lightboxImage.setAttribute("alt", media.state.title);
+                        this.lightboxTitle.innerHTML = media.state.title;
 
-                    // Prevent scrollable body behind the lightbox
-                    document.body.classList.toggle("overflow");
+                        // Prevent scrollable body behind the lightbox
+                        document.body.classList.toggle("overflow");
 
-                    this.currentId = image.id;
-                });
+                        this.currentId = media.state.id;
+                    });
+                }
             }
         });
     }
@@ -53,13 +57,18 @@ export default class Lightbox {
         this.leftChevron.addEventListener("click", () => {
             this.lightboxVideo.innerHTML = "";
 
-            const length = this.photographerImages.length;
             let currentIndex = this.getIndex();
 
-            if (currentIndex === 0) {
-                currentIndex = length - 1;
-            } else {
+            while (currentIndex >= 0) {
                 currentIndex--;
+
+                if (currentIndex === -1) {
+                    currentIndex = this.mediaContainer.medias.length - 1;
+                }
+
+                if (this.mediaContainer.medias[currentIndex].state.display) {
+                    break;
+                }
             }
 
             this.elementDisplay(currentIndex);
@@ -70,13 +79,18 @@ export default class Lightbox {
         this.rightChevron.addEventListener("click", () => {
             this.lightboxVideo.innerHTML = "";
 
-            const length = this.photographerImages.length;
             let currentIndex = this.getIndex();
 
-            if (currentIndex === length - 1) {
-                currentIndex = 0;
-            } else {
+            while (currentIndex < this.mediaContainer.medias.length) {
                 currentIndex++;
+
+                if (currentIndex === this.mediaContainer.medias.length) {
+                    currentIndex = 0;
+                }
+
+                if (this.mediaContainer.medias[currentIndex].state.display) {
+                    break;
+                }
             }
             
             this.elementDisplay(currentIndex);
@@ -84,35 +98,36 @@ export default class Lightbox {
     }
 
     elementDisplay(currentIndex) {
-        const media = this.photographerImages[currentIndex];
-        const isVideoElement = media.hasOwnProperty("video");
+        const media = this.mediaContainer.medias[currentIndex];
+        const isVideoElement = media.isVideo();
 
         if (!isVideoElement) {
-            this.lightboxVideo.style.display = "none";
-            this.lightboxImage.style.display = "inline-block";
-            this.lightboxImage.setAttribute("src", `assets/photographer/${media.photographerId}/${media.image}`);
-            this.lightboxImage.setAttribute("alt", media.title);
+            this.lightboxVideo.classList.remove("d-inline-block");
+            this.lightboxImage.classList.add("d-inline-block");
+            this.lightboxImage.setAttribute("src", media.imageSrc);
+            this.lightboxImage.setAttribute("alt", media.state.title);
         } else {
-            this.lightboxImage.style.display = "none";
-            this.lightboxVideo.style.display = "inline-block";
-            this.lightboxVideo.setAttribute("aria-label", media.title);
+            this.lightboxImage.classList.remove("d-inline-block");
+            this.lightboxImage.classList.add("d-none");
+            this.lightboxVideo.classList.add("d-inline-block");
+            this.lightboxVideo.setAttribute("aria-label", media.state.title);
 
             const source = document.createElement("source");
 
-            source.setAttribute("src", `assets/photographer/${media.photographerId}/${media.video}`);
+            source.setAttribute("src", media.videoSrc);
             source.setAttribute("type", "video/mp4");
 
             this.lightboxVideo.appendChild(source);
         }
         
-        this.lightboxTitle.innerHTML = media.title;
+        this.lightboxTitle.innerHTML = media.state.title;
 
-        this.currentId = media.id;
+        this.currentId = media.state.id;
     }
 
     closeLightbox() {
         this.closeLightboxButton.addEventListener("click", () => {
-            this.lightboxBackground.style.display = "none";
+            this.lightboxBackground.classList.toggle("d-block");
             document.body.classList.toggle("overflow");
         })
     }
