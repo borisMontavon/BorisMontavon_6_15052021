@@ -14,11 +14,12 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
         <!-- Stylesheet import -->
-        <link rel="stylesheet" href="./src/css/photographer-page.css">
+        <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript>
     </head>
     <body>
         <header>
-            <a href="./index.html" aria-label="Aller à page d'accueil Fisheye">
+            <a href="./index.html" aria-label="Aller à page d'accueil Fisheye" tabindex="0">
                 <h1 class="logo">Fish<i class="fas fa-camera-retro"></i>ye</h1>
             </a>
         </header>
@@ -26,8 +27,8 @@
             <section id="photographer-section"></section>
             <section id="filter-section">
                 <div class="filter-container">
-                    <label for="filter" id="filter-label">Trier par</label>
-                    <div class="dropdown-button" id="filter" role="button" aria-haspopup="listbox">
+                    <label for="filter" id="filter-label" tabindex="0">Trier par</label>
+                    <div class="dropdown-button" id="filter" role="button" aria-haspopup="listbox" tabindex="0">
                         <input id="popularity" type="radio" name="radio_select" role="listbox" checked/>
                         <label for="popularity" id="popularity-label">Popularité</label>
 
@@ -45,9 +46,9 @@
                 </div>
             </section>
             <section id="gallery-section"></section>
-            <div id="form-background">
+            <div id="form-background" role="dialog" aria-labelledby="form-header" aria-describedby="Formulaire de contact du photographe">
                 <form id="contact-form">
-                    <button id="close-form" type="button">
+                    <button id="close-form" type="button" aria-label="Fermer le formulaire de contact">
                         <i class="fas fa-times"></i>
                     </button>
                     <div id="form-header">

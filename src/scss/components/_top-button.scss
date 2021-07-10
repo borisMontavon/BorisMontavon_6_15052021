@@ -16,6 +16,10 @@
     text-align: center;
     cursor: pointer;
 
+    &:focus {
+        background-color: $carmine;
+    }
+
     @media screen and (min-width: $tablet-breakpoint) {
         bottom: 30px;
         right: 30px;
@@ -29,6 +33,14 @@
 
         @media screen and (min-width: $tablet-breakpoint) {
             font-size: 1.4rem;
+        }
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        transition: .3s;
+        
+        &:hover {
+            background-color: $carmine;
         }
     }
 }

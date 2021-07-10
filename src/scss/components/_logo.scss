@@ -1,6 +1,11 @@
 // Logo style
 header a {
+    display: inline-block;
     width: 170px;
+
+    &:focus {
+        outline: 1px dotted $black;
+    }
 
     @media screen and (min-width: $tablet-breakpoint) {
         width: 190px;

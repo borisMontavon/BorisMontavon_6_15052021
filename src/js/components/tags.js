@@ -28,6 +28,7 @@ export default class Tags {
         // Attributes update (class, aria-*, ...)
         span.setAttribute("class", "tag");
         span.setAttribute("aria-label", `Tag ${tag}`);
+        span.setAttribute("tabindex", "0");
         
         if (this.container.tagsSelected.includes(tag)) {
             span.classList.add("tag-selected");
@@ -52,6 +53,28 @@ export default class Tags {
             this.tagFilter.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
 
             this.container.render();
+        });
+
+        span.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+
+                span.classList.toggle("tag-selected");
+
+                if (span.classList.contains("tag-selected")) {
+                    this.container.tagsSelected.push(tag);
+                } else {
+                    const tagClicked = this.container.tagsSelected.indexOf(tag);
+
+                    if (tagClicked > -1) {
+                        this.container.tagsSelected.splice(tagClicked, 1);
+                    }
+                }
+
+                this.tagFilter.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
+
+                this.container.render();
+            }
         });
 
         return span;

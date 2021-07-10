@@ -28,7 +28,10 @@ a {
   display: inline-block !important; }
 
 header a {
+  display: inline-block;
   width: 170px; }
+  header a:focus {
+    outline: 1px dotted #000000; }
   @media screen and (min-width: 768px) {
     header a {
       width: 190px; } }
@@ -62,6 +65,10 @@ header a {
   transition: 0.3s; }
   .tag:hover {
     border: 0.5px solid #901C1C; }
+  .tag:focus {
+    border: 0.5px solid #CC583E;
+    background-color: #CC583E;
+    color: #FFFFFF; }
 
 .tag-selected {
   background-color: #901C1C;
@@ -76,13 +83,15 @@ header a {
   z-index: 98;
   border: none;
   outline: none;
-  background-color: #DB8876;
+  background-color: #CC583E;
   color: #FFFFFF;
   border-radius: 20px;
   width: 40px;
   height: 40px;
   text-align: center;
   cursor: pointer; }
+  #toTopButton:focus {
+    background-color: #901C1C; }
   @media screen and (min-width: 768px) {
     #toTopButton {
       bottom: 30px;
@@ -95,6 +104,11 @@ header a {
     @media screen and (min-width: 768px) {
       #toTopButton i {
         font-size: 1.4rem; } }
+  @media screen and (min-width: 992px) {
+    #toTopButton {
+      transition: .3s; }
+      #toTopButton:hover {
+        background-color: #901C1C; } }
 
 header {
   padding: 2rem 1.5rem; }
@@ -166,6 +180,8 @@ nav {
   display: flex;
   flex-flow: column wrap;
   align-items: center; }
+  .photographer-link:focus {
+    outline: 1px dotted #000000; }
 
 .photographer-portrait {
   width: 225px;
@@ -175,7 +191,7 @@ nav {
   box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.2); }
 
 .photographer-name {
-  color: #DB8876;
+  color: #CC583E;
   font-weight: 500;
   font-size: 2rem;
   margin-bottom: 5px; }

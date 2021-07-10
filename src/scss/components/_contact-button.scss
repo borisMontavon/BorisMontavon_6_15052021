@@ -17,6 +17,11 @@
         color: $black;
     }
 
+    &:focus {
+        background-color: $cedar-chest;
+        color: $black;
+    }
+
     @media screen and (min-width: $computer-sm-breakpoint) {
         padding: 1.25rem 1rem;
         font-size: 1rem;

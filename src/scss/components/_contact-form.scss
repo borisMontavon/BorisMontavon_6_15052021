@@ -27,13 +27,17 @@
 #close-form {
     background-color: transparent;
     padding: 0;
-    color: $white;
+    color: $cedar-chest;
     cursor: pointer;
     transition: 0.3s;
     border: none;
     position: absolute;
     top: 22px;
     right: 22px;
+
+    &:focus {
+        color: $carmine;
+    }
 
     @media screen and (min-width: $computer-sm-breakpoint) {
         &:hover {
@@ -47,7 +51,7 @@
 }
 
 form {
-    background-color: $cedar-chest;
+    background-color: $cultured;
     padding: 20px;
     height: 100vh;
     font-family: $work-sans;
@@ -115,14 +119,20 @@ form {
         margin: 20px auto 0;
         width: 100px;
 
-        &:hover {
-            background-color: rgba($carmine, 0.6);
-            color: $black;
-        }
-
         @media screen and (min-width: $computer-breakpoint) {
             padding: 1.25rem 3rem;
             width: 155px;
+        }
+
+        &:focus {
+            background-color: $cedar-chest;
+            color: $black;
+            border: none;
+        }
+
+        &:hover {
+            background-color: $cedar-chest;
+            color: $black;
         }
     }
 

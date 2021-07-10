@@ -67,11 +67,13 @@ export default class Media {
         videoElement.setAttribute("controls", "");
         videoElement.setAttribute("class", this.videoClass);
         videoElement.setAttribute("aria-label", this.state.title);
+        videoElement.setAttribute("tabindex", "0");
 
         const sourceElement = document.createElement("source");
 
         sourceElement.setAttribute("src", this.videoSrc);
         sourceElement.setAttribute("type", "video/mp4");
+        sourceElement.setAttribute("tabindex", "0");
 
         videoElement.appendChild(sourceElement);
 

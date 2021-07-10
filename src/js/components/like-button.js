@@ -29,6 +29,7 @@ export default class LikeButton {
         const button = document.createElement("button");
 
         button.setAttribute("id", this.likeButtonId);
+        button.setAttribute("aria-label", "Bouton like");
         button.appendChild(this.createIconElement());
 
         div.appendChild(this.createNumberOfLikesElement());
