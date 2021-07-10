@@ -14,8 +14,11 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
         <!-- Stylesheet import -->
-        <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript>
+        <!-- <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript> -->
+        <!-- Minified -->
+        <link rel="preload" href="./dist/css/photographer-page.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./dist/css/photographer-page.min.css"></noscript>
     </head>
     <body>
         <header>
@@ -73,7 +76,7 @@
             <div id="lightbox-background">
                 <div class="lightbox-modal" aria-label="Image closeup view">
                     <img id="lightbox-img" class="expanded-image" src="" alt="">
-                    <video id="lightbox-video" class="video-expanded" poster="placeholder.png" controls></video>
+                    <video id="lightbox-video" class="video-expanded" controls></video>
                     <p id="lightbox-title" class="expanded-image-title"></p>
                     <i id="left-chevron" class="fas fa-chevron-left" aria-hidden="true"></i>
                     <i id="right-chevron" class="fas fa-chevron-right" aria-hidden="true"></i>
