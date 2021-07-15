@@ -29,6 +29,7 @@ export default class ContactButton {
 
         mobileParentElement.appendChild(mobileButton);
         this.handleOpenForm();
+        this.handleKeyNavigationInForm();
     }
 
     handleOpenForm() {
@@ -47,5 +48,17 @@ export default class ContactButton {
                 new FormValidation().isFormFieldsValid();
             });
         });
+    }
+
+    handleKeyNavigationInForm(event) {
+        const form = document.getElementById("form-background");
+        const body = document.body;
+
+        if (form.classList.contains("d-block")) {
+            if (event.key === "Escape") {
+                form.classList.toggle("d-block");
+                body.classList.toggle("overflow");
+            }
+        }
     }
 }

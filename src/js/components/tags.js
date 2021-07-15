@@ -1,13 +1,8 @@
-// Class that will allow to render a tags list. Tags are defined with the "tags" param and the container by the "parentId" param (we have to pass it an Id)
-import TagFilter from "./functions/tag-filter";
-
 export default class Tags {
     constructor(tags, parentId, container) {
         this.tags = tags;
         this.parentId = parentId;
         this.container = container;
-
-        this.tagFilter = new TagFilter();
     }
 
     render() {
@@ -50,7 +45,7 @@ export default class Tags {
                 }
             }
 
-            this.tagFilter.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
+            this.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
 
             this.container.render();
         });
@@ -71,12 +66,30 @@ export default class Tags {
                     }
                 }
 
-                this.tagFilter.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
+                this.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
 
                 this.container.render();
             }
         });
 
         return span;
+    }
+
+    elementHasSelectedTag(elements, tags) {
+        if (tags.length === 0) {
+            elements.forEach((element) => {
+                element.state.display = true;
+            });
+        } else {
+            elements.forEach((element) => {
+                const found = element.state.tags.some(tag => tags.includes(tag));
+
+                if (found) {
+                    element.state.display = true;
+                } else {
+                    element.state.display = false;
+                }
+            });
+        }
     }
 }

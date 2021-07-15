@@ -1,7 +1,6 @@
 export default class DropdownFilter {
-    constructor(mediaContainer, mediaFilter) {
+    constructor(mediaContainer) {
         this.mediaContainer = mediaContainer;
-        this.mediaFilter = mediaFilter;
     }
 
     toggleDropdownFilter() {
@@ -23,16 +22,16 @@ export default class DropdownFilter {
 
                     switch (labelId) {
                         case "popularity-label":
-                            this.mediaFilter.comparePopularity(this.mediaContainer.medias);
+                            this.comparePopularity(this.mediaContainer.medias);
                             break;
                         case "date-label":
-                            this.mediaFilter.compareDate(this.mediaContainer.medias);
+                            this.compareDate(this.mediaContainer.medias);
                             break;
                         case "title-label":
-                            this.mediaFilter.compareTitle(this.mediaContainer.medias);
+                            this.compareTitle(this.mediaContainer.medias);
                             break;
                         case "price-label":
-                            this.mediaFilter.comparePrice(this.mediaContainer.medias);
+                            this.comparePrice(this.mediaContainer.medias);
                             break;
                         default: break;
                     }
@@ -64,5 +63,21 @@ export default class DropdownFilter {
             dropdown.classList.toggle("active");
             icon.classList.toggle("active");
         })
+    }
+
+    comparePopularity(medias) {
+        medias.sort((a, b) => b.state.likes - a.state.likes);
+    }
+
+    compareDate(medias) {
+        medias.sort((a, b) => b.state.date - a.state.date);
+    }
+
+    compareTitle(medias) {
+        medias.sort((a, b) => a.state.title.localeCompare(b.state.title));
+    }
+
+    comparePrice(medias) {
+        medias.sort((a, b) => b.state.price - a.state.price);
     }
 }

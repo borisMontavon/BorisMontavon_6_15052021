@@ -1,4 +1,3 @@
-import MediaFilter from "./functions/media-filter";
 import DropdownFilter from "./dropdown-filter";
 import PhotographerSection from "./photographer-section";
 import Lightbox from "./lightbox";
@@ -10,7 +9,7 @@ export default class MediaContainer {
 
         this.tagsSelected = [];
 
-        this.dropdownFilter = new DropdownFilter(this, new MediaFilter());
+        this.dropdownFilter = new DropdownFilter(this);
         this.photographerSection = new PhotographerSection(photographerData, this);
         this.lightbox = new Lightbox(this);
 
