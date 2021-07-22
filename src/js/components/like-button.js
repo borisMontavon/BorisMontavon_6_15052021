@@ -4,8 +4,13 @@ export default class LikeButton {
         this.likes = media.likes;
         this.parentId = `image-infos-${media.id}`;
 
-        this.divClass = "like-button";
-        this.likeAccessibility = "likes";
+        this.template = `<div class="like-button" aria-label="likes">
+                            <p id="like-counter-${media.id}">${media.likes}</p>
+                            <button id="like-${media.id}" aria-label="Bouton like">
+                                <span class="far fa-heart" id="heart-icon-${media.id}" aria-hidden="true"></span>
+                            </button>
+                        </div>`;
+
         this.iconClassEmpty = "far fa-heart";
         this.iconClassFull = "fas fa-heart";
         this.iconId = `heart-icon-${this.mediaId}`;
@@ -17,49 +22,7 @@ export default class LikeButton {
     render() {
         const parentElement = document.getElementById(this.parentId);
 
-        if (parentElement === null) {
-            return;
-        }
-
-        const div = document.createElement("div");
-
-        div.setAttribute("class", this.divClass);
-        div.setAttribute("aria-label", this.likeAccessibility);
-
-        const button = document.createElement("button");
-
-        button.setAttribute("id", this.likeButtonId);
-        button.setAttribute("aria-label", "Bouton like");
-        button.appendChild(this.createIconElement());
-
-        div.appendChild(this.createNumberOfLikesElement());
-        div.appendChild(button);
-
-        parentElement.appendChild(div);
-    }
-
-    createNumberOfLikesElement() {
-        const p = document.createElement("p");
-
-        p.setAttribute("id", this.likeCounterId);
-
-        p.innerHTML = this.likes;
-
-        return p;
-    }
-
-    createIconElement() {
-        const icon = document.createElement("span");
-
-        if (this.liked) {
-            icon.setAttribute("class", this.iconClassFull);
-        } else {
-            icon.setAttribute("class", this.iconClassEmpty);
-        }
-        
-        icon.setAttribute("id", this.iconId);
-
-        return icon;
+        parentElement.insertAdjacentHTML("beforeend", this.template);
     }
 
     increaseLikeCounter() {

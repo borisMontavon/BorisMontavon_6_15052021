@@ -10,6 +10,18 @@ const urlParams = new URLSearchParams(window.location.search);
 const currrentId = urlParams.get('id');
 const factory = new ElementsFactory();
 
+// // Function to do multiple replaces in one call instead of chaining simple replace calls
+// String.prototype.replaceAll = function(replaceParams) {
+//     let result = this;
+
+//     for (let key in replaceParams) {
+//         result = result.replace(new RegExp(key, 'g'), replaceParams[key]);
+//     }
+
+//     return result;
+// };
+
+
 // Photographers' data fetch from json
 const getData = async (url) => {
     const response = await fetch(url);

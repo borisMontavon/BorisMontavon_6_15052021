@@ -4,7 +4,6 @@ export default class Likes {
         this.likeButtons = likeButtons;
 
         this.photographerInfo.render();
-
     }
 
     render() {

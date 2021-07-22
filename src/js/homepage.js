@@ -3,6 +3,17 @@ import PhotographContainer from "./components/photograph-container";
 
 const factory = new ElementsFactory();
 
+// // Function to do multiple replaces in one call instead of chaining simple replace calls
+// String.prototype.replaceAll = function(replaceParams) {
+//     let result = this;
+
+//     for (let key in replaceParams) {
+//         result = result.replace(new RegExp(key, 'g'), replaceParams[key]);
+//     }
+
+//     return result;
+// };
+
 const sortTags = (photographers) => {
     let tagsArrays = [];
 

@@ -3,6 +3,8 @@ export default class Tags {
         this.tags = tags;
         this.parentId = parentId;
         this.container = container;
+
+        this.template = `<span class="tag" aria-label="Tag {{tag}}" data-tag="{{tag}}" tabindex="0"># {{tag}}</span>`;
     }
 
     render() {
@@ -12,27 +14,28 @@ export default class Tags {
         // Get elements from json
         this.tags.forEach((tag) => {
             // Add it to the DOM
-            parentElement.appendChild(this.createTag(tag));
+            parentElement.insertAdjacentHTML("beforeend", this.template.replaceAll("{{tag}}", tag));
+        });
+
+        Array.prototype.forEach.call(parentElement.getElementsByTagName("span"), (element) => {
+            const tag = element.dataset.tag;
+
+            if (this.container.tagsSelected.includes(tag)) {
+                element.classList.add("tag-selected");
+            }
+
+            element.addEventListener("click", (event) => {
+                this.tagEventListener(event, element, tag);
+            });
+
+            element.addEventListener("keydown", (event) => {
+                this.tagEventListener(event, element, tag);
+            });
         });
     }
-
-    createTag(tag) {
-        // Creation of a new HTML element
-        const span = document.createElement("span");
-
-        // Attributes update (class, aria-*, ...)
-        span.setAttribute("class", "tag");
-        span.setAttribute("aria-label", `Tag ${tag}`);
-        span.setAttribute("tabindex", "0");
-        
-        if (this.container.tagsSelected.includes(tag)) {
-            span.classList.add("tag-selected");
-        }
-
-        // innerHtml value update
-        span.innerHTML = `# ${tag}`;
-
-        span.addEventListener("click", () => {
+    
+    tagEventListener(event, span, tag) {
+        if (event.type === "click" || (event.type === "keyup" && event.key === "Enter")) {
             span.classList.toggle("tag-selected");
 
             if (span.classList.contains("tag-selected")) {
@@ -48,31 +51,7 @@ export default class Tags {
             this.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
 
             this.container.render();
-        });
-
-        span.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-
-                span.classList.toggle("tag-selected");
-
-                if (span.classList.contains("tag-selected")) {
-                    this.container.tagsSelected.push(tag);
-                } else {
-                    const tagClicked = this.container.tagsSelected.indexOf(tag);
-
-                    if (tagClicked > -1) {
-                        this.container.tagsSelected.splice(tagClicked, 1);
-                    }
-                }
-
-                this.elementHasSelectedTag(this.container.getElementsToFilter(), this.container.tagsSelected);
-
-                this.container.render();
-            }
-        });
-
-        return span;
+        }
     }
 
     elementHasSelectedTag(elements, tags) {
