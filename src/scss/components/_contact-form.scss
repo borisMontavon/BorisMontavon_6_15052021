@@ -27,7 +27,6 @@
 #close-form {
     background-color: transparent;
     padding: 0;
-    color: $cedar-chest;
     cursor: pointer;
     transition: 0.3s;
     border: none;
@@ -35,18 +34,19 @@
     top: 22px;
     right: 22px;
 
-    &:focus {
-        color: $carmine;
-    }
-
-    @media screen and (min-width: $computer-sm-breakpoint) {
-        &:hover {
-            color: $carmine;
-        }
-    }
-
     span {
         font-size: 2rem;
+        color: $carmine;
+
+        @media screen and (min-width: $computer-sm-breakpoint) {
+            &:hover {
+                color: $cedar-chest;
+            }
+        }
+
+        &:focus {
+            color: $cedar-chest;
+        }
     }
 }
 

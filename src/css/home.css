@@ -26,10 +26,17 @@ a {
   display: none !important; }
 
 .d-block {
-  display: block !important; }
+  display: block !important;
+  animation: fadeIn 0.3s ease-in; }
 
 .d-inline-block {
   display: inline-block !important; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 header a {
   display: inline-block;

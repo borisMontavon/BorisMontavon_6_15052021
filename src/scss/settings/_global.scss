@@ -37,8 +37,18 @@ a {
 
 .d-block {
     display: block !important;
+    animation: fadeIn 0.3s ease-in;
 }
 
 .d-inline-block {
     display: inline-block !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
