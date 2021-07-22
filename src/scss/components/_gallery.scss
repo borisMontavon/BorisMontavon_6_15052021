@@ -29,6 +29,10 @@
     border-radius: 5px;
     cursor: zoom-in;
 
+    &:focus {
+        outline: 2px dotted $black;
+    }
+
     @media screen and (min-width: $computer-sm-breakpoint) {
         height: 375px;
     }
@@ -39,6 +43,10 @@
     border-radius: 5px;
     height: 225px;
     background-color: $cultured;
+
+    &:focus {
+        outline: 2px dotted $black;
+    }
 
     @media screen and (min-width: $computer-sm-breakpoint) {
         height: 375px;

@@ -14,11 +14,11 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
         <!-- Stylesheet import -->
-        <!-- <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript> -->
+        <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript>
         <!-- Minified -->
-        <link rel="preload" href="./dist/css/photographer-page.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="./dist/css/photographer-page.min.css"></noscript>
+        <!-- <link rel="preload" href="./dist/css/photographer-page.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./dist/css/photographer-page.min.css"></noscript> -->
     </head>
     <body>
         <header>
@@ -30,21 +30,19 @@
             <section id="photographer-section"></section>
             <section id="filter-section">
                 <div class="filter-container">
-                    <label for="filter" id="filter-label" tabindex="0">Trier par</label>
-                    <div class="dropdown-button" id="filter" role="button" aria-haspopup="listbox" tabindex="0">
-                        <input id="popularity" type="radio" name="radio_select" role="listbox" checked/>
-                        <label for="popularity" id="popularity-label">Popularité</label>
-
-                        <input id="date" type="radio" name="radio_select" role="listbox" />
-                        <label for="date" id="date-label">Date</label>
-
-                        <input id="title" type="radio" name="radio_select" role="listbox" />
-                        <label for="title" id="title-label">Titre</label>
-
-                        <input id="price" type="radio" name="radio_select" role="listbox" />
-                        <label for="price" id="price-label">Prix</label>
-
-                        <i class="fas fa-chevron-down"></i>
+                    <label for="filter" id="filter-label">Standard Select</label>
+                    <div class="custom-select-wrapper" id="filter" role="button" aria-haspopup="listbox" tabindex="0">
+                        <div class="custom-select">
+                            <div class="custom-select__trigger"><span>Popularité</span>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="custom-options">
+                                <span class="custom-option selected" id="popularity" data-value="popularity" role="listbox">Popularité</span>
+                                <span class="custom-option" id="date" data-value="date" role="listbox">Date</span>
+                                <span class="custom-option" id="title" data-value="title" role="listbox">Titre</span>
+                                <span class="custom-option" id="price" data-value="price" role="listbox">Prix</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

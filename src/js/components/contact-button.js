@@ -29,7 +29,7 @@ export default class ContactButton {
 
         mobileParentElement.appendChild(mobileButton);
         this.handleOpenForm();
-        this.handleKeyNavigationInForm();
+        // this.handleKeyNavigationInForm();
     }
 
     handleOpenForm() {
@@ -50,15 +50,14 @@ export default class ContactButton {
         });
     }
 
-    handleKeyNavigationInForm(event) {
-        const form = document.getElementById("form-background");
-        const body = document.body;
+    // handleKeyNavigationInForm(event) {
+    //     const form = document.getElementById("form-background");
+    //     const body = document.body;
+    //     console.log(form);
 
-        if (form.classList.contains("d-block")) {
-            if (event.key === "Escape") {
-                form.classList.toggle("d-block");
-                body.classList.toggle("overflow");
-            }
-        }
-    }
+    //     if (event.key === "Escape") {
+    //         form.classList.toggle("d-block");
+    //         body.classList.toggle("overflow");
+    //     }
+    // }
 }

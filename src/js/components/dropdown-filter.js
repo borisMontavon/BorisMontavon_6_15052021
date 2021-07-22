@@ -4,65 +4,96 @@ export default class DropdownFilter {
     }
 
     toggleDropdownFilter() {
-        const dropdown = document.getElementById("filter");
-        const labels = document.querySelectorAll("#filter label");
-        const icon = document.querySelector("#filter i");
+        const select = document.querySelector(".custom-select-wrapper");
+        const customSelect = document.querySelector(".custom-select");
+        const options = document.querySelectorAll(".custom-option");
 
-        labels.forEach((label) => {
-           
-            label.addEventListener("click", () => {
-                const isDropdownActive = dropdown.classList.contains("active");
+        select.addEventListener("click", () => {
+            openFilter();
+        });
 
-                if (isDropdownActive) {
-                    labels.forEach((label) => {
-                        label.classList.remove("d-inline-block");
-                    });
-                    
-                    const labelId = label.getAttribute("id");
+        select.addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                openFilter();
+            }
+        })
 
-                    switch (labelId) {
-                        case "popularity-label":
+        
+        for (const option of options) {
+            option.addEventListener("click", () => {
+                if (!option.classList.contains("selected")) {
+                    option.parentNode.querySelector(".custom-option.selected").classList.remove("selected");
+
+                    let optionDataValue = option.getAttribute("data-value");
+
+                    switch (optionDataValue) {
+                        case "popularity":
                             this.comparePopularity(this.mediaContainer.medias);
                             break;
-                        case "date-label":
+                        case "date":
                             this.compareDate(this.mediaContainer.medias);
                             break;
-                        case "title-label":
+                        case "title":
                             this.compareTitle(this.mediaContainer.medias);
                             break;
-                        case "price-label":
+                        case "price":
                             this.comparePrice(this.mediaContainer.medias);
                             break;
                         default: break;
                     }
 
-                    this.mediaContainer.render();
-                } else {
-                    labels.forEach((label) => {
-                        label.classList.add("d-inline-block");
-                    });
-                }
+                    option.classList.add("selected");
+                    option.closest(".custom-select").querySelector(".custom-select__trigger span").innerHTML = option.innerHTML;
 
-                dropdown.classList.toggle("active");
-                icon.classList.toggle("active");
+                    this.mediaContainer.render();
+                }
             });
+
+            option.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    if (!option.classList.contains("selected")) {
+                        option.parentNode.querySelector(".custom-option.selected").classList.remove("selected");
+    
+                        let optionDataValue = option.getAttribute("data-value");
+    
+                        switch (optionDataValue) {
+                            case "popularity":
+                                this.comparePopularity(this.mediaContainer.medias);
+                                break;
+                            case "date":
+                                this.compareDate(this.mediaContainer.medias);
+                                break;
+                            case "title":
+                                this.compareTitle(this.mediaContainer.medias);
+                                break;
+                            case "price":
+                                this.comparePrice(this.mediaContainer.medias);
+                                break;
+                            default: break;
+                        }
+    
+                        option.classList.add("selected");
+                        option.closest(".custom-select").querySelector(".custom-select__trigger span").innerHTML = option.innerHTML;
+                        select.focus();
+    
+                        this.mediaContainer.render();
+                    }
+                }
+            });
+        };
+
+        window.addEventListener("click", (e) => {
+            if (!customSelect.contains(e.target)) {
+                customSelect.classList.remove("open");
+            }
         });
 
-        icon.addEventListener("click", () => {
-
-            if (dropdown.classList.contains("active")) {
-                labels.forEach((label) => {
-                    label.classList.remove("d-inline-block");
-                });
-            } else {
-                labels.forEach((label) => {
-                    label.classList.add("d-inline-block");
-                });
-            }
-
-            dropdown.classList.toggle("active");
-            icon.classList.toggle("active");
-        })
+        const openFilter = () => {
+            customSelect.classList.toggle("open");
+            Array.prototype.forEach.call(options, (element) => {
+                element.setAttribute("tabindex", "0");
+            });
+        };
     }
 
     comparePopularity(medias) {

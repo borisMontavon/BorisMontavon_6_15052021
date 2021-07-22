@@ -2,7 +2,11 @@
 * {
   margin: 0;
   padding: 0;
-  outline: 0;
+  outline: 0; }
+
+*,
+*::before,
+*::after {
   box-sizing: border-box; }
 
 ::selection {
@@ -263,58 +267,112 @@ form {
     font-weight: 600;
     margin: 20px 20px 0 0; }
 
-#filter input[type="radio"] {
-  display: none; }
-  #filter input[type="radio"] + label {
-    display: none;
-    cursor: pointer;
-    padding: 1.25rem 1.5rem;
-    width: 175px; }
-  #filter input[type="radio"]:checked + label {
-    display: inline-block !important; }
+.custom-select-wrapper {
+  position: relative;
+  user-select: none;
+  width: 175px; }
+  .custom-select-wrapper:focus .custom-select__trigger {
+    background-color: #CC583E;
+    color: #000000;
+    border-radius: 0.25rem 0.25rem 0 0; }
+  .custom-select-wrapper:focus .arrow::before, .custom-select-wrapper:focus .arrow::after {
+    background-color: #000000; }
 
-#filter.active input[type="radio"]:checked + label::before {
-  content: "\A";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #F5F5F5;
-  display: inline-block;
-  position: absolute;
-  top: 27px;
-  left: 12px; }
+.custom-select {
+  position: relative;
+  display: flex;
+  flex-direction: column; }
+  .custom-select.open .custom-select__trigger {
+    background-color: #CC583E;
+    color: #000000;
+    border-radius: 0.25rem 0.25rem 0 0; }
+  .custom-select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all; }
 
-.dropdown-button {
-  background-color: #901C1C;
-  border: none;
-  border-radius: 0.25rem;
-  color: #FFFFFF;
-  font-size: 1rem;
+.custom-select__trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
   font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
   font-weight: 500;
-  width: 175px;
-  cursor: pointer; }
-  .dropdown-button i {
-    position: absolute;
-    right: 15px;
-    top: 20px;
-    color: #FFFFFF;
-    font-size: 1.2rem;
-    transition: 0.3s; }
-    .dropdown-button i.active {
-      transform: rotate(180deg); }
+  color: #FFFFFF;
+  height: 60px;
+  line-height: 60px;
+  background: #901C1C;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: 0.3s; }
 
-.dropdown-button.active label {
-  position: relative; }
-  .dropdown-button.active label:not(:nth-child(8))::after {
+.custom-options {
+  position: absolute;
+  display: block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #CC583E;
+  transition: all 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2; }
+  .custom-options:not(:last-child) {
+    border-bottom: 1px solid #FFFFFF; }
+
+.custom-option {
+  position: relative;
+  display: block;
+  padding: 0 22px 0 22px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  line-height: 60px;
+  cursor: pointer;
+  transition: 0.3s; }
+  .custom-option:hover {
+    cursor: pointer;
+    color: #FFFFFF; }
+  .custom-option.selected {
+    color: #FFFFFF;
+    background-color: #901C1C; }
+  .custom-option:focus {
+    background-color: #901C1C;
+    color: #FFFFFF; }
+
+.arrow {
+  position: relative;
+  height: 15px;
+  width: 15px; }
+  .arrow::before, .arrow::after {
     content: "";
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    height: 1px;
-    width: 85%;
-    border-bottom: 1px solid #FFFFFF; }
+    bottom: 0px;
+    width: 0.25rem;
+    height: 100%;
+    transition: 0.3s; }
+  .arrow::before {
+    left: -4px;
+    transform: rotate(45deg);
+    background-color: #FFFFFF;
+    border-radius: 5px; }
+  .arrow::after {
+    left: 4px;
+    transform: rotate(-45deg);
+    background-color: #FFFFFF;
+    border-radius: 5px; }
+
+.open .arrow::before {
+  left: -4px;
+  transform: rotate(-45deg); }
+
+.open .arrow::after {
+  left: 4px;
+  transform: rotate(45deg); }
 
 #toTopButton {
   display: none;
@@ -375,6 +433,8 @@ form {
   object-fit: cover;
   border-radius: 5px;
   cursor: zoom-in; }
+  .image:focus {
+    outline: 2px dotted #000000; }
   @media screen and (min-width: 992px) {
     .image {
       height: 375px; } }
@@ -384,6 +444,8 @@ form {
   border-radius: 5px;
   height: 225px;
   background-color: #F5F5F5; }
+  .video:focus {
+    outline: 2px dotted #000000; }
   @media screen and (min-width: 992px) {
     .video {
       height: 375px; } }

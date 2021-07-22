@@ -24,87 +24,152 @@
     }
 }
 
-#filter {
-    input[type="radio"] {
-        display: none;
-
-        + label {
-            display: none;
-            cursor: pointer;
-            padding: 1.25rem 1.5rem;
-            width: 175px;
-        }
-
-        &:checked {
-            + label {
-                display: inline-block !important;
-            }
-        }
-    }
-
-    &.active {
-        input[type="radio"] {
-            &:checked {
-                + label {
-                    &::before {
-                        content: "\A";
-                        width: 6px;
-                        height: 6px;
-                        border-radius: 50%;
-                        background: $cultured;
-                        display: inline-block;
-                        position: absolute;
-                        top: 27px;
-                        left: 12px;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.dropdown-button {
-    background-color: $carmine;
-    border: none;
-    border-radius: 0.25rem;
-    color: $white;
-    font-size: 1rem;
-    font-family: $work-sans;
-    font-weight: 500;
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
     width: 175px;
-    cursor: pointer;
 
-    i {
-        position: absolute;
-        right: 15px;
-        top: 20px;
-        color: $white;
-        font-size: 1.2rem;
-        transition: 0.3s;
+    &:focus {
+        & .custom-select__trigger {
+            background-color: $cedar-chest;
+            color: $black;
+            border-radius: 0.25rem 0.25rem 0 0;
+        }
 
-        &.active {
-            transform: rotate(180deg);
+        & .arrow {
+            &::before, 
+            &::after {
+                background-color: $black;
+            }
         }
     }
 }
 
-.dropdown-button {
-    &.active {
-        & label {
-            position: relative;
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
-            &:not(:nth-child(8)) {
-                &::after {
-                    content: "";
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    bottom: 0;
-                    height: 1px;
-                    width: 85%;
-                    border-bottom: 1px solid $white;
-                }
-            }
+    &.open {
+        & .custom-select__trigger {
+            background-color: $cedar-chest;
+            color: $black;
+            border-radius: 0.25rem 0.25rem 0 0;
+        }
+
+        & .custom-options {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+}
+
+.custom-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    font-family: $work-sans;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $white;
+    height: 60px;
+    line-height: 60px;
+    background: $carmine;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: 0.3s;
+}
+
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $cedar-chest;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid $white;
+    }
+}
+
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 0 22px 0 22px;
+    font-family: $work-sans;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $black;
+    line-height: 60px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        color: $white;
+    }
+
+    &.selected {
+        color: $white;
+        background-color: $carmine;
+    }
+
+    &:focus {
+        background-color: $carmine;
+        color: $white;
+    }
+}
+
+.arrow {
+    position: relative;
+    height: 15px;
+    width: 15px;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 0.25rem;
+        height: 100%;
+        transition: 0.3s;
+    }
+
+    &::before {
+        
+        left: -4px;
+        transform: rotate(45deg);
+        background-color: $white;
+        border-radius: 5px;
+    }
+
+    &::after {
+        left: 4px;
+        transform: rotate(-45deg);
+        background-color: $white;
+        border-radius: 5px;
+    }
+}
+
+.open {
+    & .arrow {
+        &::before {
+            left: -4px;
+            transform: rotate(-45deg);
+        }
+
+        &::after {
+            left: 4px;
+            transform: rotate(45deg);
         }
     }
 }
