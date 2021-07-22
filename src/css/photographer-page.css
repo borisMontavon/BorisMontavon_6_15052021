@@ -48,11 +48,11 @@ header a {
   @media screen and (min-width: 768px) {
     .logo {
       font-size: 2.8rem; } }
-  .logo i {
+  .logo span {
     font-size: 2.2rem;
     margin: 0 0.25rem 0.5rem 0.25rem; }
     @media screen and (min-width: 768px) {
-      .logo i {
+      .logo span {
         font-size: 2.4rem; } }
 
 .contact-button {
@@ -129,7 +129,7 @@ header a {
   @media screen and (min-width: 992px) {
     #close-form:hover {
       color: #901C1C; } }
-  #close-form i {
+  #close-form span {
     font-size: 2rem; }
 
 form {
@@ -220,7 +220,7 @@ form {
     cursor: pointer; }
     .like-button button:focus {
       outline: 1px dotted #000000; }
-    .like-button button i {
+    .like-button button span {
       color: #901C1C;
       font-size: 0.9rem; }
 
@@ -693,6 +693,6 @@ header {
 .likes-container {
   display: flex;
   align-items: center; }
-  .likes-container i {
+  .likes-container span {
     font-size: 0.95rem;
     margin-left: 3px; }

@@ -34,7 +34,7 @@ export default class PhotographerInfo {
 
         container.appendChild(likes);
 
-        const icon = document.createElement("i");
+        const icon = document.createElement("span");
 
         icon.setAttribute("class", this.iconClass);
 
