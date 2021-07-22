@@ -18,7 +18,11 @@
         border: none;
         cursor: pointer;
 
-        i {
+        &:focus {
+            outline: 1px dotted $black;
+        }
+
+        span {
             color: $carmine;
             font-size: 0.9rem;
         }

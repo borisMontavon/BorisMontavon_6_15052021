@@ -1,68 +1,114 @@
 export default class DropdownFilter {
-    constructor(mediaContainer, mediaFilter) {
+    constructor(mediaContainer) {
         this.mediaContainer = mediaContainer;
-        this.mediaFilter = mediaFilter;
     }
 
     toggleDropdownFilter() {
-        const dropdown = document.getElementById("filter");
-        const labels = document.querySelectorAll("#filter label");
-        const icon = document.querySelector("#filter i");
+        const select = document.querySelector(".custom-select-wrapper");
+        const customSelect = document.querySelector(".custom-select");
+        const options = document.querySelectorAll(".custom-option");
 
-        labels.forEach((label) => {
-           
-            label.addEventListener("click", () => {
-                const isDropdownActive = dropdown.classList.contains("active");
+        select.addEventListener("click", () => {
+            openFilter();
+        });
 
-                if (isDropdownActive) {
-                    labels.forEach((label) => {
-                        label.classList.remove("d-inline-block");
-                    });
-                    
-                    const labelId = label.getAttribute("id");
+        select.addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                openFilter();
+            }
+        })
 
-                    switch (labelId) {
-                        case "popularity-label":
-                            this.mediaFilter.comparePopularity(this.mediaContainer.medias);
+        
+        for (const option of options) {
+            option.addEventListener("click", () => {
+                if (!option.classList.contains("selected")) {
+                    option.parentNode.querySelector(".custom-option.selected").classList.remove("selected");
+
+                    let optionDataValue = option.getAttribute("data-value");
+
+                    switch (optionDataValue) {
+                        case "popularity":
+                            this.comparePopularity(this.mediaContainer.medias);
                             break;
-                        case "date-label":
-                            this.mediaFilter.compareDate(this.mediaContainer.medias);
+                        case "date":
+                            this.compareDate(this.mediaContainer.medias);
                             break;
-                        case "title-label":
-                            this.mediaFilter.compareTitle(this.mediaContainer.medias);
+                        case "title":
+                            this.compareTitle(this.mediaContainer.medias);
                             break;
-                        case "price-label":
-                            this.mediaFilter.comparePrice(this.mediaContainer.medias);
+                        case "price":
+                            this.comparePrice(this.mediaContainer.medias);
                             break;
                         default: break;
                     }
 
-                    this.mediaContainer.render();
-                } else {
-                    labels.forEach((label) => {
-                        label.classList.add("d-inline-block");
-                    });
-                }
+                    option.classList.add("selected");
+                    option.closest(".custom-select").querySelector(".custom-select__trigger span").innerHTML = option.innerHTML;
 
-                dropdown.classList.toggle("active");
-                icon.classList.toggle("active");
+                    this.mediaContainer.render();
+                }
             });
+
+            option.addEventListener("keyup", (event) => {
+                if (event.key === "Enter") {
+                    if (!option.classList.contains("selected")) {
+                        option.parentNode.querySelector(".custom-option.selected").classList.remove("selected");
+    
+                        let optionDataValue = option.getAttribute("data-value");
+    
+                        switch (optionDataValue) {
+                            case "popularity":
+                                this.comparePopularity(this.mediaContainer.medias);
+                                break;
+                            case "date":
+                                this.compareDate(this.mediaContainer.medias);
+                                break;
+                            case "title":
+                                this.compareTitle(this.mediaContainer.medias);
+                                break;
+                            case "price":
+                                this.comparePrice(this.mediaContainer.medias);
+                                break;
+                            default: break;
+                        }
+    
+                        option.classList.add("selected");
+                        option.closest(".custom-select").querySelector(".custom-select__trigger span").innerHTML = option.innerHTML;
+                        select.focus();
+    
+                        this.mediaContainer.render();
+                    }
+                }
+            });
+        };
+
+        window.addEventListener("click", (e) => {
+            if (!customSelect.contains(e.target)) {
+                customSelect.classList.remove("open");
+            }
         });
 
-        icon.addEventListener("click", () => {
+        const openFilter = () => {
+            customSelect.classList.toggle("open");
+            Array.prototype.forEach.call(options, (element) => {
+                element.setAttribute("tabindex", "0");
+            });
+        };
+    }
 
-            if (dropdown.classList.contains("active")) {
-                labels.forEach((label) => {
-                    label.classList.remove("d-inline-block");
-                });
-            } else {
-                labels.forEach((label) => {
-                    label.classList.add("d-inline-block");
-                });
-            }
+    comparePopularity(medias) {
+        medias.sort((a, b) => b.state.likes - a.state.likes);
+    }
 
-            dropdown.classList.toggle("active");
-            icon.classList.toggle("active");
-        })
+    compareDate(medias) {
+        medias.sort((a, b) => b.state.date - a.state.date);
+    }
+
+    compareTitle(medias) {
+        medias.sort((a, b) => a.state.title.localeCompare(b.state.title));
+    }
+
+    comparePrice(medias) {
+        medias.sort((a, b) => b.state.price - a.state.price);
     }
 }

@@ -15,6 +15,7 @@ export default class ContactButton {
         desktopButton.setAttribute("class", this.contactButtonClass);
         desktopButton.setAttribute("id", "desktop-contact-button");
         desktopButton.setAttribute("aria-label", this.accessibilityButton);
+        desktopButton.setAttribute("tabindex", "0");
         desktopButton.innerHTML = "Contactez-moi";
 
         desktopParentElement.appendChild(desktopButton);
@@ -28,6 +29,7 @@ export default class ContactButton {
 
         mobileParentElement.appendChild(mobileButton);
         this.handleOpenForm();
+        // this.handleKeyNavigationInForm();
     }
 
     handleOpenForm() {
@@ -37,12 +39,25 @@ export default class ContactButton {
             element.addEventListener("click", () => {
                 const form = document.getElementById("form-background");
                 const body = document.body;
+                const firstInput = document.getElementById("fname");
 
                 form.classList.toggle("d-block");
                 body.classList.toggle("overflow");
-
+                firstInput.focus();
+                
                 new FormValidation().isFormFieldsValid();
             });
         });
     }
+
+    // handleKeyNavigationInForm(event) {
+    //     const form = document.getElementById("form-background");
+    //     const body = document.body;
+    //     console.log(form);
+
+    //     if (event.key === "Escape") {
+    //         form.classList.toggle("d-block");
+    //         body.classList.toggle("overflow");
+    //     }
+    // }
 }

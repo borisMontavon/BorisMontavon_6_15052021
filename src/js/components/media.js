@@ -53,6 +53,7 @@ export default class Media {
         imageElement.setAttribute("class", this.imageClass);
         imageElement.setAttribute("alt", this.state.title);
         imageElement.setAttribute("id", this.state.id);
+        imageElement.setAttribute("tabindex", "0");
 
         return imageElement;
     }
@@ -67,6 +68,7 @@ export default class Media {
         videoElement.setAttribute("controls", "");
         videoElement.setAttribute("class", this.videoClass);
         videoElement.setAttribute("aria-label", this.state.title);
+        videoElement.setAttribute("tabindex", "0");
 
         const sourceElement = document.createElement("source");
 

@@ -37,6 +37,8 @@ export default class PhotographList {
 
         linkElement.setAttribute("href", `photographer.html?id=${this.state.id}`);
         linkElement.setAttribute("class", this.linkClass);
+        linkElement.setAttribute("aria-label", `Lien vers la page du photographe ${this.state.name}`);
+        linkElement.setAttribute("tabindex", "0");
 
         linkElement.appendChild(this.createPortraitElement());
         linkElement.appendChild(this.createTitleElement());

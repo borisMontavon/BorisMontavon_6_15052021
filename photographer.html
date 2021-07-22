@@ -14,41 +14,43 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
         <!-- Stylesheet import -->
-        <link rel="stylesheet" href="./src/css/photographer-page.css">
+        <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript>
+        <!-- Minified -->
+        <!-- <link rel="preload" href="./dist/css/photographer-page.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./dist/css/photographer-page.min.css"></noscript> -->
     </head>
     <body>
         <header>
-            <a href="./index.html" aria-label="Aller à page d'accueil Fisheye">
-                <h1 class="logo">Fish<i class="fas fa-camera-retro"></i>ye</h1>
+            <a href="./index.html" aria-label="Aller à page d'accueil Fisheye" tabindex="0">
+                <h1 class="logo">Fish<span class="fas fa-camera-retro"></span>ye</h1>
             </a>
         </header>
         <main id="main-section">
             <section id="photographer-section"></section>
             <section id="filter-section">
                 <div class="filter-container">
-                    <label for="filter" id="filter-label">Trier par</label>
-                    <div class="dropdown-button" id="filter" role="button" aria-haspopup="listbox">
-                        <input id="popularity" type="radio" name="radio_select" role="listbox" checked/>
-                        <label for="popularity" id="popularity-label">Popularité</label>
-
-                        <input id="date" type="radio" name="radio_select" role="listbox" />
-                        <label for="date" id="date-label">Date</label>
-
-                        <input id="title" type="radio" name="radio_select" role="listbox" />
-                        <label for="title" id="title-label">Titre</label>
-
-                        <input id="price" type="radio" name="radio_select" role="listbox" />
-                        <label for="price" id="price-label">Prix</label>
-
-                        <i class="fas fa-chevron-down"></i>
+                    <label for="filter" id="filter-label">Standard Select</label>
+                    <div class="custom-select-wrapper" id="filter" role="button" aria-haspopup="listbox" tabindex="0">
+                        <div class="custom-select">
+                            <div class="custom-select__trigger"><span>Popularité</span>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="custom-options">
+                                <span class="custom-option selected" id="popularity" data-value="popularity" role="listbox">Popularité</span>
+                                <span class="custom-option" id="date" data-value="date" role="listbox">Date</span>
+                                <span class="custom-option" id="title" data-value="title" role="listbox">Titre</span>
+                                <span class="custom-option" id="price" data-value="price" role="listbox">Prix</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
             <section id="gallery-section"></section>
-            <div id="form-background">
+            <div id="form-background" role="dialog" aria-labelledby="form-header" aria-describedby="Formulaire de contact du photographe">
                 <form id="contact-form">
-                    <button id="close-form" type="button">
-                        <i class="fas fa-times"></i>
+                    <button id="close-form" type="button" aria-label="Fermer le formulaire de contact">
+                        <span class="fas fa-times"></span>
                     </button>
                     <div id="form-header">
                         <h1>Contactez-moi</h1>
@@ -72,12 +74,12 @@
             <div id="lightbox-background">
                 <div class="lightbox-modal" aria-label="Image closeup view">
                     <img id="lightbox-img" class="expanded-image" src="" alt="">
-                    <video id="lightbox-video" class="video-expanded" poster="placeholder.png" controls></video>
+                    <video id="lightbox-video" class="video-expanded" controls></video>
                     <p id="lightbox-title" class="expanded-image-title"></p>
-                    <i id="left-chevron" class="fas fa-chevron-left" aria-hidden="true"></i>
-                    <i id="right-chevron" class="fas fa-chevron-right" aria-hidden="true"></i>
+                    <span id="left-chevron" class="fas fa-chevron-left" aria-hidden="true"></span>
+                    <span id="right-chevron" class="fas fa-chevron-right" aria-hidden="true"></span>
                     <button id="button-lightbox-close" class="close-lightbox" aria-label="Close dialog">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="fas fa-times" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>

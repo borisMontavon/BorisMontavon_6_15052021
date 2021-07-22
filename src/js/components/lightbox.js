@@ -15,9 +15,10 @@ export default class Lightbox {
 
         this.mediasDisplayed = [];
 
-        this.previousImageClickEvent();
-        this.nextImageClickEvent();
+        this.previousMediaClickEvent();
+        this.nextMediaClickEvent();
         this.closeLightbox();
+        this.handleKeysNavigation();
     }
 
     render() {
@@ -48,53 +49,117 @@ export default class Lightbox {
 
                         this.currentId = media.state.id;
                     });
+
+                    mediaDOM.addEventListener("keyup", (event) => {
+                        if (!this.lightboxBackground.classList.contains("d-block")) {
+                            if (event.key === "Enter") {
+                                this.lightboxBackground.classList.toggle("d-block");
+                                this.lightboxImage.classList.add("d-inline-block");
+                                this.lightboxImage.setAttribute("src", media.imageSrc);
+                                this.lightboxImage.setAttribute("alt", media.state.title);
+                                this.lightboxTitle.innerHTML = media.state.title;
+
+                                // Prevent scrollable body behind the lightbox
+                                document.body.classList.toggle("overflow");
+
+                                this.currentId = media.state.id;
+                            }
+                        }
+                    });
                 }
             }
         });
     }
 
-    previousImageClickEvent() {
+    previousMediaClickEvent() {
         this.leftChevron.addEventListener("click", () => {
-            this.lightboxVideo.innerHTML = "";
-
-            let currentIndex = this.getIndex();
-
-            while (currentIndex >= 0) {
-                currentIndex--;
-
-                if (currentIndex === -1) {
-                    currentIndex = this.mediaContainer.medias.length - 1;
-                }
-
-                if (this.mediaContainer.medias[currentIndex].state.display) {
-                    break;
-                }
-            }
-
-            this.elementDisplay(currentIndex);
+            this.previous();
         });
     }
 
-    nextImageClickEvent() {
+    nextMediaClickEvent() {
         this.rightChevron.addEventListener("click", () => {
-            this.lightboxVideo.innerHTML = "";
-
-            let currentIndex = this.getIndex();
-
-            while (currentIndex < this.mediaContainer.medias.length) {
-                currentIndex++;
-
-                if (currentIndex === this.mediaContainer.medias.length) {
-                    currentIndex = 0;
-                }
-
-                if (this.mediaContainer.medias[currentIndex].state.display) {
-                    break;
-                }
-            }
-            
-            this.elementDisplay(currentIndex);
+            this.next();
         });
+    }
+
+    closeLightbox() {
+        this.closeLightboxButton.addEventListener("click", () => {
+            this.lightboxBackground.classList.toggle("d-block");
+            document.body.classList.toggle("overflow");
+        })
+    }
+
+    handleKeysNavigation() {
+        window.addEventListener("keyup", (event) => {
+            const body = document.body;
+
+            if (this.lightboxBackground.classList.contains("d-block")) {
+                if (event.defaultPrevented) {
+                    return;
+                }
+
+                switch (event.key) {
+                    case "Esc":
+                    case "Escape":
+                        $("#lightbox-background").toggleClass("d-block");
+                        body.classList.toggle("overflow");
+                        break;
+                    case "Left":
+                    case "ArrowLeft":
+                        this.previous();
+                        break;
+                    case "Right":
+                    case "ArrowRight":
+                        this.next();
+                        break;
+                    default:
+                        return;
+                }
+
+                event.preventDefault();
+            }
+        }, true);
+    }
+
+    previous() {
+        this.lightboxVideo.innerHTML = "";
+
+        let currentIndex = this.getIndex();
+
+        while (currentIndex >= 0) {
+            currentIndex--;
+
+            if (currentIndex === -1) {
+                currentIndex = this.mediaContainer.medias.length - 1;
+            }
+
+            if (this.mediaContainer.medias[currentIndex].state.display) {
+                break;
+            }
+        }
+
+        this.elementDisplay(currentIndex);
+    }
+
+    next() {
+        this.lightboxVideo.innerHTML = "";
+
+        let currentIndex = this.getIndex();
+
+        while (currentIndex < this.mediaContainer.medias.length) {
+            currentIndex++;
+
+            if (currentIndex === this.mediaContainer.medias.length) {
+                currentIndex = 0;
+            }
+
+            if (this.mediaContainer.medias[currentIndex].state.display) {
+                break;
+            }
+        }
+        
+        this.elementDisplay(currentIndex);
     }
 
     elementDisplay(currentIndex) {
@@ -123,12 +188,5 @@ export default class Lightbox {
         this.lightboxTitle.innerHTML = media.state.title;
 
         this.currentId = media.state.id;
-    }
-
-    closeLightbox() {
-        this.closeLightboxButton.addEventListener("click", () => {
-            this.lightboxBackground.classList.toggle("d-block");
-            document.body.classList.toggle("overflow");
-        })
     }
 }
