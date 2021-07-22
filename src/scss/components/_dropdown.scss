@@ -58,6 +58,7 @@
         }
 
         & .custom-options {
+            transition: 0.3s;
             opacity: 1;
             visibility: visible;
             pointer-events: all;
@@ -90,15 +91,10 @@
     left: 0;
     right: 0;
     background: $cedar-chest;
-    transition: all 0.5s;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     z-index: 2;
-
-    &:not(:last-child) {
-        border-bottom: 1px solid $white;
-    }
 }
 
 .custom-option {
@@ -111,7 +107,6 @@
     color: $black;
     line-height: 60px;
     cursor: pointer;
-    transition: 0.3s;
 
     &:hover {
         cursor: pointer;
