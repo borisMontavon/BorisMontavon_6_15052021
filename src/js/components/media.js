@@ -13,6 +13,28 @@ export default class Media {
             display: true
         }
 
+        this.template = "";
+
+        if (this.state.video !== undefined) {
+            // Video template
+            this.template = `<div class="media-container">
+                                <video controls="" class="video" aria-label="${media.title}" tabindex="0">
+                                    <source src="assets/photographer/${media.photographerId}/${media.video}" type="video/mp4">
+                                </video>
+                                <div class="image-infos-container" id="image-infos-${media.id}">
+                                    <h3>${media.title}</h3>
+                                </div>
+                            </div>`;
+        } else {
+            // Image template
+            this.template = `<div class="media-container">
+                                <img src="assets/photographer/${media.photographerId}/${media.image}" class="image" alt="${media.title}" id="${media.id}" tabindex="0">
+                                <div class="image-infos-container" id="image-infos-${media.id}">
+                                    <h3>${media.title}</h3>
+                                </div>
+                            </div>`;
+        }
+
         this.mediaContainerClass = "media-container";
         this.imageSrc = `assets/photographer/${this.state.photographerId}/${this.state.image}`;
         this.imageClass = "image";
@@ -24,67 +46,11 @@ export default class Media {
 
     render() {
         const parentElement = document.getElementById("gallery-section");
-        const imageContainer = document.createElement("div");
 
-        imageContainer.setAttribute("class", this.mediaContainerClass);
-
-        const infosContainer = document.createElement("div");
-
-        infosContainer.setAttribute("class", this.infosContainerClass);
-        infosContainer.setAttribute("id", this.infosContainerId);
-
-        infosContainer.appendChild(this.createTitleElement());
-
-        if (this.isVideo()) {
-            imageContainer.appendChild(this.createVideoElement());
-        } else {
-            imageContainer.appendChild(this.createImageElement());
-        }
-        
-        imageContainer.appendChild(infosContainer);
-
-        parentElement.appendChild(imageContainer);
-    }
-
-    createImageElement() {
-        const imageElement = document.createElement("img");
-
-        imageElement.setAttribute("src", this.imageSrc);
-        imageElement.setAttribute("class", this.imageClass);
-        imageElement.setAttribute("alt", this.state.title);
-        imageElement.setAttribute("id", this.state.id);
-        imageElement.setAttribute("tabindex", "0");
-
-        return imageElement;
+        parentElement.insertAdjacentHTML("beforeend", this.template);
     }
 
     isVideo() {
         return this.state.video !== undefined;
-    }
-
-    createVideoElement() {
-        const videoElement = document.createElement("video");
-
-        videoElement.setAttribute("controls", "");
-        videoElement.setAttribute("class", this.videoClass);
-        videoElement.setAttribute("aria-label", this.state.title);
-        videoElement.setAttribute("tabindex", "0");
-
-        const sourceElement = document.createElement("source");
-
-        sourceElement.setAttribute("src", this.videoSrc);
-        sourceElement.setAttribute("type", "video/mp4");
-
-        videoElement.appendChild(sourceElement);
-
-        return videoElement;
-    }
-
-    createTitleElement() {
-        const titleElement = document.createElement("h3");
-
-        titleElement.innerHTML = this.state.title;
-
-        return titleElement;
     }
 }

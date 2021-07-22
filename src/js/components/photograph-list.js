@@ -3,107 +3,30 @@ import Tags from "./tags";
 export default class PhotographList {
     constructor(photograph, photographContainer) {
         this.state = {
-            name: photograph.name,
             id: photograph.id,
-            city: photograph.city,
-            country: photograph.country,
             tags: photograph.tags,
-            tagline: photograph.tagline,
-            price: photograph.price,
-            portrait: photograph.portrait,
             display: true
         };
-    
-        this.linkClass = "photographer-link";
-        this.portraitClass = "photographer-portrait";
-        this.titleClass = "photographer-name";
-        this.locationClass = "photographer-city-country";
-        this.taglineClass = "photographer-tagline";
-        this.priceClass = "photographer-price";
-        this.tagContainerClass = "tag-container";
+
+        this.template = `<div id="photographer-${photograph.id}">
+                            <a href="photographer.html?id=${photograph.id}" class="photographer-link" aria-label="Lien vers la page du photographe ${photograph.name}" tabindex="0">
+                                <img src="assets/photographer-ids/${photograph.portrait}" alt="${photograph.name}" class="photographer-portrait">
+                                <h2 class="photographer-name">${photograph.name}</h2>
+                            </a>
+                            <p class="photographer-city-country">${photograph.city}, ${photograph.country}</p>
+                            <p class="photographer-tagline">${photograph.tagline}</p>
+                            <p class="photographer-price">${photograph.price}€/jour</p>
+                            <div class="tag-container" id="tag-container-${photograph.id}"></div>
+                        </div>`;
 
         this.photographContainer = photographContainer;
     }
 
     render() {
         const parentElement = document.getElementById("photographers");
-        const containerElement = document.createElement("div");
 
-        containerElement.setAttribute("id", `photographer-${this.state.id}`);
-        
-        parentElement.appendChild(containerElement);
-
-        const linkElement = document.createElement("a");
-
-        linkElement.setAttribute("href", `photographer.html?id=${this.state.id}`);
-        linkElement.setAttribute("class", this.linkClass);
-        linkElement.setAttribute("aria-label", `Lien vers la page du photographe ${this.state.name}`);
-        linkElement.setAttribute("tabindex", "0");
-
-        linkElement.appendChild(this.createPortraitElement());
-        linkElement.appendChild(this.createTitleElement());
-
-        containerElement.appendChild(linkElement);
-        containerElement.appendChild(this.createLocationElement());
-        containerElement.appendChild(this.createTaglineElement());
-        containerElement.appendChild(this.createPriceElement());
-        containerElement.appendChild(this.createTagContainerElement());
+        parentElement.insertAdjacentHTML("beforeend", this.template);
 
         new Tags(this.state.tags, `tag-container-${this.state.id}`, this.photographContainer).render();
-    }
-    
-    createPortraitElement() {
-        const portraitElement = document.createElement("img");
-
-        portraitElement.setAttribute("src", `assets/photographer-ids/${this.state.portrait}`);
-        portraitElement.setAttribute("alt", this.state.name);
-        portraitElement.setAttribute("class", this.portraitClass);
-
-        return portraitElement;
-    }
-
-    createTitleElement() {
-        const titleElement = document.createElement("h2");
-
-        titleElement.setAttribute("class", this.titleClass);
-        titleElement.innerHTML = this.state.name;
-
-        return titleElement;
-    }
-
-    createLocationElement() {
-        const locationElement = document.createElement("p");
-
-        locationElement.setAttribute("class", this.locationClass);
-        locationElement.innerHTML = `${this.state.city}, ${this.state.country}`;
-
-        return locationElement;
-    }
-
-    createTaglineElement() {
-        const taglineElement = document.createElement("p");
-
-        taglineElement.setAttribute("class", this.taglineClass);
-        taglineElement.innerHTML = this.state.tagline;
-
-        return taglineElement;
-    }
-
-    createPriceElement() {
-        const priceElement = document.createElement("p");
-
-        priceElement.setAttribute("class", this.priceClass);
-        priceElement.innerHTML = `${this.state.price}€/jour`;
-        
-        return priceElement;
-    }
-
-    createTagContainerElement() {
-        const tagContainerElement = document.createElement("div");
-
-        tagContainerElement.setAttribute("class", this.tagContainerClass);
-        tagContainerElement.setAttribute("id", `tag-container-${this.state.id}`);
-
-        return tagContainerElement;
     }
 }
