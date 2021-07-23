@@ -24,7 +24,8 @@ export default class ElementsFactory {
 
                 component = new MediaContainer(this.getMedias(), likes, this.getPhotographerData());
                 break;
-            default: return null;
+            default:
+                return null;
         }
 
         return component;
