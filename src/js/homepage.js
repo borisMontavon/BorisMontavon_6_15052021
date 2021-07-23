@@ -1,30 +1,4 @@
 import ElementsFactory from "./components/factory";
-import PhotographContainer from "./components/photograph-container";
-
-const factory = new ElementsFactory();
-
-// // Function to do multiple replaces in one call instead of chaining simple replace calls
-// String.prototype.replaceAll = function(replaceParams) {
-//     let result = this;
-
-//     for (let key in replaceParams) {
-//         result = result.replace(new RegExp(key, 'g'), replaceParams[key]);
-//     }
-
-//     return result;
-// };
-
-const sortTags = (photographers) => {
-    let tagsArrays = [];
-
-    photographers.map((photographer) => {
-        tagsArrays.push(photographer.tags);
-    });
-
-    const tagsArray = Array.prototype.concat.apply([], tagsArrays);
-
-    return [...new Set(tagsArray)];
-};
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -36,11 +10,9 @@ const getData = async (url) => {
 // Home page initialization with json's data
 const initializeHomepage = async () => {
     const data = await getData("assets/data.json");
-    const photographContainer = new PhotographContainer(data.photographers, sortTags(data.photographers));
-
-    factory.addElement(photographContainer);
-
-    factory.renderElements();
+    const factory = new ElementsFactory(data);
+    
+    factory.createComponent("PhotographerContainer").render();
 };
 
 window.addEventListener("load", () => {

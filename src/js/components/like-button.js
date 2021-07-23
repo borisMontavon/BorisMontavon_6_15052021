@@ -22,6 +22,11 @@ export default class LikeButton {
     render() {
         const parentElement = document.getElementById(this.parentId);
 
+        // If media is not displayed, the like button is not displayed
+        if (parentElement === null) {
+            return;
+        }
+
         parentElement.insertAdjacentHTML("beforeend", this.template);
     }
 
