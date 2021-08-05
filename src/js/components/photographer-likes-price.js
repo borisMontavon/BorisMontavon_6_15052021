@@ -1,11 +1,13 @@
 export default class PhotographerLikesPrice {
     constructor(likes, photographer) {
-        this.photographerId = photographer.id,
-        this.price = photographer.price,
+        this.state = {
+            id: photographer.id,
+            price: photographer.price
+        }
 
         this.likes = likes;
 
-        this.likeCounterId = `photograph-like-counter-${photographer.id}`;
+        this.likeCounterId = `photograph-like-counter-${this.state.id}`;
     }
 
     render() {
@@ -13,10 +15,10 @@ export default class PhotographerLikesPrice {
 
         let template = `<div class='infos-container'>
                             <div class='likes-container'>
-                                <p id='photograph-like-counter-${this.photographerId}'>${this.likes}</p>
+                                <p id='photograph-like-counter-${this.state.id}'>${this.likes}</p>
                                 <span class='fas fa-heart' aria-hidden='true'></span>
                             </div>
-                            <p>${this.price}€ / jour</p>
+                            <p>${this.state.price}€ / jour</p>
                         </div>`;
 
         parentElement.insertAdjacentHTML("beforeend", template);

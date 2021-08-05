@@ -1,7 +1,7 @@
 import ContactButton from "./contact-button";
 
 export default class PhotographerInfo {
-    constructor(photograph, mediaContainer) {
+    constructor(photograph) {
         this.state = {
             city: photograph.city,
             country: photograph.country,
@@ -11,8 +11,6 @@ export default class PhotographerInfo {
             tagline: photograph.tagline,
             tags: photograph.tags,
         };
-
-        this.mediaContainer = mediaContainer;
     }
 
     render() {

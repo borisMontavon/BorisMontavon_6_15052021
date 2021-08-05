@@ -1,3 +1,4 @@
+// Import factory method
 import { createComponent } from "./factory";
 import { addTagEventListener } from "./services/tag-service";
 import { closeFormButton } from "./functions/close-form-button";
@@ -18,11 +19,14 @@ const initializePhotographerPage = async () => {
     const data = await getData("assets/data.json");
     
     const mediaContainer = createComponent("MediaContainer", data);
+    const photographerInfo = createComponent("PhotographerInfo", data);
     const pagePhotographerTags = createComponent("PagePhotographerTags", data);
     const likeButtons = createComponent("LikeButtons", data);
-    const photographerInfo = createComponent("PhotographerInfo", data);
+    const photographerLikesPrice = createComponent("PhotographerLikesPrice", data);
 
     mediaContainer.render();
+
+    photographerInfo.render();
 
     pagePhotographerTags.forEach((tag) => {
         tag.render();
@@ -32,16 +36,16 @@ const initializePhotographerPage = async () => {
         likeButton.render();
     });
 
-    photographerInfo.render();
+    photographerLikesPrice.render();
 
     const likeButtonToggleFunction = () => {
         toggleLikeButtons(likeButtons, function(likeButton) {
             if (!likeButton.liked) {
                 likeButton.increaseLikeCounter();
-                photographerInfo.increaseLikeCounter();
+                photographerLikesPrice.increaseLikeCounter();
             } else {
                 likeButton.decreaseLikeCounter();
-                photographerInfo.decreaseLikeCounter();
+                photographerLikesPrice.decreaseLikeCounter();
             }
         });
     }

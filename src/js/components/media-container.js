@@ -1,16 +1,12 @@
-import PhotographerInfo from "./photographer-info";
 import Lightbox from "./lightbox";
 
 export default class MediaContainer {
-    constructor(medias, photographerData) {
+    constructor(medias) {
         this.medias = medias;
 
         this.tagsSelected = [];
 
-        this.photographerInfo = new PhotographerInfo(photographerData, this);
         this.lightbox = new Lightbox(this);
-
-        this.photographerInfo.render();
     }
 
     render() {

@@ -1,4 +1,6 @@
+// Import factory method
 import { createComponent } from "./factory";
+// Import functions
 import { addTagEventListener } from "./services/tag-service";
 import { topButton } from "./functions/top-button";
 

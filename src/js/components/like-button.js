@@ -1,14 +1,17 @@
 export default class LikeButton {
     constructor(media) {
-        this.mediaId = media.id;
-        this.likes = media.likes;
-        this.parentId = `image-infos-${media.id}`;
+        this.state = {
+            id: media.id,
+            likes: media.likes
+        }
+
+        this.parentId = `image-infos-${this.state.id}`;
 
         this.iconClassEmpty = "far fa-heart";
         this.iconClassFull = "fas fa-heart";
-        this.iconId = `heart-icon-${this.mediaId}`;
-        this.likeButtonId = `like-${this.mediaId}`;
-        this.likeCounterId = `like-counter-${this.mediaId}`;
+        this.iconId = `heart-icon-${this.state.id}`;
+        this.likeButtonId = `like-${this.state.id}`;
+        this.likeCounterId = `like-counter-${this.state.id}`;
         this.liked = false;
     }
 
@@ -22,9 +25,9 @@ export default class LikeButton {
 
         let iconClass = this.liked ? this.iconClassFull : this.iconClassEmpty;
         let template = `<div class="like-button" aria-label="likes">
-                            <p id="like-counter-${this.mediaId}">${this.likes}</p>
-                            <button id="like-${this.mediaId}" aria-label="Bouton like">
-                                <span class="${iconClass}" id="heart-icon-${this.mediaId}" aria-hidden="true"></span>
+                            <p id="like-counter-${this.state.id}">${this.state.likes}</p>
+                            <button id="like-${this.state.id}" aria-label="Bouton like">
+                                <span class="${iconClass}" id="heart-icon-${this.state.id}" aria-hidden="true"></span>
                             </button>
                         </div>`;
 
@@ -38,9 +41,9 @@ export default class LikeButton {
         heart.removeAttribute("class", this.iconClassEmpty);
         heart.setAttribute("class", this.iconClassFull);
 
-        this.likes++;
+        this.state.likes++;
 
-        likeCounter.innerHTML = this.likes;
+        likeCounter.innerHTML = this.state.likes;
         this.liked = true;
     }
 
@@ -51,9 +54,9 @@ export default class LikeButton {
         heart.removeAttribute("class", this.iconClassFull);
         heart.setAttribute("class", this.iconClassEmpty);
 
-        this.likes--;
+        this.state.likes--;
 
-        likeCounter.innerHTML = this.likes;
+        likeCounter.innerHTML = this.state.likes;
         this.liked = false;
     }
 }

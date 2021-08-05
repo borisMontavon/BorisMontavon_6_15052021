@@ -4,6 +4,7 @@ import PhotographContainer from "./components/photograph-container";
 // Photographer page components
 import PhotographerLikesPrice from "./components/photographer-likes-price";
 import MediaContainer from "./components/media-container";
+import PhotographerInfo from "./components/photographer-info";
 // Import data methods
 import * as DataService from "./services/data-service";
 
@@ -31,6 +32,9 @@ export const createComponent = (type, data) => {
                 });
             });
             break;
+        case "PhotographerInfo":
+            component = new PhotographerInfo(DataService.getPhotographerData(data.photographers));
+            break;
         case "PagePhotographerTags":
             component = [];
             const photographerData = DataService.getPhotographerData(data.photographers);
@@ -42,7 +46,7 @@ export const createComponent = (type, data) => {
         case "LikeButtons":
             component = DataService.getLikeButtons(data.media);
             break;
-        case "PhotographerInfo":
+        case "PhotographerLikesPrice":
             component = new PhotographerLikesPrice(DataService.getTotalLikes(data.media), DataService.getPhotographerData(data.photographers));
             break;
         default:
