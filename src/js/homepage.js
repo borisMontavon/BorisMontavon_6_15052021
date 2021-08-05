@@ -39,7 +39,7 @@ const initializeHomepage = async () => {
 			tag.render();
 		});
 
-		photographerTags.forEach((tag) => {
+		homePhotographerTags.forEach((tag) => {
 			tag.render();
 		});
 	});
