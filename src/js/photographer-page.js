@@ -1,4 +1,10 @@
-import ElementsFactory from "./components/factory";
+import { createComponent } from "./factory";
+import { addTagEventListener } from "./services/tag-service";
+import { closeFormButton } from "./functions/close-form-button";
+import { toggleDropdownFilter } from "./services/dropdown-service";
+// Import data methods
+import { getPhotographerData } from "./services/data-service";
+import { toggleLikeButtons } from "./services/like-button-service";
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -10,43 +16,70 @@ const getData = async (url) => {
 // Photographer page initialization with Json's data
 const initializePhotographerPage = async () => {
     const data = await getData("assets/data.json");
-    const factory = new ElementsFactory(data);
     
-    factory.createComponent("MediaContainer").render();
+    const mediaContainer = createComponent("MediaContainer", data);
+    const pagePhotographerTags = createComponent("PagePhotographerTags", data);
+    const likeButtons = createComponent("LikeButtons", data);
+    const photographerInfo = createComponent("PhotographerInfo", data);
+
+    mediaContainer.render();
+
+    pagePhotographerTags.forEach((tag) => {
+        tag.render();
+    });
+
+    likeButtons.forEach((likeButton) => {
+        likeButton.render();
+    });
+
+    photographerInfo.render();
+
+    const likeButtonToggleFunction = () => {
+        toggleLikeButtons(likeButtons, function(likeButton) {
+            if (!likeButton.liked) {
+                likeButton.increaseLikeCounter();
+                photographerInfo.increaseLikeCounter();
+            } else {
+                likeButton.decreaseLikeCounter();
+                photographerInfo.decreaseLikeCounter();
+            }
+        });
+    }
+
+    addTagEventListener(mediaContainer, function() {
+        const photographerData = getPhotographerData(data.photographers);
+        const parentElement = document.getElementById(`tag-container-${photographerData.id}`);
+
+        parentElement.innerHTML = "";
+
+		mediaContainer.render();
+
+        pagePhotographerTags.forEach((tag) => {
+            tag.render();
+        });
+
+        likeButtons.forEach((likeButton) => {
+            likeButton.render();
+        });
+
+        likeButtonToggleFunction();
+	});
+
+    toggleDropdownFilter(mediaContainer.getElementsToFilter(), function() {
+        mediaContainer.render();
+
+        likeButtons.forEach((likeButton) => {
+            likeButton.render();
+        });
+
+        likeButtonToggleFunction();
+    });
+
+    likeButtonToggleFunction();
 };
 
 window.addEventListener("load", () => {
     initializePhotographerPage();
 });
 
-// Close form button
-$(document).ready(function() {
-    const body = document.body;
-
-	$("#close-form").click(function() {
-        $("#form-background").toggleClass("d-block");
-        body.classList.toggle("overflow");
-    });
-
-    $(document).keyup(function(event) {
-        if ($("#form-background").hasClass("d-block")) {
-            if (event.defaultPrevented) {
-                return;
-            }
-
-            switch (event.key) {
-                case "Esc":
-                case "Escape":
-                    $("#form-background").toggleClass("d-block");
-                    body.classList.toggle("overflow");
-                    break;
-                default:
-                    break;
-            }
-
-            event.preventDefault();
-        }
-    });
-});
-
-
+closeFormButton();

@@ -1,15 +1,14 @@
-import FormValidation from "./form-validation";
+import { isFormFieldsValid } from "../services/form-validation-service";
 
 export default class ContactButton {
-    constructor() {
-        this.template = "<button id='{{id}}' class='contact-button' aria-label='Contactez-moi' tabindex='0'>Contactez-moi</button>";
-    }
-
     render() {
         const desktopParentElement = document.getElementById("photographer-section");
         const mobileParentElement = document.getElementsByTagName("main")[0];
-        const desktopButton = this.template.replace("{{id}}", "desktop-contact-button");
-        const mobileButton = this.template.replace("{{id}}", "mobile-contact-button");
+
+        let template = "<button id='{{id}}' class='contact-button' aria-label='Contactez-moi' tabindex='0'>Contactez-moi</button>";
+
+        const desktopButton = template.replace("{{id}}", "desktop-contact-button");
+        const mobileButton = template.replace("{{id}}", "mobile-contact-button");
 
         desktopParentElement.insertAdjacentHTML("beforeend", desktopButton);
         mobileParentElement.insertAdjacentHTML("beforeend", mobileButton);
@@ -30,7 +29,7 @@ export default class ContactButton {
                 body.classList.toggle("overflow");
                 firstInput.focus();
                 
-                new FormValidation().isFormFieldsValid();
+                isFormFieldsValid();
             });
         });
     }

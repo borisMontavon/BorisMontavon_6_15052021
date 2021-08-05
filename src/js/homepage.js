@@ -1,4 +1,6 @@
-import ElementsFactory from "./components/factory";
+import { createComponent } from "./factory";
+import { addTagEventListener } from "./services/tag-service";
+import { topButton } from "./functions/top-button";
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -10,30 +12,39 @@ const getData = async (url) => {
 // Home page initialization with json's data
 const initializeHomepage = async () => {
     const data = await getData("assets/data.json");
-    const factory = new ElementsFactory(data);
-    
-    factory.createComponent("PhotographerContainer").render();
+    const photographerContainer = createComponent("PhotographerContainer", data);
+	const globalTags = createComponent("GlobalTags", data);
+	const homePhotographerTags = createComponent("HomePhotographerTags", data);
+
+	photographerContainer.render();
+
+	globalTags.forEach((tag) => {
+		tag.render();
+	});
+
+	homePhotographerTags.forEach((tag) => {
+		tag.render();
+	});
+
+	addTagEventListener(photographerContainer, function() {
+		const globalTagsParentElement = document.getElementById("tags");
+
+        globalTagsParentElement.innerHTML = "";
+
+		photographerContainer.render();
+
+		globalTags.forEach((tag) => {
+			tag.render();
+		});
+
+		photographerTags.forEach((tag) => {
+			tag.render();
+		});
+	});
 };
 
 window.addEventListener("load", () => {
     initializeHomepage();
 });
 
-// Top button
-$(window).scroll(function() {
-	const height = $(window).scrollTop();
-	
-	if (height > 150) {
-		$("#toTopButton").fadeIn();
-	} else {
-		$("#toTopButton").fadeOut();
-	}
-});
-	
-$(document).ready(function() {
-	$("#toTopButton").click(function(event) {
-		event.preventDefault();
-		$("html, body").animate({ scrollTop: 0}, "slow");
-		return false;
-	});
-});
+topButton();

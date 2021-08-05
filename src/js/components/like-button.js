@@ -4,13 +4,6 @@ export default class LikeButton {
         this.likes = media.likes;
         this.parentId = `image-infos-${media.id}`;
 
-        this.template = `<div class="like-button" aria-label="likes">
-                            <p id="like-counter-${media.id}">${media.likes}</p>
-                            <button id="like-${media.id}" aria-label="Bouton like">
-                                <span class="far fa-heart" id="heart-icon-${media.id}" aria-hidden="true"></span>
-                            </button>
-                        </div>`;
-
         this.iconClassEmpty = "far fa-heart";
         this.iconClassFull = "fas fa-heart";
         this.iconId = `heart-icon-${this.mediaId}`;
@@ -27,7 +20,15 @@ export default class LikeButton {
             return;
         }
 
-        parentElement.insertAdjacentHTML("beforeend", this.template);
+        let iconClass = this.liked ? this.iconClassFull : this.iconClassEmpty;
+        let template = `<div class="like-button" aria-label="likes">
+                            <p id="like-counter-${this.mediaId}">${this.likes}</p>
+                            <button id="like-${this.mediaId}" aria-label="Bouton like">
+                                <span class="${iconClass}" id="heart-icon-${this.mediaId}" aria-hidden="true"></span>
+                            </button>
+                        </div>`;
+
+        parentElement.insertAdjacentHTML("beforeend", template);
     }
 
     increaseLikeCounter() {
