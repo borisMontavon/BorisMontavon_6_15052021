@@ -1,26 +1,16 @@
-import PhotographList from "./photograph-list";
-import Tags from "./tags";
+import Photographer from "./photographer";
 
 export default class PhotographContainer {
-    constructor(photographers, tagsList) {
+    constructor(photographers) {
         this.tagsSelected = [];
-
-        this.tags = new Tags(tagsList, "tags", this);
-
         this.photographers = [];
         
         photographers.forEach((photographer) => {
-            this.photographers.push(new PhotographList(photographer, this));
+            this.photographers.push(new Photographer(photographer));
         });
     }
 
     render() {
-        const tagsParentElement = document.getElementById("tags");
-
-        tagsParentElement.innerHTML = "";
-
-        this.tags.render();
-        
         const photographersParentElement = document.getElementById("photographers");
 
         photographersParentElement.innerHTML = "";

@@ -1,20 +1,12 @@
-import DropdownFilter from "./dropdown-filter";
-import PhotographerSection from "./photographer-section";
 import Lightbox from "./lightbox";
 
 export default class MediaContainer {
-    constructor(medias, likes, photographerData) {
+    constructor(medias) {
         this.medias = medias;
-        this.likes = likes;
 
         this.tagsSelected = [];
 
-        this.dropdownFilter = new DropdownFilter(this);
-        this.photographerSection = new PhotographerSection(photographerData, this);
         this.lightbox = new Lightbox(this);
-
-        this.dropdownFilter.toggleDropdownFilter();
-        this.photographerSection.render();
     }
 
     render() {
@@ -30,7 +22,6 @@ export default class MediaContainer {
         });
 
         this.lightbox.render();
-        this.likes.render();
     }
 
     getElementsToFilter() {

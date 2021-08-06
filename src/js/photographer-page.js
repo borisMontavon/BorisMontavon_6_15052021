@@ -1,26 +1,11 @@
-import ElementsFactory from "./components/factory";
-import Media from "./components/media";
-import Likes from "./components/likes";
-import PhotographerInfo from "./components/photographer-info";
-import LikeButton from "./components/like-button";
-import MediaContainer from "./components/media-container";
-
-// Get ID of the current photographer to get associate data
-const urlParams = new URLSearchParams(window.location.search);
-const currrentId = urlParams.get('id');
-const factory = new ElementsFactory();
-
-// // Function to do multiple replaces in one call instead of chaining simple replace calls
-// String.prototype.replaceAll = function(replaceParams) {
-//     let result = this;
-
-//     for (let key in replaceParams) {
-//         result = result.replace(new RegExp(key, 'g'), replaceParams[key]);
-//     }
-
-//     return result;
-// };
-
+// Import factory method
+import { createComponent } from "./factory";
+import { addTagEventListener } from "./services/tag-service";
+import { closeFormButton } from "./functions/close-form-button";
+import { toggleDropdownFilter } from "./services/dropdown-service";
+// Import data methods
+import { getPhotographerData } from "./services/data-service";
+import { toggleLikeButtons } from "./services/like-button-service";
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -32,73 +17,73 @@ const getData = async (url) => {
 // Photographer page initialization with Json's data
 const initializePhotographerPage = async () => {
     const data = await getData("assets/data.json");
+    
+    const mediaContainer = createComponent("MediaContainer", data);
+    const photographerInfo = createComponent("PhotographerInfo", data);
+    const pagePhotographerTags = createComponent("PagePhotographerTags", data);
+    const likeButtons = createComponent("LikeButtons", data);
+    const photographerLikesPrice = createComponent("PhotographerLikesPrice", data);
 
-    const photographerData = data.photographers.find((photographer) => {
-        return photographer.id == currrentId;
+    mediaContainer.render();
+
+    photographerInfo.render();
+
+    pagePhotographerTags.forEach((tag) => {
+        tag.render();
     });
 
-    let photographerImages = data.media.filter((image) => {
-        return image.photographerId == currrentId;
+    likeButtons.forEach((likeButton) => {
+        likeButton.render();
     });
 
-    photographerImages.sort((a, b) => b.likes - a.likes);
-    photographerImages.forEach((media) => {
-        media.date = new Date(media.date);
+    photographerLikesPrice.render();
+
+    const likeButtonToggleFunction = () => {
+        toggleLikeButtons(likeButtons, function(likeButton) {
+            if (!likeButton.liked) {
+                likeButton.increaseLikeCounter();
+                photographerLikesPrice.increaseLikeCounter();
+            } else {
+                likeButton.decreaseLikeCounter();
+                photographerLikesPrice.decreaseLikeCounter();
+            }
+        });
+    }
+
+    addTagEventListener(mediaContainer, function() {
+        const photographerData = getPhotographerData(data.photographers);
+        const parentElement = document.getElementById(`tag-container-${photographerData.id}`);
+
+        parentElement.innerHTML = "";
+
+		mediaContainer.render();
+
+        pagePhotographerTags.forEach((tag) => {
+            tag.render();
+        });
+
+        likeButtons.forEach((likeButton) => {
+            likeButton.render();
+        });
+
+        likeButtonToggleFunction();
+	});
+
+    toggleDropdownFilter(mediaContainer.getElementsToFilter(), function() {
+        mediaContainer.render();
+
+        likeButtons.forEach((likeButton) => {
+            likeButton.render();
+        });
+
+        likeButtonToggleFunction();
     });
 
-    const totalLikes = photographerImages
-        .map((media) => media.likes)
-        .reduce((a, b) => a + b, 0);
-
-    let medias = [];
-    let likeButtons = [];
-
-    photographerImages.forEach((image) => {
-        medias.push(new Media(image));
-        likeButtons.push(new LikeButton(image));
-    });
-
-    const likes = new Likes(new PhotographerInfo(totalLikes, photographerData), likeButtons);
-
-    const mediaContainer = new MediaContainer(medias, likes, photographerData);
-
-    factory.addElement(mediaContainer);
-
-    factory.renderElements();
+    likeButtonToggleFunction();
 };
 
 window.addEventListener("load", () => {
     initializePhotographerPage();
 });
 
-// Close form button
-$(document).ready(function() {
-    const body = document.body;
-
-	$("#close-form").click(function() {
-        $("#form-background").toggleClass("d-block");
-        body.classList.toggle("overflow");
-    });
-
-    $(document).keyup(function(event) {
-        if ($("#form-background").hasClass("d-block")) {
-            if (event.defaultPrevented) {
-                return;
-            }
-
-            switch (event.key) {
-                case "Esc":
-                case "Escape":
-                    $("#form-background").toggleClass("d-block");
-                    body.classList.toggle("overflow");
-                    break;
-                default:
-                    break;
-            }
-
-            event.preventDefault();
-        }
-    });
-});
-
-
+closeFormButton();

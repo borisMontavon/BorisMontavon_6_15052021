@@ -1,30 +1,8 @@
-import ElementsFactory from "./components/factory";
-import PhotographContainer from "./components/photograph-container";
-
-const factory = new ElementsFactory();
-
-// // Function to do multiple replaces in one call instead of chaining simple replace calls
-// String.prototype.replaceAll = function(replaceParams) {
-//     let result = this;
-
-//     for (let key in replaceParams) {
-//         result = result.replace(new RegExp(key, 'g'), replaceParams[key]);
-//     }
-
-//     return result;
-// };
-
-const sortTags = (photographers) => {
-    let tagsArrays = [];
-
-    photographers.map((photographer) => {
-        tagsArrays.push(photographer.tags);
-    });
-
-    const tagsArray = Array.prototype.concat.apply([], tagsArrays);
-
-    return [...new Set(tagsArray)];
-};
+// Import factory method
+import { createComponent } from "./factory";
+// Import functions
+import { addTagEventListener } from "./services/tag-service";
+import { topButton } from "./functions/top-button";
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -36,32 +14,39 @@ const getData = async (url) => {
 // Home page initialization with json's data
 const initializeHomepage = async () => {
     const data = await getData("assets/data.json");
-    const photographContainer = new PhotographContainer(data.photographers, sortTags(data.photographers));
+    const photographerContainer = createComponent("PhotographerContainer", data);
+	const globalTags = createComponent("GlobalTags", data);
+	const homePhotographerTags = createComponent("HomePhotographerTags", data);
 
-    factory.addElement(photographContainer);
+	photographerContainer.render();
 
-    factory.renderElements();
+	globalTags.forEach((tag) => {
+		tag.render();
+	});
+
+	homePhotographerTags.forEach((tag) => {
+		tag.render();
+	});
+
+	addTagEventListener(photographerContainer, function() {
+		const globalTagsParentElement = document.getElementById("tags");
+
+        globalTagsParentElement.innerHTML = "";
+
+		photographerContainer.render();
+
+		globalTags.forEach((tag) => {
+			tag.render();
+		});
+
+		homePhotographerTags.forEach((tag) => {
+			tag.render();
+		});
+	});
 };
 
 window.addEventListener("load", () => {
     initializeHomepage();
 });
 
-// Top button
-$(window).scroll(function() {
-	const height = $(window).scrollTop();
-	
-	if (height > 150) {
-		$("#toTopButton").fadeIn();
-	} else {
-		$("#toTopButton").fadeOut();
-	}
-});
-	
-$(document).ready(function() {
-	$("#toTopButton").click(function(event) {
-		event.preventDefault();
-		$("html, body").animate({ scrollTop: 0}, "slow");
-		return false;
-	});
-});
+topButton();
