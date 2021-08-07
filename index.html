@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html lang="fr">
     <head>
+        <title>FishEye</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
+        <meta name="description" content="Freelance photographers website">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon-package/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-package/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-package/favicon-16x16.png">
+        <link rel="manifest" href="./assets/favicon-package/site.webmanifest">
+        <link rel="mask-icon" href="./assets/favicon-package/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <!-- Stylesheet import / keeping it here for development purpose -->
+        <link rel="preload" href="./src/css/home.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./src/css/home.css"></noscript>
+        <!-- Minified / production import -->
+        <!-- <link rel="preload" href="./dist/css/home.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./dist/css/home.min.css"></noscript> -->
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
+        <header aria-label="Logo et filtre par tags">
+            <h1 class="logo" aria-label="Page d'accueil Fisheye">Fish<i class="fas fa-camera-retro"></i>ye</h1>
+            <nav id="tags" aria-label="Catégories photographes"></nav>
+        </header>
+        <main aria-label="Contenu principal (titre et liens)">
+            <h1 id="page-title">Nos photographes</h1>
+            <section id="photographers" aria-label="Liste des photographes"></section>
+        </main>
+        <button id="toTopButton" aria-label="Retour au début de la page"><i class="fas fa-chevron-up"></i></button>
+        <script src="https://kit.fontawesome.com/45058126b7.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="./dist/js/homepage.bundle.js"></script>
     </body>
 </html>

@@ -1,0 +1,46 @@
+// To top button
+
+#toTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 98;
+    border: none;
+    outline: none;
+    background-color: $cedar-chest;
+    color: $white;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+
+    &:focus {
+        background-color: $carmine;
+    }
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        bottom: 30px;
+        right: 30px;
+        border-radius: 25px;
+        width: 45px;
+        height: 45px;
+    }
+
+    i {
+        font-size: 1.2rem;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        transition: .3s;
+        
+        &:hover {
+            background-color: $carmine;
+        }
+    }
+}

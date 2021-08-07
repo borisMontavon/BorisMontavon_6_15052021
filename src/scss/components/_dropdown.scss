@@ -1,0 +1,170 @@
+// Select dropdown
+
+#filter-section {
+    position: relative;
+    height: 75px;
+    display: none;
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        display: block;
+    }
+}
+
+.filter-container {
+    display: flex;
+    margin: 1rem 4.5rem;
+    position: absolute;
+    z-index: 1;
+
+    #filter-label {
+        font-family: $work-sans;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 20px 20px 0 0;
+    }
+}
+
+.custom-select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 175px;
+
+    &:focus {
+        & .custom-select__trigger {
+            background-color: $cedar-chest;
+            color: $black;
+            border-radius: 0.25rem 0.25rem 0 0;
+        }
+
+        & .arrow {
+            &::before, 
+            &::after {
+                background-color: $black;
+            }
+        }
+    }
+}
+
+.custom-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &.open {
+        & .custom-select__trigger {
+            background-color: $cedar-chest;
+            color: $black;
+            border-radius: 0.25rem 0.25rem 0 0;
+        }
+
+        & .custom-options {
+            transition: 0.3s;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+    }
+}
+
+.custom-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    font-family: $work-sans;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $white;
+    height: 60px;
+    line-height: 60px;
+    background: $carmine;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: 0.3s;
+}
+
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $cedar-chest;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 0 22px 0 22px;
+    font-family: $work-sans;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $black;
+    line-height: 60px;
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+        color: $white;
+    }
+
+    &.selected {
+        color: $white;
+        background-color: $carmine;
+    }
+
+    &:focus {
+        background-color: $carmine;
+        color: $white;
+    }
+}
+
+.arrow {
+    position: relative;
+    height: 15px;
+    width: 15px;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 0.25rem;
+        height: 100%;
+        transition: 0.3s;
+    }
+
+    &::before {
+        
+        left: -4px;
+        transform: rotate(45deg);
+        background-color: $white;
+        border-radius: 5px;
+    }
+
+    &::after {
+        left: 4px;
+        transform: rotate(-45deg);
+        background-color: $white;
+        border-radius: 5px;
+    }
+}
+
+.open {
+    & .arrow {
+        &::before {
+            left: -4px;
+            transform: rotate(-45deg);
+        }
+
+        &::after {
+            left: 4px;
+            transform: rotate(45deg);
+        }
+    }
+}

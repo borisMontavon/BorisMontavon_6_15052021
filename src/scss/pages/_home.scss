@@ -1,0 +1,134 @@
+// Home style
+
+// Header
+header {
+    padding: 2rem 1.5rem;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        padding: 3rem 2.5rem;
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        padding: 3rem 4.5rem 5.5rem 4.5rem;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    @media screen and (min-width: $computer-breakpoint) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 4rem;
+    }
+}
+
+// Main
+#page-title {
+    font-family: $work-sans;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: $carmine;
+    position: absolute;
+    top: 3.25rem;
+    right: 1.5rem;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        font-size: 1.5rem;
+        top: 4rem;
+        right: 2.5rem;
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        font-size: 1.8rem;
+        right: 4.5rem;
+    }
+}
+
+#photographers {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    font-family: $work-sans;
+    margin-top: 15px;
+
+    @media screen and (min-width: $tablet-breakpoint) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (min-width: $computer-sm-breakpoint) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    > div {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        margin-bottom: 50px;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            margin-bottom: 75px;
+        }
+    }
+}
+
+.photographer-link {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+    &:focus {
+        outline: 1px dotted $black;
+    }
+}
+
+.photographer-portrait {
+    width: 225px;
+    height: 225px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: $box-shadow;
+}
+
+.photographer-name {
+    color: $cedar-chest;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.photographer-city-country {
+    color: $carmine;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.photographer-tagline {
+    font-size: 0.7rem;
+    margin-bottom: 3px;
+}
+
+.photographer-price {
+    color: $davys-grey;
+    font-size: 0.7rem;
+    margin-bottom: 2.5px;
+}
+
+.tag-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
