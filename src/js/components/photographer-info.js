@@ -1,36 +1,34 @@
-export default class PhotographerInfo {
-    constructor(likes, photographer) {
-        this.likes = likes;
-        this.template = `<div class='infos-container'>
-                            <div class='likes-container'>
-                                <p id='photograph-like-counter-${photographer.id}'>${likes}</p>
-                                <span class='fas fa-heart' aria-hidden='true'></span>
-                            </div>
-                            <p>${photographer.price}€ / jour</p>
-                        </div>`;
+import ContactButton from "./contact-button";
 
-        this.likeCounterId = `photograph-like-counter-${photographer.id}`;
+export default class PhotographerInfo {
+    constructor(photograph) {
+        this.state = {
+            city: photograph.city,
+            country: photograph.country,
+            id: photograph.id,
+            name: photograph.name,
+            portrait: photograph.portrait,
+            tagline: photograph.tagline,
+            tags: photograph.tags,
+        };
     }
 
     render() {
-        const parentElement = document.getElementById("main-section");
+        const parentElement = document.getElementById("photographer-section");
 
-        parentElement.insertAdjacentHTML("beforeend", this.template);
-    }
+        let template = `<div class="photographer-info">
+                            <h1 class="photographer-name">${this.state.name}</h1>
+                            <p class="photographer-city-country">${this.state.city}, ${this.state.country}</p>
+                            <p class="photographer-tagline">${this.state.tagline}</p>
+                            <div class="tag-container" id="tag-container-${this.state.id}"></div>
+                        </div>
+                        <img src="assets/photographer-ids/${this.state.portrait}" alt="${this.state.name}" class="photographer-portrait">`;
 
-    increaseLikeCounter() {
-        const likeCounter = document.getElementById(this.likeCounterId);
+        parentElement.insertAdjacentHTML("beforeend", template);
 
-        this.likes++;
+        new ContactButton().render();
+        const formTitle = document.getElementById("form-title");
 
-        likeCounter.innerHTML = this.likes;
-    }
-
-    decreaseLikeCounter() {
-        const likeCounter = document.getElementById(this.likeCounterId);
-
-        this.likes--;
-
-        likeCounter.innerHTML = this.likes;
+        formTitle.innerHTML = this.state.name;
     }
 }
