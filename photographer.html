@@ -13,12 +13,12 @@
         <link rel="mask-icon" href="./assets/favicon-package/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
-        <!-- Stylesheet import -->
-        <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript>
-        <!-- Minified -->
-        <!-- <link rel="preload" href="./dist/css/photographer-page.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="./dist/css/photographer-page.min.css"></noscript> -->
+        <!-- Stylesheet import / keeping it here for development purpose -->
+        <!-- <link rel="preload" href="./src/css/photographer-page.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./src/css/photographer-page.css"></noscript> -->
+        <!-- Minified / production import -->
+        <link rel="preload" href="./dist/css/photographer-page.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="./dist/css/photographer-page.min.css"></noscript>
     </head>
     <body>
         <header>
@@ -30,7 +30,7 @@
             <section id="photographer-section"></section>
             <section id="filter-section">
                 <div class="filter-container">
-                    <label for="filter" id="filter-label">Standard Select</label>
+                    <label for="filter" id="filter-label">Trier par</label>
                     <div class="custom-select-wrapper" id="filter" role="button" aria-haspopup="listbox" tabindex="0">
                         <div class="custom-select">
                             <div class="custom-select__trigger"><span>Popularité</span>
@@ -38,22 +38,22 @@
                             </div>
                             <div class="custom-options">
                                 <span class="custom-option selected" id="popularity" data-value="popularity" role="listbox">Popularité</span>
-                                <span class="custom-option" id="date" data-value="date" role="listbox">Date</span>
-                                <span class="custom-option" id="title" data-value="title" role="listbox">Titre</span>
-                                <span class="custom-option" id="price" data-value="price" role="listbox">Prix</span>
+                                <span class="custom-option" id="date" data-value="date">Date</span>
+                                <span class="custom-option" id="title" data-value="title">Titre</span>
+                                <span class="custom-option" id="price" data-value="price">Prix</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="gallery-section"></section>
-            <div id="form-background" role="dialog" aria-labelledby="form-header" aria-describedby="Formulaire de contact du photographe">
+            <div id="form-background" role="dialog" aria-labelledby="form-header" aria-labelledby="contact-me form-title">
                 <form id="contact-form">
                     <button id="close-form" type="button" aria-label="Fermer le formulaire de contact">
                         <span class="fas fa-times"></span>
                     </button>
                     <div id="form-header">
-                        <h1>Contactez-moi</h1>
+                        <h1 id="contact-me">Contactez-moi</h1>
                         <h1 id="form-title"></h1>
                     </div>
                     <label for="fname">Prénom</label>
