@@ -1,11 +1,11 @@
 // Import factory method
-import { createComponent } from "./factory";
-import { addTagEventListener } from "./services/tag-service";
-import { closeFormButton } from "./functions/close-form-button";
-import { toggleDropdownFilter } from "./services/dropdown-service";
+import createComponent from "./factory";
+import addTagEventListener from "./services/tag-service";
+import closeFormButton from "./functions/close-form-button";
+import toggleDropdownFilter from "./services/dropdown-service";
 // Import data methods
 import { getPhotographerData } from "./services/data-service";
-import { toggleLikeButtons } from "./services/like-button-service";
+import toggleLikeButtons from "./services/like-button-service";
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -39,7 +39,7 @@ const initializePhotographerPage = async () => {
     photographerLikesPrice.render();
 
     const likeButtonToggleFunction = () => {
-        toggleLikeButtons(likeButtons, function(likeButton) {
+        toggleLikeButtons(likeButtons, (likeButton) => {
             if (!likeButton.liked) {
                 likeButton.increaseLikeCounter();
                 photographerLikesPrice.increaseLikeCounter();
@@ -48,9 +48,9 @@ const initializePhotographerPage = async () => {
                 photographerLikesPrice.decreaseLikeCounter();
             }
         });
-    }
+    };
 
-    addTagEventListener(mediaContainer, function() {
+    addTagEventListener(mediaContainer, () => {
         const photographerData = getPhotographerData(data.photographers);
         const parentElement = document.getElementById(`tag-container-${photographerData.id}`);
 
@@ -69,7 +69,7 @@ const initializePhotographerPage = async () => {
         likeButtonToggleFunction();
 	});
 
-    toggleDropdownFilter(mediaContainer.getElementsToFilter(), function() {
+    toggleDropdownFilter(mediaContainer.getElementsToFilter(), () => {
         mediaContainer.render();
 
         likeButtons.forEach((likeButton) => {

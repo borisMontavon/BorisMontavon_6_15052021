@@ -278,7 +278,7 @@ form {
   position: relative;
   user-select: none;
   width: 175px; }
-  .custom-select-wrapper:focus .custom-select__trigger {
+  .custom-select-wrapper:focus .custom-select-trigger {
     background-color: #CC583E;
     color: #000000;
     border-radius: 0.25rem 0.25rem 0 0; }
@@ -289,7 +289,7 @@ form {
   position: relative;
   display: flex;
   flex-direction: column; }
-  .custom-select.open .custom-select__trigger {
+  .custom-select.open .custom-select-trigger {
     background-color: #CC583E;
     color: #000000;
     border-radius: 0.25rem 0.25rem 0 0; }
@@ -299,7 +299,7 @@ form {
     visibility: visible;
     pointer-events: all; }
 
-.custom-select__trigger {
+.custom-select-trigger {
   position: relative;
   display: flex;
   align-items: center;

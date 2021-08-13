@@ -15,7 +15,6 @@ export default class MediaContainer {
         mediasParentElement.innerHTML = "";
 
         this.medias.forEach((media) => {
-
             if (media.state.display) {
                 media.render();
             }

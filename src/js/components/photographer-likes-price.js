@@ -2,8 +2,8 @@ export default class PhotographerLikesPrice {
     constructor(likes, photographer) {
         this.state = {
             id: photographer.id,
-            price: photographer.price
-        }
+            price: photographer.price,
+        };
 
         this.likes = likes;
 
@@ -13,7 +13,7 @@ export default class PhotographerLikesPrice {
     render() {
         const parentElement = document.getElementById("main-section");
 
-        let template = `<div class='infos-container'>
+        const template = `<div class='infos-container'>
                             <div class='likes-container'>
                                 <p id='photograph-like-counter-${this.state.id}'>${this.likes}</p>
                                 <span class='fas fa-heart' aria-hidden='true'></span>
@@ -27,7 +27,7 @@ export default class PhotographerLikesPrice {
     increaseLikeCounter() {
         const likeCounter = document.getElementById(this.likeCounterId);
 
-        this.likes++;
+        this.likes += 1;
 
         likeCounter.innerHTML = this.likes;
     }
@@ -35,7 +35,7 @@ export default class PhotographerLikesPrice {
     decreaseLikeCounter() {
         const likeCounter = document.getElementById(this.likeCounterId);
 
-        this.likes--;
+        this.likes -= 1;
 
         likeCounter.innerHTML = this.likes;
     }

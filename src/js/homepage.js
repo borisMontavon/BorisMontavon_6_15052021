@@ -1,8 +1,8 @@
 // Import factory method
-import { createComponent } from "./factory";
+import createComponent from "./factory";
 // Import functions
-import { addTagEventListener } from "./services/tag-service";
-import { topButton } from "./functions/top-button";
+import addTagEventListener from "./services/tag-service";
+import topButton from "./functions/top-button";
 
 // Photographers' data fetch from json
 const getData = async (url) => {
@@ -28,7 +28,7 @@ const initializeHomepage = async () => {
 		tag.render();
 	});
 
-	addTagEventListener(photographerContainer, function() {
+	addTagEventListener(photographerContainer, () => {
 		const globalTagsParentElement = document.getElementById("tags");
 
         globalTagsParentElement.innerHTML = "";

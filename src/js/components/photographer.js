@@ -9,14 +9,14 @@ export default class Photographer {
             price: photograph.price,
             tagline: photograph.tagline,
             tags: photograph.tags,
-            display: true
+            display: true,
         };
     }
 
     render() {
         const parentElement = document.getElementById("photographers");
 
-        let template = `<div id="photographer-${this.state.id}">
+        const template = `<div id="photographer-${this.state.id}">
                             <a href="photographer.html?id=${this.state.id}" class="photographer-link" aria-label="Lien vers la page du photographe ${this.state.name}" tabindex="0">
                                 <img src="assets/photographer-ids/${this.state.portrait}" alt="${this.state.name}" class="photographer-portrait">
                                 <h2 class="photographer-name">${this.state.name}</h2>
