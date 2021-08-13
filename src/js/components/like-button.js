@@ -2,8 +2,8 @@ export default class LikeButton {
     constructor(media) {
         this.state = {
             id: media.id,
-            likes: media.likes
-        }
+            likes: media.likes,
+        };
 
         this.parentId = `image-infos-${this.state.id}`;
 
@@ -23,8 +23,8 @@ export default class LikeButton {
             return;
         }
 
-        let iconClass = this.liked ? this.iconClassFull : this.iconClassEmpty;
-        let template = `<div class="like-button" aria-label="likes">
+        const iconClass = this.liked ? this.iconClassFull : this.iconClassEmpty;
+        const template = `<div class="like-button" aria-label="likes">
                             <p id="like-counter-${this.state.id}">${this.state.likes}</p>
                             <button id="like-${this.state.id}" aria-label="Bouton like">
                                 <span class="${iconClass}" id="heart-icon-${this.state.id}" aria-hidden="true"></span>
@@ -41,7 +41,7 @@ export default class LikeButton {
         heart.removeAttribute("class", this.iconClassEmpty);
         heart.setAttribute("class", this.iconClassFull);
 
-        this.state.likes++;
+        this.state.likes += 1;
 
         likeCounter.innerHTML = this.state.likes;
         this.liked = true;
@@ -54,7 +54,7 @@ export default class LikeButton {
         heart.removeAttribute("class", this.iconClassFull);
         heart.setAttribute("class", this.iconClassEmpty);
 
-        this.state.likes--;
+        this.state.likes -= 1;
 
         likeCounter.innerHTML = this.state.likes;
         this.liked = false;

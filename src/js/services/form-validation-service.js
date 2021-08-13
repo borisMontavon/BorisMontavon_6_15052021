@@ -24,7 +24,6 @@ const isLastNameValid = () => {
         lastNameSpan.classList.add("d-block");
 
         return false;
-
     }
     
     lastNameSpan.classList.remove("d-block");
@@ -36,6 +35,7 @@ const isLastNameValid = () => {
 const isEmailValid = () => {
     const emailValue = document.getElementById("mail").value;
     const emailSpan = document.getElementById("mailSpan");
+    // eslint-disable-next-line no-useless-escape
     const regEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const emailAdressTest = regEx.test(emailValue);
 
@@ -43,7 +43,6 @@ const isEmailValid = () => {
         emailSpan.classList.add("d-block");
 
         return false;
-
     }
     
     emailSpan.classList.remove("d-block");
@@ -65,10 +64,10 @@ const isMessageValid = () => {
     messageSpan.classList.remove("d-block");
 
     return true;
-}
+};
 
 const validateForm = () => {
-    var isFormValid = true;
+    let isFormValid = true;
 
     if (!isFirstNameValid()) {
         isFormValid = false;
@@ -88,11 +87,11 @@ const validateForm = () => {
         document.getElementById("form-background").classList.remove("d-block");
         document.body.classList.toggle("overflow");
     }
-}
+};
 
 // Submit and check if inputs are valids
-export const isFormFieldsValid = () => {
+export default function isFormFieldsValid() {
     const btnSubmit = document.getElementById("btnSubmit");
 
-    btnSubmit.addEventListener("click", () => { validateForm() });
+    btnSubmit.addEventListener("click", () => { validateForm(); });
 }

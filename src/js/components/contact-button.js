@@ -1,11 +1,11 @@
-import { isFormFieldsValid } from "../services/form-validation-service";
+import isFormFieldsValid from "../services/form-validation-service";
 
 export default class ContactButton {
-    render() {
+    static render() {
         const desktopParentElement = document.getElementById("photographer-section");
         const mobileParentElement = document.getElementsByTagName("main")[0];
 
-        let template = "<button id='{{id}}' class='contact-button' aria-label='Contactez-moi' tabindex='0'>Contactez-moi</button>";
+        const template = "<button id='{{id}}' class='contact-button' aria-label='Contactez-moi' tabindex='0'>Contactez-moi</button>";
 
         const desktopButton = template.replace("{{id}}", "desktop-contact-button");
         const mobileButton = template.replace("{{id}}", "mobile-contact-button");
@@ -16,13 +16,13 @@ export default class ContactButton {
         this.handleOpenForm();
     }
 
-    handleOpenForm() {
+    static handleOpenForm() {
         const contactButtons = document.getElementsByClassName("contact-button");
 
         Array.prototype.forEach.call(contactButtons, (element) => {
             element.addEventListener("click", () => {
                 const form = document.getElementById("form-background");
-                const body = document.body;
+                const { body } = document;
                 const firstInput = document.getElementById("fname");
 
                 form.classList.toggle("d-block");

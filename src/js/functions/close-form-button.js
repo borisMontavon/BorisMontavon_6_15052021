@@ -1,13 +1,13 @@
-export const closeFormButton = () => {
-    $(document).ready(function() {
-        const body = document.body;
+export default function closeFormButton() {
+    $(document).ready(() => {
+        const { body } = document;
     
-        $("#close-form").click(function() {
+        $("#close-form").click(() => {
             $("#form-background").toggleClass("d-block");
             body.classList.toggle("overflow");
         });
     
-        $(document).keyup(function(event) {
+        $(document).keyup((event) => {
             if ($("#form-background").hasClass("d-block")) {
                 if (event.defaultPrevented) {
                     return;
@@ -27,4 +27,4 @@ export const closeFormButton = () => {
             }
         });
     });
-};
+}

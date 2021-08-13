@@ -8,15 +8,19 @@ import PhotographerInfo from "./components/photographer-info";
 // Import data methods
 import * as DataService from "./services/data-service";
 
-export const createComponent = (type, data) => {
+export default function createComponent(type, data) {
     let component;
+    let photographerData;
 
     switch (type) {
         case "PhotographerContainer":
             component = new PhotographContainer(data.photographers);
             break;
         case "MediaContainer":
-            component = new MediaContainer(DataService.getMedias(data.media), DataService.getPhotographerData(data.photographers));
+            component = new MediaContainer(
+                DataService.getMedias(data.media),
+                DataService.getPhotographerData(data.photographers),
+            );
             break;
         case "GlobalTags":
             component = [];
@@ -37,17 +41,20 @@ export const createComponent = (type, data) => {
             break;
         case "PagePhotographerTags":
             component = [];
-            const photographerData = DataService.getPhotographerData(data.photographers);
+            photographerData = DataService.getPhotographerData(data.photographers);
 
             photographerData.tags.forEach((tag) => {
                 component.push(new Tag(tag, `tag-container-${photographerData.id}`));
-            })
+            });
             break;
         case "LikeButtons":
             component = DataService.getLikeButtons(data.media);
             break;
         case "PhotographerLikesPrice":
-            component = new PhotographerLikesPrice(DataService.getTotalLikes(data.media), DataService.getPhotographerData(data.photographers));
+            component = new PhotographerLikesPrice(
+                DataService.getTotalLikes(data.media),
+                DataService.getPhotographerData(data.photographers),
+            );
             break;
         default:
             return null;

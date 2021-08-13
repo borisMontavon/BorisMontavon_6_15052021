@@ -1,19 +1,19 @@
-export const addTagEventListener = (container, callback) => {
-    Array.prototype.forEach.call(document.querySelectorAll(".tag"), (element) => {
-        const tag = element.dataset.tag;
-
-        if (container.tagsSelected.includes(tag)) {
-            element.classList.add("tag-selected");
-        }
-
-        element.addEventListener("click", (event) => {
-            tagEventListener(event, element, tag, container, callback);
+const elementHasSelectedTag = (elements, tags) => {
+    if (tags.length === 0) {
+        elements.forEach((element) => {
+            element.state.display = true;
         });
+    } else {
+        elements.forEach((element) => {
+            const found = element.state.tags.some((tag) => tags.includes(tag));
 
-        element.addEventListener("keydown", (event) => {
-            tagEventListener(event, element, tag, container, callback);
+            if (found) {
+                element.state.display = true;
+            } else {
+                element.state.display = false;
+            }
         });
-    });
+    }
 };
 
 const tagEventListener = (event, span, tag, container, callback) => {
@@ -34,24 +34,25 @@ const tagEventListener = (event, span, tag, container, callback) => {
 
         callback();
 
+        // eslint-disable-next-line no-use-before-define
         addTagEventListener(container, callback);
     }
-}
+};
 
-const elementHasSelectedTag = (elements, tags) => {
-    if (tags.length === 0) {
-        elements.forEach((element) => {
-            element.state.display = true;
-        });
-    } else {
-        elements.forEach((element) => {
-            const found = element.state.tags.some(tag => tags.includes(tag));
+export default function addTagEventListener(container, callback) {
+    Array.prototype.forEach.call(document.querySelectorAll(".tag"), (element) => {
+        const { tag } = element.dataset;
 
-            if (found) {
-                element.state.display = true;
-            } else {
-                element.state.display = false;
-            }
+        if (container.tagsSelected.includes(tag)) {
+            element.classList.add("tag-selected");
+        }
+
+        element.addEventListener("click", (event) => {
+            tagEventListener(event, element, tag, container, callback);
         });
-    }
+
+        element.addEventListener("keydown", (event) => {
+            tagEventListener(event, element, tag, container, callback);
+        });
+    });
 }

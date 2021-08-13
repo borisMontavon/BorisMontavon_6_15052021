@@ -16,7 +16,7 @@ export default class PhotographerInfo {
     render() {
         const parentElement = document.getElementById("photographer-section");
 
-        let template = `<div class="photographer-info">
+        const template = `<div class="photographer-info">
                             <h1 class="photographer-name">${this.state.name}</h1>
                             <p class="photographer-city-country">${this.state.city}, ${this.state.country}</p>
                             <p class="photographer-tagline">${this.state.tagline}</p>
@@ -26,7 +26,7 @@ export default class PhotographerInfo {
 
         parentElement.insertAdjacentHTML("beforeend", template);
 
-        new ContactButton().render();
+        ContactButton.render();
         const formTitle = document.getElementById("form-title");
 
         formTitle.innerHTML = this.state.name;

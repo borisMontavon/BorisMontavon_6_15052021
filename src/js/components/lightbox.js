@@ -26,7 +26,8 @@ export default class Lightbox {
     }
 
     getIndex() {
-        return this.mediaContainer.medias.findIndex((element) => element.state.id === this.currentId);
+        return this.mediaContainer.medias
+            .findIndex((element) => element.state.id === this.currentId);
     }
 
     addClickEvent() {
@@ -87,12 +88,12 @@ export default class Lightbox {
         this.closeLightboxButton.addEventListener("click", () => {
             this.lightboxBackground.classList.toggle("d-block");
             document.body.classList.toggle("overflow");
-        })
+        });
     }
 
     handleKeysNavigation() {
         window.addEventListener("keyup", (event) => {
-            const body = document.body;
+            const { body } = document;
 
             if (this.lightboxBackground.classList.contains("d-block")) {
                 if (event.defaultPrevented) {
@@ -128,7 +129,7 @@ export default class Lightbox {
         let currentIndex = this.getIndex();
 
         while (currentIndex >= 0) {
-            currentIndex--;
+            currentIndex -= 1;
 
             if (currentIndex === -1) {
                 currentIndex = this.mediaContainer.medias.length - 1;
@@ -148,7 +149,7 @@ export default class Lightbox {
         let currentIndex = this.getIndex();
 
         while (currentIndex < this.mediaContainer.medias.length) {
-            currentIndex++;
+            currentIndex += 1;
 
             if (currentIndex === this.mediaContainer.medias.length) {
                 currentIndex = 0;
