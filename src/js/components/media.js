@@ -10,8 +10,8 @@ export default class Media {
             likes: media.likes,
             date: media.date,
             price: media.price,
-            display: true
-        }
+            display: true,
+        };
 
         this.mediaContainerClass = "media-container";
         this.imageSrc = `assets/photographer/${this.state.photographerId}/${this.state.image}`;
