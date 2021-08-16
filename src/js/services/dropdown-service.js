@@ -38,7 +38,7 @@ const optionEventListener = (option, event, select, medias, callback) => {
             }
 
             option.classList.add("selected");
-            option.closest(".custom-select").querySelector(".custom-select__trigger span").innerHTML = option.innerHTML;
+            option.closest(".custom-select").querySelector(".custom-select-trigger span").innerHTML = option.innerHTML;
             select.focus();
 
             callback();
